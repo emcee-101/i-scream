@@ -4,4 +4,4 @@ Website für DWP-Projektaufgabe: I-Scream. Eine Film-und Serienstreamingplattfor
 
 -   Start XAMPP server
 
--   localhost access: http://localhost/\<project-name>
+-   localhost access: http://localhost/project-name
