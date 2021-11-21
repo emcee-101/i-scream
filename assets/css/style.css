@@ -121,3 +121,13 @@ a {
 .column .header span {
 	font-size: 14px;
 }
+
+.column .header img {
+	width: 100px;
+}
+
+.signInMessage {
+	font-size: 14px;
+	font-weight: 400;
+	text-decoration: none;
+}

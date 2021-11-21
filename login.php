@@ -24,14 +24,14 @@ function getInputValue($name)
         <div class="column">
             <div class="header">
                 <img src="assets/images/logo/i-scream-logo-red.png" alt="Site logo">
-                <h3>Sign Up</h3>
+                <h3>Sign In</h3>
                 <span>to continue to I-Scream</span>
             </div>
 
             <form action="" method="post">
-                <!-- TODO-HTML: add form inputs [first name, last name, username, email, password] and submit button for register form-->
+                <!-- TODO-HTML: add form inputs [username, password] and submit button for sign in form-->
             </form>
-            <a href="login.php" class="signInMessage">Already have an account? Sign in here!</a>
+            <a href="register.php" class="signInMessage">Need an account? Sign up here!</a>
         </div>
     </div>
 </body>
