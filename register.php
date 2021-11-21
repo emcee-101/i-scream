@@ -1,7 +1,13 @@
 <?php
+require_once("includes/config.php");
+require_once("includes/classes/FormSanitizer.php");
+
+if (isset($_POST["submitButton"])) {
+    // sanitize form data
+}
 
 /**
- * 
+ * print out input values
  */
 function getInputValue($name)
 {
