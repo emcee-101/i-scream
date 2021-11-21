@@ -1,4 +1,18 @@
 /*
+ * logo generator link src: https://fontmeme.com/halloween-fonts/
+ */
+
+@font-face {
+	font-family: 'creepster';
+	src: url('../fonts/Creepster-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'jollylodger';
+	src: url('../fonts/JollyLodger-Regular.ttf');
+}
+
+/*
  * reset layout
  */
 
@@ -11,11 +25,12 @@ body {
 
 /*
  * set global font-family, color & box-sizing
+ * TODO-CSS: add global font color
  */
 
 * {
-	font-family: 'Titillium Web', sans-serif;
-	color: #333;
+	font-family: 'creepster', sans-serif;
+	/*color: */
 	box-sizing: border-box;
 }
 
@@ -26,4 +41,83 @@ body {
 a {
 	text-decoration: none;
 	color: #0654ba;
+}
+
+/*
+ * TODO-CSS: add background color for register / sign in container
+ */
+.signInContainer {
+	/*background-color: */
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/*
+ * TODO-CSS: add background color of column for register / sign in container
+ */
+.column {
+	/*background-color: */
+	min-height: 300px;
+	max-height: 100%;
+	width: 450px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
+	padding: 20px 35px;
+	overflow-y: auto;
+}
+
+.column form {
+	display: flex;
+	flex-direction: column;
+	padding-top: 24px;
+}
+
+/*
+ * TODO-CSS: add border-bottom color for register / sign in form inputs
+ */
+.column form input[type='text'],
+.column form input[type='email'],
+.column form input[type='password'] {
+	font-size: 14px;
+	margin: 10px 0;
+	border: none;
+	border-bottom: 1px solid; /* add border-bottom color*/
+}
+
+/*
+ * TODO-CSS: add background color for register / sign in form button input
+ * TODO-CSS: add text color for register / sign in form button input
+ */
+.column form input[type='submit'] {
+	/*background-color: */
+	/*color: */
+	height: 36px;
+	width: 88px;
+	border: none;
+	border-radius: 3px;
+	font-weight: 500;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 16px;
+}
+
+.column .header {
+	padding: 20px 0;
+}
+
+/*
+ * TODO-CSS: add text color register / sign in for header title
+ */
+.column h3 {
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 32px;
+	margin: 0;
+	padding-top: 16px;
+	/*color: */
+}
+
+.column .header span {
+	font-size: 14px;
 }
