@@ -4,4 +4,8 @@ Website für DWP-Projektaufgabe: I-Scream. Eine Film-und Serienstreamingplattfor
 
 -   Start XAMPP server
 
+-   access phpmyadmin: http://localhost/phpmyadmin/
+
+-   create db with name 'iscreamdb'
+
 -   localhost access: http://localhost/project-name
