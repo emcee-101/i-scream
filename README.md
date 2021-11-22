@@ -6,6 +6,6 @@ Website für DWP-Projektaufgabe: I-Scream. Eine Film-und Serienstreamingplattfor
 
 -   access phpmyadmin: http://localhost/phpmyadmin/
 
--   create db with name 'iscreamdb'
+-   create db
 
 -   localhost access: http://localhost/project-name
