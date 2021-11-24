@@ -1,1 +1,25 @@
+/*
+ * logo generator link src: https://fontmeme.com/halloween-fonts/
+ */
 
+@font-face {
+	font-family: '';
+	src: url('../font/');
+}
+
+@font-face {
+	font-family: '';
+	src: url('../font/');
+}
+
+html,
+body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+* {
+	font-family: '', sans-serif;
+	box-sizing: border-box;
+}
