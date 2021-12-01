@@ -1,25 +1,100 @@
+
 /*
  * logo generator link src: https://fontmeme.com/halloween-fonts/
  */
 
 @font-face {
-	font-family: '';
-	src: url('../font/');
+	font-family: 'RockSalt', cursive;
+	src: url(RockSalt-Regular.ttf) format("ttf");
+	font-weight:normal;
+
 }
 
 @font-face {
-	font-family: '';
-	src: url('../font/');
+	font-family: 'Outfit', sans-serif ;
+	src: url(Outfit-Regular.ttf) format("ttf");
+	font-weight:normal;
 }
 
-html,
-body {
-	height: 100%;
-	padding: 0;
-	margin: 0;
+@font-face {
+	font-family: 'Outfit', sans-serif;
+	src: url(Outfit-Black.ttf) format("ttf");
+	font-weight:bold;
 }
 
-* {
-	font-family: '', sans-serif;
-	box-sizing: border-box;
+html {
+	background: url(https://images.hdqwalls.com/wallpapers/the-nun-movie-4k-fz.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	overflow: hidden;
+}
+
+img{
+	display: block;
+	margin: auto;
+	width: 100%;
+	height: auto;
+}
+
+p {
+	margin:auto;
+	color:white;
+	font-family: 'Outfit', sans-serif;
+}
+
+.box{
+
+
+}
+
+h3{
+	margin:auto;
+	font-family: 'RockSalt', cursive;
+	color: red;
+	text-align: center;
+}
+
+div {
+	border-radius: 25px;
+	border: 2px solid red;
+	padding: 20px;
+	width: 200px;
+	height: 400px;
+	margin:auto;
+}
+
+.button{
+	background-color: white; /* Green */
+	border: none;
+	color: red;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin-left: auto;
+	margin-right:auto;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button1 {
+	background-color: white;
+	color: black;
+	border: 2px solid red;
+}
+
+.button1:hover {
+	background-color: red;
+	color: white;
+}
+
+#cent {
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-100px;
+	margin-left:-150px;
 }
