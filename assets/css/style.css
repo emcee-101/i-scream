@@ -1,29 +1,25 @@
-
 /*
  * logo generator link src: https://fontmeme.com/halloween-fonts/
  */
 
 @font-face {
-	font-family: 'RockSalt', cursive;
-	src: url(RockSalt-Regular.ttf) format("ttf");
-	font-weight:normal;
-
+	font-family: 'rocksalt';
+	src: url('./fonts/RockSalt-Regular.ttf');
 }
 
 @font-face {
-	font-family: 'Outfit', sans-serif ;
-	src: url(Outfit-Regular.ttf) format("ttf");
-	font-weight:normal;
+	font-family: 'outfit-regular';
+	src: url('./fonts/Outfit-Regular.ttf');
 }
 
 @font-face {
-	font-family: 'Outfit', sans-serif;
-	src: url(Outfit-Black.ttf) format("ttf");
-	font-weight:bold;
+	font-family: 'outfit-black';
+	src: url('./fonts/Outfit-Black.ttf');
 }
 
 html {
-	background: url(https://images.hdqwalls.com/wallpapers/the-nun-movie-4k-fz.jpg) no-repeat center center fixed;
+	background: url(https://images.hdqwalls.com/wallpapers/the-nun-movie-4k-fz.jpg)
+		no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -31,7 +27,11 @@ html {
 	overflow: hidden;
 }
 
-img{
+* {
+	font-family: 'outfit-regular', sans-serif;
+}
+
+img {
 	display: block;
 	margin: auto;
 	width: 100%;
@@ -39,19 +39,17 @@ img{
 }
 
 p {
-	margin:auto;
-	color:white;
-	font-family: 'Outfit', sans-serif;
+	margin: auto;
+	color: white;
+	font-family: 'outfit-black', sans-serif;
 }
 
-.box{
-
-
+.box {
 }
 
-h3{
-	margin:auto;
-	font-family: 'RockSalt', cursive;
+h3 {
+	margin: auto;
+	font-family: 'rocksalt', cursive;
 	color: red;
 	text-align: center;
 }
@@ -62,10 +60,10 @@ div {
 	padding: 20px;
 	width: 200px;
 	height: 400px;
-	margin:auto;
+	margin: auto;
 }
 
-.button{
+.button {
 	background-color: white; /* Green */
 	border: none;
 	color: red;
@@ -75,7 +73,7 @@ div {
 	display: inline-block;
 	font-size: 14px;
 	margin-left: auto;
-	margin-right:auto;
+	margin-right: auto;
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
@@ -92,9 +90,9 @@ div {
 }
 
 #cent {
-	position:absolute;
-	top:50%;
-	left:50%;
-	margin-top:-100px;
-	margin-left:-150px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -150px;
 }
