@@ -8,7 +8,7 @@ USE iscream;
 
  -- erste Tabelle "user" anlegen
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `mail_address` varchar(50) NOT NULL,
@@ -21,10 +21,12 @@ CREATE TABLE `user` (
 
 
  -- Testdaten
- INSERT INTO `user`
- VALUES (1,'Test1', 'testpass1', 'eins@gmail.com', 19, '2021-09-15 05:30:20', 1);
- VALUES (2,'Test2', 'testpass2', 'zwei@gmail.com', 30, '2021-10-10 10:30:10', 0);
- VALUES (3,'Test3', 'testpass3', 'drei@gmail.com', 40, '2021-04-15 07:24:50', 1);
+ INSERT INTO `user` (username, password, mail_address, age, signUpDate, isSubscribed)
+ VALUES ('Test1', 'testpass1', 'eins@gmail.com', 19, '2021-09-15 05:30:20', 1);
+  INSERT INTO `user` (username, password, mail_address, age, signUpDate, isSubscribed)
+ VALUES ('Test2', 'testpass2', 'zwei@gmail.com', 30, '2021-10-10 10:30:10', 0);
+  INSERT INTO `user` (username, password, mail_address, age, signUpDate, isSubscribed)
+ VALUES ('Test3', 'testpass3', 'drei@gmail.com', 40, '2021-04-15 07:24:50', 1);
 
 
 
