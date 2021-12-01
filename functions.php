@@ -2,13 +2,11 @@
 
 function check_login($con)
 {
-    // change attributes according to Niclas' Database
-
     // Check if User is in database
-    if(isset($_SESSION['id']))
+    if(isset($_SESSION['username']))
     {
-        $id = $_SESSION['id'];
-        $query = "select * from user where id = '$id' limit 1";
+        $user_name = $_SESSION['username'];
+        $query = "select * from user where username = '$user_name' limit 1";
 
         /*read from database*/
         $result = mysqli_query($con,$query);
@@ -19,10 +17,7 @@ function check_login($con)
         }
 
     }
-    else
-    {
     //redirect to login if session value does not exist
     header("Location: login.php");
     die;
-    }
 }

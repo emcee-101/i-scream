@@ -12,7 +12,7 @@ session_start();
         if(!empty($user_name)&& !empty($password) && !is_numeric($user_name))
         {
             //read from database & find user with the matching username
-            $query = "select * from user where username = $user_name limit 1";
+            $query = "select * from user where username = '$user_name' limit 1";
 
             $result = mysqli_query($con, $query);
 
@@ -25,13 +25,12 @@ session_start();
 
                     if($user_data['password'] === $password)
                     {
-                      $_SESSION['id'] = $user_data['id'];
+                      $_SESSION['username'] = $user_data['username'];
                       header("Location: index.php");
                       die;
                     }
                 }
             }
-
         }
 
         else
@@ -61,7 +60,8 @@ session_start();
 
    <div id ="cent">
        <h3>Login</h3><br>
-       <form method = "post">
+       <form method = "POST">
+
            <p class="center">Username</p><br><input type ="text" name="username" ><br><br>
            <p>Password</p><br><input type ="password" name="password"><br><br><br>
 

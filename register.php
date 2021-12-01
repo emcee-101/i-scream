@@ -23,7 +23,7 @@ session_start();
         if(!empty($user_name)&& !empty($password) && !is_numeric($user_name))
         {
             //save to database
-            $query = "insert into user(username,password,mail_address,age) values($user_name','$password','$mail_mail_address','$age')";
+            $query = "insert into user (username,password,mail_address,age) values('$user_name','$password','$mail_mail_address','$age')";
 
             mysqli_query($con, $query);
             header("Location: login.php");
@@ -56,14 +56,14 @@ session_start();
    <div id = "cent">
            <h3>Register</h3><br>
 
-        <form method = "post">
+        <form method = "POST">
 
            <p>Username</p><input type ="text" name="username" required><br><br>
            <p>Password</p><input type ="password" name="password" required><br><br>
            <p>E-Mail</p><input type = "email" name ="mail_address" required><br><br>
            <p>Age</p><input type = "number" name ="age" min = "18", max = "100" required><br><br>
 
-           <input type="submit" class="button button1" value = "Register" style= "font-family:Helvetica"><br><br>
+           <input type="submit" class="button button1" value = "Register"><br><br>
            <a href ="login.php" class="button button1"style="text-decoration: none">Login</a></button><br><br>
         </form>
    </div>
