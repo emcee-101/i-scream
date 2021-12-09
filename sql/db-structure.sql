@@ -116,14 +116,30 @@ CREATE TABLE `entity` (
     (1, 1),
     (2,2);
 
+        -- Fünfte Tabelle "Video Group Member" anlegen
+   CREATE TABLE `banner_images` (
+     `id` int(10) NOT NULL AUTO_INCREMENT,
+     `image_path` varchar(20) NOT NULL,
+     `entity_id` int(10) NOT NULL,
+      PRIMARY KEY(`id`),
+      KEY `banner_ent` (`entity_id`)
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+       -- Testdaten für Tabelle "Video group Member"
+    INSERT INTO `banner_images` (`image_path`, `entity_id`)
+    VALUES
+    ("img/Halloween_Movie_Feature.jpg", 1),
+    ("img/wp5685960-under-the-dome-wallpapers",2);
+
  -- Fremdschlüsselprüfung zu referenzierten Daten hinzufügen
 
-   ALTER TABLE `movies` ADD CONSTRAINT `movfr1` FOREIGN KEY (`entity_id`)  REFERENCES `entity`(`entity_id`);
-   ALTER TABLE `series` ADD CONSTRAINT `serfr1` FOREIGN KEY (`entity_id`)  REFERENCES `entity`(`entity_id`);
+  ALTER TABLE `movies` ADD CONSTRAINT `movfr1` FOREIGN KEY (`entity_id`)  REFERENCES `entity`(`entity_id`);
+  ALTER TABLE `series` ADD CONSTRAINT `serfr1` FOREIGN KEY (`entity_id`)  REFERENCES `entity`(`entity_id`);
 
   ALTER TABLE `video_group_member` ADD CONSTRAINT `vidgrmem1` FOREIGN KEY (`video_group_id`)  REFERENCES  `video_group`(`video_group_id`);
   ALTER TABLE `video_group_member` ADD CONSTRAINT `vidgrmem2` FOREIGN KEY (`entity_id`)  REFERENCES `entity`(`entity_id`);
 
+  ALTER TABLE `banner_images` ADD CONSTRAINT `banner_ent` FOREIGN KEY (`entity_id`) REFERENCES `entity`(`entity_id`);
 
  --  User für Zugriff von Web erstellen
 CREATE OR REPLACE USER 'usr1'@'localhost' IDENTIFIED BY 'pass';
