@@ -79,16 +79,29 @@ p {
     font-family: 'outfit-black', sans-serif;
 }
 
+h1,
 h2,
-h3 {
+h3,
+h4 {
     margin: auto;
     font-family: 'rocksalt', cursive;
+}
+
+#redfont {
     color: rgb(107, 9, 9);
+}
+
+#blackfont {
+    color: black;
+}
+
+#whitefont {
+    color: white;
 }
 
 .box {
     border-radius: 25px;
-    border: 2px solid rgb(107, 9, 9);
+    border: 3px solid rgb(107, 9, 9);
     padding: 20px;
     width: 200px;
     height: 450px;
@@ -97,7 +110,6 @@ h3 {
 
 .button {
     background-color: white;
-    /* Green */
     border: none;
     color: rgb(107, 9, 9);
     padding: 12px 60px;
@@ -136,6 +148,15 @@ h3 {
 
 .button2:hover {
     background-color: rgb(107, 9, 9);
+    color: black;
+}
+
+.button3 {
+    color: white;
+    transition-duration: 0.4s;
+}
+
+.button3:hover {
     color: black;
 }
 
@@ -260,4 +281,16 @@ figcaption {
 .headerlogo {
     height: 40px;
     width: 40px;
+}
+
+
+/*Footer CSS*/
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(107, 9, 9);
+    text-align: center;
 }

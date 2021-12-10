@@ -1,3 +1,14 @@
+<?php
+require_once("includes/header.php");
+require_once("includes/footer.php");
+include("connection.php");
+include("functions.php");
+
+session_start();
+
+    $user_data = check_login($con);
+?>
+
 <html lang="de">
 <head>
     

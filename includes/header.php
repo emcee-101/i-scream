@@ -18,7 +18,7 @@
 
                     <div id="logo">
                         <a href="index.php">
-                        <img class ="headerlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" height=40px width=40px></img></a>
+                        <img class ="headerlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:50px; width:50px"></img></a>
                     </div>
                 </div>
 
@@ -26,7 +26,7 @@
                     <div class="headerobj left">
                     <a href="movies.php" class="button2" style="text-decoration: none">Filme</a>
                     </div>
-                    <div class="dropcont">
+                        <div class="dropcont">
                             <table>
                                 <tr><td><p><a href="movies.php" style="text-decoration: none; color:white">Zombie</p></a></td></tr>
                                 <tr><td><p><a href="movies.php" style="text-decoration: none; color:white">Haunted</p></td></tr>
@@ -38,9 +38,9 @@
 
 
                 <div class="hovermenu">
-                        <div class="headerobj left">
+                    <div class="headerobj left">
                         <a href="movies.php" class="button2" style="text-decoration: none">Serien</a>
-                            </div>
+                        </div>
                         <div class="dropcont">
                             <table>
                                 <tr><td><p><a href="series.php" style="text-decoration: none; color:white">Zombie</p></a></td></tr>

@@ -1,5 +1,6 @@
 <?php
 require_once("includes/header.php");
+require_once("includes/footer.php");
 include("connection.php");
 include("functions.php");
 
@@ -14,21 +15,20 @@ session_start();
 
     <title>Welcome to IScream</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-
-
-    </style>
 
 </head>
 <body class="background5">
   
     <br>
     <?php
-    echo "<h3>Hello";
+    
+    // USER GREETING
+    /*
+    echo "<h3 id='whitefont'>Hello";
     echo "&nbsp";
     echo $user_data['username'];
     echo "!</h3><br>";
-
+    */
     // Slideshow
 
     class SliderElement {
