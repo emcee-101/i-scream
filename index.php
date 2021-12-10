@@ -3,11 +3,6 @@ require_once("includes/header.php");
 require_once("includes/footer.php");
 include("connection.php");
 include("functions.php");
-<<<<<<< HEAD
-=======
-/* Check whether user is logged in and redirect to login page if not */
->>>>>>> 67be8d515a820d9b02fa613929bdfad8fe0ec399
-
 session_start();
 
     $user_data = check_login($con);
@@ -22,10 +17,10 @@ session_start();
 
 </head>
 <body class="background5">
-  
+
     <br>
     <?php
-    
+
     // USER GREETING
     /*
     echo "<h3 id='whitefont'>Hello";
