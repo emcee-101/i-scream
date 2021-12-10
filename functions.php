@@ -47,13 +47,14 @@ function getBanner(){
     }
 
 
-function getGroup(WantMovie){
+function getGroup($WantMovie){
 
         //include("connection.php");
         // to test it get Group with id = 1
         $VidGrID = 1;
 
             //get a Title of a Group of titles by id of group (AKA video_group_id)
+
         $query = "SELECT title FROM video_group WHERE video_group_id = ".$VidGrID." and isMovies = ".$WantMovie." LIMIT 1;";
 
         $parsed_query = mysqli_query($con, $query);
@@ -76,5 +77,33 @@ function getGroup(WantMovie){
 
 
         return $title, $results;
+
+    }
+
+
+
+
+function getMovieBoxInfos($id, $isMovie){
+
+        //include("connection.php");
+        // to test it get Movie with id 1
+        $id = 1;
+        $isMovie = 1;
+
+            //get a Title, Thumbnail from DB
+        $query = "SELECT title, picture FROM entity WHERE entity_id = ".$id." and isMovie = ".$isMovie." LIMIT 1;";
+
+        $parsed_query = mysqli_query($con, $query);
+
+        $movData =  mysqli_fetch_assoc($result);
+
+
+
+                /* associative array - how the data is returned:*/
+//        echo $results["title"].$results["picture"]."\n";
+
+    return $movData;
+//
+
 
     }
