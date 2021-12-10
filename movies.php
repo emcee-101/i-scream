@@ -9,7 +9,7 @@
     <script src="assets/css/js/script.js"></script>
 
   </head>
-  <body>
+  <body class="background3">
    
     <p>This is the movies site</p>
      

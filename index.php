@@ -20,7 +20,7 @@ session_start();
     </style>
 
 </head>
-<body>
+<body class="background5">
   
     <br>
     <?php

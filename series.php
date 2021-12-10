@@ -9,7 +9,7 @@
     <script src="assets/css/js/script.js"></script>
 
   </head>
-  <body>
+  <body class="background2">
    
     <p>This is the Series site</p>
      

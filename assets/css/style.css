@@ -17,7 +17,7 @@
     src: url('./fonts/Outfit-Black.ttf');
 }
 
-html {
+.background1 {
     background: url(https://images.hdqwalls.com/wallpapers/the-nun-movie-4k-fz.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -26,8 +26,44 @@ html {
     overflow: hidden;
 }
 
+.background2 {
+    background: url(https://images.alphacoders.com/787/787294.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.background3 {
+    background: url(images/creepy_girl.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.background4 {
+    background: url(images/michael_myers.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.background5 {
+    background: url(images/dark_forest.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+}
+
 * {
-    font-family: 'outfit-regular', sans-serif;
+    font-family: 'outfit-black', sans-serif;
 }
 
 .complete {

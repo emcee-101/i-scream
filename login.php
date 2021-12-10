@@ -50,7 +50,7 @@ include("functions.php");
 </head>
 
 
-<body>
+<body class="background1">
 
     <div class = "box" id="cent">
         <h2 style="text-align:center">Login</h2><br>
