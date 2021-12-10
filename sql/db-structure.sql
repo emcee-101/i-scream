@@ -119,7 +119,7 @@ CREATE TABLE `entity` (
         -- Fünfte Tabelle "Video Group Member" anlegen
    CREATE TABLE `banner_images` (
      `id` int(10) NOT NULL AUTO_INCREMENT,
-     `image_path` varchar(20) NOT NULL,
+     `image_path` varchar(100) NOT NULL,
      `entity_id` int(10) NOT NULL,
       PRIMARY KEY(`id`),
       KEY `banner_ent` (`entity_id`)
