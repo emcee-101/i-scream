@@ -49,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
-    <div id="cent">
-        <h3>Register</h3><br>
+    <div class ="box" id="cent">
+        <h2 style="text-align:center">Register</h2><br>
 
         <form method="POST">
 

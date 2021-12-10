@@ -2,11 +2,10 @@
 require_once("includes/header.php");
 include("connection.php");
 include("functions.php");
-/* Check whether user is logged in and redirect to login page if not */
-/*
+
 session_start();
 
-    $user_data = check_login($con);*/
+    $user_data = check_login($con);
 ?>
 
 <!DOCTYPE html>
@@ -17,104 +16,19 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
 
-    .slideshow {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-    }
-
-    .slide {
-     display: none;
-    }
-
-    .crop {
-        width: 1000px;
-        height: 400px;
-        overflow: hidden;
-    }
-
-    .crop img{
-        width: 1000px;
-        object-fit: cover;
-    }
-
-    #left, #right {
-
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        width: auto;
-        margin-top: -22px;
-        padding: 16px;
-        color: white;
-        font-weight: bold;
-        font-size: 18px;
-        user-select: none;
-
-
-    }
-
-    #left {}
-    #right {
-        right: 0;
-
-    }
-
-    .movierec{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: baseline;
-        align-content: space-between;
-
-    }
-
-
-    .thumbnail{
-        width: 200px;
-        height:100px;
-        object-fit: cover;
-        margin: 10px;
-        text-align: center;
-    }
-
-    figure {
-
-        padding: 4px;
-        margin: auto;
-
-    }
-
-    figcaption {
-
-        background-color: black;
-        color: white;
-        font-style: italic;
-        padding: 2px;
-        text-align: center;
-        position: relative;
-        bottom: 14px;
-
-    }
 
     </style>
 
 </head>
 <body>
-
-
-
-
-    <a href="logout.php">Logout</a>
-    <h1> This is the index page </h1>
-
+  
     <br>
-    Hello, <?php echo $user_data['username']; ?>
-    <br>
+    <?php
+    echo "<h3>Hello";
+    echo "&nbsp";
+    echo $user_data['username'];
+    echo "!</h3><br>";
 
-
- <?php
     // Slideshow
 
     class SliderElement {
@@ -172,7 +86,7 @@ session_start();
         private $ID =0;
         private $caption ="ya";
         public function getString() {
-            $str = "<div class'movierec_element'>";
+            $str = "<div class='movierec_element'>";
             $str .= "<figure>";
             $str .= "<img class='thumbnail' src='".$this->img."'></img>";
             $str .= "<figcaption>".$this->caption."</figcaption>";
@@ -206,7 +120,6 @@ session_start();
 
         echo "<br>";
         echo "</div>";
-
  ?>
 
 </body>

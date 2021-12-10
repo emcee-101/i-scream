@@ -52,8 +52,8 @@ include("functions.php");
 
 <body>
 
-    <div id="cent">
-        <h3>Login</h3><br>
+    <div class = "box" id="cent">
+        <h2 style="text-align:center">Login</h2><br>
         <form method="POST">
 
             <p class="center">Username</p><br><input type="text" name="username"><br><br>
