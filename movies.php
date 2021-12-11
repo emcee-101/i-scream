@@ -20,9 +20,38 @@ session_start();
     <script src="assets/css/js/script.js"></script>
 
   </head>
+  
   <body class="background3">
-   
-    <p>This is the movies site</p>
+    <h3 id="whitefont" style="margin:5px;" >Zombie</h3> 
+
+    <div class="videowrapper">
+      <div ><img class= "videobox"src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div> 
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+      <div ><img class= "videobox"src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+    </div>
+
+    <h3 id="whitefont" style="margin:5px;">Haunted</h3>
+
+    <div class="videowrapper">
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+      <div ><img class= "videobox"src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div> 
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+      <div ><img class= "videobox"src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+    </div>
+
+    <h3 id="whitefont" style="margin:5px;">Psycho</h3>
+
+    <div class="videowrapper">
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div> 
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+      <div ><img class= "videobox"src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div> 
+      <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+    </div>
      
+
   </body>
 </html>

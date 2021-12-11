@@ -39,7 +39,7 @@
 
                 <div class="hovermenu">
                     <div class="headerobj left">
-                        <a href="movies.php" class="button2" style="text-decoration: none">Serien</a>
+                        <a href="series.php" class="button2" style="text-decoration: none">Serien</a>
                         </div>
                         <div class="dropcont">
                             <table>
