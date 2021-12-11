@@ -9,7 +9,7 @@ include("functions.php");
 <DOCTYPE! html>
 <html>
 <body class ="background3">
-<div style="text-align:center; margin-bottom:20%;">
+<div class ="box">
     <h1 id="whitefont">Impressum</h1>
     <p id="whitefont">Angaben gemäß § 5 TMG<br>
     Max Muster <br> 
