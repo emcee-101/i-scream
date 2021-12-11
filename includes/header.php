@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="headerobj right">
-                    <a href="includes/classes/Account.php" class="button2" style="text-decoration: none">Account</a>
+                    <a href="account-management.php" class="button2" style="text-decoration: none">Account</a>
                 </div>
 
 

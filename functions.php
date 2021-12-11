@@ -76,8 +76,7 @@ function getGroup($WantMovie){
 //        echo $results[1]["entity_id"].$results[1]["title"];
 
 
-        return $title, $results;
-
+        //return $title, $results;
     }
 
 
