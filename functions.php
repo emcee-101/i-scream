@@ -1,5 +1,4 @@
 <?php
-
 function check_login($con)
 {
     // Check if User is in database
@@ -86,23 +85,24 @@ function getMovieBoxInfos($id, $isMovie){
 
         //include("connection.php");
         // to test it get Movie with id 1
-        $id = 1;
-        $isMovie = 1;
+        //$id = 1;
+        //$isMovie = 1;
 
             //get a Title, Thumbnail from DB
-        $query = "SELECT title, picture FROM entity WHERE entity_id = ".$id." and isMovie = ".$isMovie." LIMIT 1;";
+        $query = "SELECT title, picture FROM entity WHERE entity_id = ".$id." and is_movie = ".$isMovie." LIMIT 1;";
 
         $parsed_query = mysqli_query($con, $query);
 
-        $movData =  mysqli_fetch_assoc($result);
-
+        $movData =  mysqli_fetch_assoc($parsed_query);
 
 
                 /* associative array - how the data is returned:*/
-//        echo $results["title"].$results["picture"]."\n";
+//          echo $movData["title"].$movData["picture"]."\n";
+ //         print_r($movData);
 
     return $movData;
-//
+
 
 
     }
+?>
