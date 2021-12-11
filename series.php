@@ -21,8 +21,12 @@ session_start();
 
   </head>
   <body class="background2">
+  
+  <div class="fade-in">
    
     <p>This is the Series site</p>
-     
+  
+  <div class="fade-in">
+  
   </body>
 </html>

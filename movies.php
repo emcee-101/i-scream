@@ -19,9 +19,10 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/css/js/script.js"></script>
 
-  </head>
-  
-  <body class="background3">
+</head>
+
+<body class="background3">
+  <div class="fade-in">
     <h3 id="whitefont" style="margin:5px;" >Zombie</h3> 
 
     <div class="videowrapper">
@@ -51,7 +52,7 @@ session_start();
       <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div> 
       <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
     </div>
-     
+  </div> 
 
-  </body>
+</body>
 </html>

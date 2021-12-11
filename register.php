@@ -49,22 +49,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body class="background1">
+    <div class="fade-in">
+        <div id="logo" >
+            <img class ="headerlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
+        </div>
     
-    <div class ="box" id="cent">
-        <h2 style="text-align:center" id="redfont">Register</h2><br>
-
-        <form method="POST">
-
-            <p>Username</p><input type="text" name="username" required><br><br>
-            <p>Password</p><input type="password" name="password" required><br><br>
-            <p>E-Mail</p><input type="email" name="mail_address" required><br><br>
-            <p>Age</p><input type="number" name="age" min="18" , max="100" required><br><br>
-
-            <input type="submit" class="button button1" value="Register"><br><br>
-            <a href="login.php" class="button button1" style="text-decoration: none">Login</a></button><br><br>
-        </form>
+        <h1 id= "redfont">Let's get started!</h1>
+    
+        <div class ="box" id="cent">
+            <h2 style="text-align:center" id="redfont">Register</h2><br>
+    
+            <form method="POST">
+    
+                <p>Username</p><input type="text" name="username" required><br><br>
+                <p>Password</p><input type="password" name="password" required><br><br>
+                <p>E-Mail</p><input type="email" name="mail_address" required><br><br>
+                <p>Age</p><input type="number" name="age" min="18" , max="100" required><br><br>
+    
+                <input type="submit" class="button button1" value="Register"><br><br>
+                <a href="login.php" class="button button1" style="text-decoration: none">Login</a></button><br><br>
+            </form>
+        </div>
     </div>
-    
 </body>
 
 </html>

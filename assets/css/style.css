@@ -1,306 +1,366 @@
-/*
+                                                /*
  * logo generator link src: https://fontmeme.com/halloween-fonts/
  */
-
-@font-face {
-    font-family: 'rocksalt';
-    src: url('./fonts/RockSalt-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'outfit-regular';
-    src: url('./fonts/Outfit-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'outfit-black';
-    src: url('./fonts/Outfit-Black.ttf');
-}
-
-.background1 {
-    background: url(https://images.hdqwalls.com/wallpapers/the-nun-movie-4k-fz.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
-}
-
-.background2 {
-    background: url(https://images.alphacoders.com/787/787294.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
-}
-
-.background3 {
-    background: url(images/creepy_girl.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
-}
-
-.background4 {
-    background: url(images/michael_myers.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
-}
-
-.background5 {
-    background: url(images/dark_forest.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    overflow: hidden;
-}
-
-* {
-    font-family: 'outfit-black', sans-serif;
-}
-
-.complete {
-    display: block;
-    margin: auto;
-    width: 100%;
-    height: auto;
-}
-
-p {
-    margin: auto;
-    color: white;
-    font-family: 'outfit-black', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    margin: auto;
-    font-family: 'rocksalt', cursive;
-    text-align: center;
-}
-
-#redfont {
-    color: rgb(107, 9, 9);
-}
-
-#blackfont {
-    color: black;
-}
-
-#whitefont {
-    color: white;
-}
-
-.box {
-    border-radius: 25px;
-    border: 3px solid rgb(107, 9, 9);
-    padding: 20px;
-    width: 200px;
-    height: 450px;
-    margin: auto;
-}
-
-.button {
-    background-color: white;
-    border: none;
-    color: rgb(107, 9, 9);
-    padding: 12px 60px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid rrgb(107, 9, 9);
-    margin-left: 0;
-}
-
-.button1:hover {
-    background-color: rgb(107, 9, 9);
-    color: white;
-}
-
-.button2 {
-    background-color: black;
-    border-radius: 10px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    margin: auto;
-    color: white;
-    margin-left: 0;
-}
-
-.button2:hover {
-    background-color: rgb(107, 9, 9);
-    color: black;
-}
-
-.button3 {
-    color: white;
-    transition-duration: 0.4s;
-}
-
-.button3:hover {
-    color: black;
-}
-
-#imageborder {
-    border: rgb(107, 9, 9);
-}
-
-#cent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -100px;
-    margin-left: -150px;
-}
-
-.slideshow {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-}
-
-.slide {
-    display: none;
-}
-
-.crop {
-    width: 1000px;
-    height: 400px;
-    overflow: hidden;
-}
-
-.crop img {
-    width: 1000px;
-    object-fit: cover;
-}
-
-#left,
-#right {
-    cursor: pointer;
-    position: relative;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    user-select: none;
-}
-
-#right {
-    right: 0;
-}
-
-.movierec {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: baseline;
-    align-content: space-between;
-}
-
-.thumbnail {
-    width: 200px;
-    height: 100px;
-    object-fit: cover;
-    margin: 10px;
-    text-align: center;
-}
-
-figure {
-    padding: 4px;
-    margin: auto;
-}
-
-figcaption {
-    background-color: black;
-    color: white;
-    font-style: italic;
-    padding: 2px;
-    text-align: center;
-    position: relative;
-    bottom: 14px;
-}
-
-
-/*Header CSS*/
-
-.headerwrap {
-    height: 80px;
-    margin-bottom: 1em;
-    margin-top: 0;
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(107, 9, 9);
-    align-items: flex-start;
-}
-
-.headerobj {
-    margin: 25px;
-}
-
-.headerobj.mid {
-    width: 100%;
-    overflow: hidden;
-}
-
-.hovermenu {
-    position: relative;
-    display: inline-block;
-}
-
-.dropcont {
-    display: none;
-}
-
-.hovermenu:hover .dropcont {
-    display: block;
-}
-
-.headerlogo {
-    height: 40px;
-    width: 40px;
-}
-
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(107, 9, 9);
-    text-align: center;
-}
-
-.videowrapper {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1em;
-}
-
-.videobox {
-    width: 1fr;
-    height: 200px;
-    object-fit: contain;
-}
+                                            
+                                            @font-face {
+                                                font-family: 'rocksalt';
+                                                src: url('./fonts/RockSalt-Regular.ttf');
+                                            }
+                                            
+                                            @font-face {
+                                                font-family: 'outfit-regular';
+                                                src: url('./fonts/Outfit-Regular.ttf');
+                                            }
+                                            
+                                            @font-face {
+                                                font-family: 'outfit-black';
+                                                src: url('./fonts/Outfit-Black.ttf');
+                                            }
+                                            
+                                            .background1 {
+                                                background: url(https://images.hdqwalls.com/wallpapers/the-nun-movie-4k-fz.jpg) no-repeat center center fixed;
+                                                -webkit-background-size: cover;
+                                                -moz-background-size: cover;
+                                                -o-background-size: cover;
+                                                background-size: cover;
+                                                overflow: hidden;
+                                            }
+                                            
+                                            .background2 {
+                                                background: url(https://images.alphacoders.com/787/787294.png) no-repeat center center fixed;
+                                                -webkit-background-size: cover;
+                                                -moz-background-size: cover;
+                                                -o-background-size: cover;
+                                                background-size: cover;
+                                                overflow: hidden;
+                                            }
+                                            
+                                            .background3 {
+                                                background: url(images/creepy_girl.jpg) no-repeat center center fixed;
+                                                -webkit-background-size: cover;
+                                                -moz-background-size: cover;
+                                                -o-background-size: cover;
+                                                background-size: cover;
+                                                overflow: hidden;
+                                            }
+                                            
+                                            .background4 {
+                                                background: url(images/michael_myers.png) no-repeat center center fixed;
+                                                -webkit-background-size: cover;
+                                                -moz-background-size: cover;
+                                                -o-background-size: cover;
+                                                background-size: cover;
+                                                overflow: hidden;
+                                            }
+                                            
+                                            .background5 {
+                                                background: url(images/dark_forest.jpg) no-repeat center center fixed;
+                                                -webkit-background-size: cover;
+                                                -moz-background-size: cover;
+                                                -o-background-size: cover;
+                                                background-size: cover;
+                                                overflow: hidden;
+                                            }
+                                            
+                                            * {
+                                                font-family: 'outfit-black', sans-serif;
+                                            }
+                                            
+                                            .complete {
+                                                display: block;
+                                                margin: auto;
+                                                width: 100%;
+                                                height: auto;
+                                            }
+                                            
+                                            p {
+                                                margin: auto;
+                                                color: white;
+                                                font-family: 'outfit-black', sans-serif;
+                                            }
+                                            
+                                            h1,
+                                            h2,
+                                            h3,
+                                            h4 {
+                                                margin: auto;
+                                                font-family: 'rocksalt', cursive;
+                                                text-align: center;
+                                            }
+                                            
+                                            #redfont {
+                                                color: rgb(107, 9, 9);
+                                            }
+                                            
+                                            #blackfont {
+                                                color: black;
+                                            }
+                                            
+                                            #whitefont {
+                                                color: white;
+                                            }
+                                            
+                                            .box {
+                                                border-radius: 25px;
+                                                border: 3px solid rgb(107, 9, 9);
+                                                top: 50%;
+                                                left: 50%;
+                                                padding: 15px;
+                                                background: black;
+                                            }
+                                            
+                                            .inputbox {
+                                                height: 100px;
+                                                font-size: 12pt;
+                                            }
+                                            
+                                            .button {
+                                                background-color: white;
+                                                border: none;
+                                                color: rgb(107, 9, 9);
+                                                padding: 12px 0px;
+                                                text-align: center;
+                                                text-decoration: none;
+                                                display: inline-block;
+                                                font-size: 20px;
+                                                transition-duration: 0.4s;
+                                                cursor: pointer;
+                                                border-radius: 10px;
+                                            }
+                                            
+                                            .button1 {
+                                                background-color: white;
+                                                color: black;
+                                                border: 2px solid rgb(107, 9, 9);
+                                                width: 100%;
+                                            }
+                                            
+                                            .button1:hover {
+                                                background-color: rgb(107, 9, 9);
+                                                color: white;
+                                            }
+                                            
+                                            .button2 {
+                                                background-color: black;
+                                                border-radius: 10px;
+                                                padding: 12px 20px;
+                                                font-size: 16px;
+                                                cursor: pointer;
+                                                transition-duration: 0.4s;
+                                                margin: auto;
+                                                color: white;
+                                                margin-left: 0;
+                                            }
+                                            
+                                            .button2:hover {
+                                                background-color: rgb(107, 9, 9);
+                                                color: black;
+                                            }
+                                            
+                                            .button3 {
+                                                color: white;
+                                                transition-duration: 0.4s;
+                                            }
+                                            
+                                            .button3:hover {
+                                                color: black;
+                                            }
+                                            
+                                            #imageborder {
+                                                border: rgb(107, 9, 9);
+                                            }
+                                            
+                                            #cent {
+                                                position: absolute;
+                                                top: 50%;
+                                                left: 50%;
+                                                margin-top: -100px;
+                                                margin-left: -150px;
+                                            }
+                                            
+                                            .slideshow {
+                                                max-width: 1000px;
+                                                position: relative;
+                                                margin: auto;
+                                            }
+                                            
+                                            .slide {
+                                                display: none;
+                                            }
+                                            
+                                            .crop {
+                                                width: 1000px;
+                                                height: 400px;
+                                                overflow: hidden;
+                                            }
+                                            
+                                            .crop img {
+                                                width: 1000px;
+                                                object-fit: cover;
+                                            }
+                                            
+                                            #left,
+                                            #right {
+                                                cursor: pointer;
+                                                position: relative;
+                                                top: 50%;
+                                                width: auto;
+                                                margin-top: -22px;
+                                                padding: 16px;
+                                                color: white;
+                                                font-weight: bold;
+                                                font-size: 18px;
+                                                user-select: none;
+                                            }
+                                            
+                                            #right {
+                                                right: 0;
+                                            }
+                                            
+                                            .movierec {
+                                                display: flex;
+                                                flex-direction: row;
+                                                flex-wrap: wrap;
+                                                justify-content: center;
+                                                align-items: baseline;
+                                                align-content: space-between;
+                                            }
+                                            
+                                            .thumbnail {
+                                                width: 200px;
+                                                height: 100px;
+                                                object-fit: cover;
+                                                margin: 10px;
+                                                text-align: center;
+                                            }
+                                            
+                                            figure {
+                                                padding: 4px;
+                                                margin: auto;
+                                            }
+                                            
+                                            figcaption {
+                                                background-color: black;
+                                                color: white;
+                                                font-style: italic;
+                                                padding: 2px;
+                                                text-align: center;
+                                                position: relative;
+                                                bottom: 14px;
+                                            }
+                                            /*Header CSS*/
+                                            
+                                            .headerwrap {
+                                                height: 80px;
+                                                margin-bottom: 1em;
+                                                margin-top: 0;
+                                                display: flex;
+                                                flex-direction: row;
+                                                background-color: rgb(107, 9, 9);
+                                                align-items: flex-start;
+                                            }
+                                            
+                                            .headerobj {
+                                                margin: 25px;
+                                            }
+                                            
+                                            .headerobj.mid {
+                                                width: 100%;
+                                                overflow: hidden;
+                                            }
+                                            
+                                            .hovermenu {
+                                                position: relative;
+                                                display: inline-block;
+                                            }
+                                            
+                                            .dropcont {
+                                                display: none;
+                                            }
+                                            
+                                            .hovermenu:hover .dropcont {
+                                                display: block;
+                                            }
+                                            
+                                            .headerlogo {
+                                                height: 40px;
+                                                width: 40px;
+                                            }
+                                            
+                                            .footer {
+                                                position: fixed;
+                                                left: 0;
+                                                bottom: 0;
+                                                width: 100%;
+                                                background-color: rgb(107, 9, 9);
+                                                text-align: center;
+                                            }
+                                            
+                                            .videowrapper {
+                                                display: grid;
+                                                grid-template-columns: repeat(5, 1fr);
+                                                grid-gap: 1em;
+                                            }
+                                            
+                                            .videobox {
+                                                width: 1fr;
+                                                height: 200px;
+                                                object-fit: contain;
+                                            }
+                                            
+                                            .videobox:hover {
+                                                opacity: 0.7;
+                                                cursor: pointer;
+                                            }
+                                            
+                                            .fade-in {
+                                                animation: fadeIn ease 2s;
+                                                -webkit-animation: fadeIn ease 2s;
+                                                -moz-animation: fadeIn ease 2s;
+                                                -o-animation: fadeIn ease 2s;
+                                                -ms-animation: fadeIn ease 2s;
+                                            }
+                                            
+                                            @keyframes fadeIn {
+                                                0% {
+                                                    opacity: 0;
+                                                }
+                                                100% {
+                                                    opacity: 1;
+                                                }
+                                            }
+                                            
+                                            @-moz-keyframes fadeIn {
+                                                0% {
+                                                    opacity: 0;
+                                                }
+                                                100% {
+                                                    opacity: 1;
+                                                }
+                                            }
+                                            
+                                            @-webkit-keyframes fadeIn {
+                                                0% {
+                                                    opacity: 0;
+                                                }
+                                                100% {
+                                                    opacity: 1;
+                                                }
+                                            }
+                                            
+                                            @-o-keyframes fadeIn {
+                                                0% {
+                                                    opacity: 0;
+                                                }
+                                                100% {
+                                                    opacity: 1;
+                                                }
+                                            }
+                                            
+                                            @-ms-keyframes fadeIn {
+                                                0% {
+                                                    opacity: 0;
+                                                }
+                                                100% {
+                                                    opacity: 1;
+                                                }

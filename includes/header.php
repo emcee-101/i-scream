@@ -56,6 +56,10 @@
                 </div>
 
                 <div class="headerobj right">
+                    <a href="watchlist.php" class="button2" style="text-decoration: none">Watchlist</a>
+                </div>
+
+                <div class="headerobj right">
                     <a href="account-management.php" class="button2" style="text-decoration: none">Account</a>
                 </div>
 

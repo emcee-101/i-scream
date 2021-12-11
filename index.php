@@ -56,7 +56,7 @@ session_start();
     );
 
     //output of image
-    echo "<div class='slideshow'>";
+    echo "<div class='fade-in'><div class='slideshow'>";
     foreach($slider as $key){
         $tmp=$key->getString();
         echo $tmp;
@@ -115,7 +115,7 @@ session_start();
     }
 
         echo "<br>";
-        echo "</div>";
+        echo "</div></div>";
  ?>
 
 </body>
