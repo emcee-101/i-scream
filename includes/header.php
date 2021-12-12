@@ -18,7 +18,7 @@
 
                     <div id="logo">
                         <a href="index.php">
-                        <img class ="headerlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:50px; width:50px"></img></a>
+                        <img class ="headerlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png"></img></a>
                     </div>
                 </div>
 

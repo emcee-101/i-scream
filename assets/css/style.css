@@ -187,33 +187,30 @@
                                                     max-with: 1000px;
                                                     left: 75%;
                                                     transform: translateX(-50%);
-
                                                     margin: auto;
                                                 }
-
+                                                
                                                 .slide {
                                                     display: none;
-
                                                 }
-
+                                                
                                                 .crop {
                                                     width: 1000px;
                                                     height: 400px;
                                                     overflow: hidden;
                                                 }
-
+                                                
                                                 .crop img {
                                                     width: 1000px;
                                                     object-fit: cover;
                                                 }
-
+                                                
                                                 #left,
                                                 #right {
                                                     cursor: pointer;
                                                     position: absolute;
                                                     top: 200px;
                                                     left: 5px;
-
                                                     width: auto;
                                                     margin-top: -22px;
                                                     padding: 16px;
@@ -222,12 +219,11 @@
                                                     font-size: 18px;
                                                     user-select: none;
                                                 }
-
+                                                
                                                 #right {
-                                                    left:950px;
+                                                    left: 950px;
                                                 }
-
-
+                                                
                                                 .movierec {
                                                     display: flex;
                                                     flex-direction: row;
@@ -238,7 +234,7 @@
                                                     align-content: space-between;
                                                     left: 10%;
                                                 }
-
+                                                
                                                 .thumbnail {
                                                     width: 200px;
                                                     height: 100px;
@@ -246,12 +242,12 @@
                                                     margin: 10px;
                                                     text-align: center;
                                                 }
-
+                                                
                                                 figure {
                                                     padding: 4px;
                                                     margin: auto;
                                                 }
-
+                                                
                                                 figcaption {
                                                     background-color: black;
                                                     color: white;
@@ -293,11 +289,22 @@
                                                 
                                                 .hovermenu:hover .dropcont {
                                                     display: block;
+                                                    border: 2px solid rgb(107, 9, 9);
+                                                    background: black;
+                                                }
+                                                
+                                                #logo {
+                                                    margin: -15px;
+                                                }
+                                                
+                                                #startlogo {
+                                                    margin-top: 25px;
+                                                    margin-left: 15px;
                                                 }
                                                 
                                                 .headerlogo {
-                                                    height: 40px;
-                                                    width: 40px;
+                                                    height: 60px;
+                                                    width: 60px;
                                                 }
                                                 
                                                 .footer {
@@ -328,6 +335,24 @@
                                                     cursor: pointer;
                                                     transform: scale(1.05);
                                                     transition-duration: 0.4s;
+                                                }
+                                                
+                                                .outer_circle {
+                                                    stroke-width: 3;
+                                                    stroke-dasharray: 410;
+                                                    stroke-dashoffset: 0;
+                                                    stroke-linecap: square;
+                                                    transition: all .4s ease-out;
+                                                }
+                                                
+                                                 :hover .outer_circle {
+                                                    stroke-dashoffset: 410;
+                                                    transition: stroke .7s .4s ease-out, stroke-dashoffset .4s ease-out;
+                                                }
+                                                
+                                                .glightbox_video:hover .inner-circle {
+                                                    fill: #BF2428;
+                                                    transition: fill .4s .3s ease-out;
                                                 }
                                                 
                                                 .fade-in {
