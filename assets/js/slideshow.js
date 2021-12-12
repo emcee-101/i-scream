@@ -9,6 +9,7 @@
     // portray first Slide on load of Side
     showSlide(curSlide);
 
+
     // portray a Slide by number
     function showSlide(numSlide) {
         let loopVar;
@@ -46,3 +47,6 @@
     function showNextSlide(){
         showSlide(curSlide+1);
     }
+
+        //change slides all 3 seconds
+    window.setInterval(showNextSlide(), 4000);

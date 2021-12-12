@@ -15,6 +15,8 @@ session_start();
     <title>Welcome to IScream</title>
     <link rel="stylesheet" href="assets/css/style.css">
 
+
+
 </head>
 <body class="background5">
 

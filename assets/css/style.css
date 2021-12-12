@@ -183,31 +183,37 @@
                                                 }
                                                 
                                                 .slideshow {
-                                                    max-width: 1000px;
                                                     position: relative;
+                                                    max-with: 1000px;
+                                                    left: 75%;
+                                                    transform: translateX(-50%);
+
                                                     margin: auto;
                                                 }
-                                                
+
                                                 .slide {
                                                     display: none;
+
                                                 }
-                                                
+
                                                 .crop {
                                                     width: 1000px;
                                                     height: 400px;
                                                     overflow: hidden;
                                                 }
-                                                
+
                                                 .crop img {
                                                     width: 1000px;
                                                     object-fit: cover;
                                                 }
-                                                
+
                                                 #left,
                                                 #right {
                                                     cursor: pointer;
-                                                    position: relative;
-                                                    top: 50%;
+                                                    position: absolute;
+                                                    top: 200px;
+                                                    left: 5px;
+
                                                     width: auto;
                                                     margin-top: -22px;
                                                     padding: 16px;
@@ -216,20 +222,23 @@
                                                     font-size: 18px;
                                                     user-select: none;
                                                 }
-                                                
+
                                                 #right {
-                                                    right: 0;
+                                                    left:950px;
                                                 }
-                                                
+
+
                                                 .movierec {
                                                     display: flex;
                                                     flex-direction: row;
                                                     flex-wrap: wrap;
                                                     justify-content: center;
+                                                    position: absolute;
                                                     align-items: baseline;
                                                     align-content: space-between;
+                                                    left: 10%;
                                                 }
-                                                
+
                                                 .thumbnail {
                                                     width: 200px;
                                                     height: 100px;
@@ -237,12 +246,12 @@
                                                     margin: 10px;
                                                     text-align: center;
                                                 }
-                                                
+
                                                 figure {
                                                     padding: 4px;
                                                     margin: auto;
                                                 }
-                                                
+
                                                 figcaption {
                                                     background-color: black;
                                                     color: white;
