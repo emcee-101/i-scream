@@ -21,21 +21,19 @@ require_once("includes/footer.php");
 <body class= "background2" >
                 
                    
-                    
-        <h2 style="text-align:center" id="redfont">Account</h2>
+        <div class="box" id="cent">
+        <h2 id="redfont">Account</h2>
         <form method="POST">
 
-        <p class="center">Email <input type="text" name="email"><br> <br br>  </p>
-            <p>Password<input type="password" name="password"><br><br> <br> </p>
-            <p>Date of birth<input type="date" name="Date of birth"><br><br> <br ></p>
-            
-            <p>Sex<input type="radio" name="sex" value="female" >female 
-            <input type="radio" name="sex" value="male">male <br><br><br>  </p>
-
-            <p>Membership<input type="text" name="membership"><br><br> <br ></p>
+        <p>Email<br> <input type="text" name="email"><br><br></p>
+        <p>Password<br> <input type="password" name="password"><br><br></p>
+        <p>Date of birth <br> <input type="date" name="Date of birth"><br><br>
+        <p>Membership<br><input type="text" name="membership"><br><br></p>
 
             
-            <p><input type="button" class="button5" value="Edit profile"><br>
+        <p><input class="button button2" style="padding:10px 0px" value="Edit profile"><br>
+        
+        </div>
           
         </form>
     

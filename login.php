@@ -57,18 +57,18 @@ include("functions.php");
         <img id= "startlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
     </div>
 
-    <h1 id= "redfont">Welcome to iScream</h1>
+    <h1 id= "redfont">Welcome to I-Scream</h1>
 
     <div class = "box" id="cent">
         <h2 style="text-align:center" id="redfont">Login</h2><br>
         <form method="POST">
 
-            <p class="center">Username</p><input type="text" name="username"><br><br>
+            <p>Username</p><input type="text" name="username"><br><br>
             <p>Password</p><input type="password" name="password"><br><br>
 
 
             <input type="submit" class="button button1" value="Login"><br><br>
-            <a href="register.php" class="button button1" style="text-decoration: none">Register</a><br><br>
+            <a href="register.php" class="button button1">Register</a><br><br>
         </form>
     </div>
 </div>
