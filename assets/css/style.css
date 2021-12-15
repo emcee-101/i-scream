@@ -169,6 +169,19 @@
                                                     transform: 1.1;
                                                     transition: 0.4s;
                                                 }
+                                                .button4 {
+    background-color: rgb(223, 92, 92);
+    color: black;
+    border: 2px solid rrgb(107, 9, 9);
+    margin-left: 0;
+}
+
+.button5 {
+    background-color: rgb(78, 65, 65);
+    color: black;
+    border: 2px solid rrgb(107, 9, 9);
+    margin-left: 0;
+}
                                                 
                                                 #imageborder {
                                                     border: rgb(107, 9, 9);
