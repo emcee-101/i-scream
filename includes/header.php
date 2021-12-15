@@ -28,10 +28,10 @@
                     </div>
                         <div class="dropcont">
                             <table>
-                                <tr><td><p><a href="movies.php" style="text-decoration: none; color:white">Zombie</p></a></td></tr>
-                                <tr><td><p><a href="movies.php" style="text-decoration: none; color:white">Haunted</p></td></tr>
-                                <tr><td><p><a href="movies.php" style="text-decoration: none; color:white">Psycho</p></td></tr>
-                                <tr><td><p><a href="movies.php" style="text-decoration: none; color:white">Gore</p></td></tr>
+                                <tr><td><p><a href="movies.php">Zombie</p></a></td></tr>
+                                <tr><td><p><a href="movies.php">Psycho</p></td></tr>
+                                <tr><td><p><a href="movies.php">Gore</p></td></tr>
+                                <tr><td><p><a href="movies.php">Haunted</p></td></tr>
                             </table>
                         </div>
                     </div>
@@ -43,10 +43,10 @@
                         </div>
                         <div class="dropcont">
                             <table>
-                                <tr><td><p><a href="series.php" style="text-decoration: none; color:white">Zombie</p></a></td></tr>
-                                <tr><td><p><a href="series.php" style="text-decoration: none; color:white">Haunted</p></td></tr>
-                                <tr><td><p><a href="series.php" style="text-decoration: none; color:white">Psycho</p></td></tr>
-                                <tr><td><p><a href="series.php" style="text-decoration: none; color:white">Gore</p></td></tr>
+                                <tr><td><p><a href="series.php">Zombie</p></a></td></tr>
+                                <tr><td><p><a href="series.php">Haunted</p></td></tr>
+                                <tr><td><p><a href="series.php">Psycho</p></td></tr>
+                                <tr><td><p><a href="series.php">Gore</p></td></tr>
                             </table>
                         </div>
                     </div>

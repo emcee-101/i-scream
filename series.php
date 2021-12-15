@@ -24,7 +24,7 @@ session_start();
   
   <div class="fade-in">
    
-    <p>This is the Series site</p>
+    <p></p>
   
   <div class="fade-in">
   
