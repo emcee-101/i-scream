@@ -340,11 +340,14 @@
                                                     display: grid;
                                                     grid-template-columns: repeat(5, 1fr);
                                                     grid-gap: 1em;
+                                                    margin-left: 10px;
+                                                    margin-right: 10px;
                                                 }
                                                 
                                                 .videobox {
                                                     width: 1fr;
                                                     height: 200px;
+                                                    align-self: center;
                                                     object-fit: contain;
                                                     border-radius: 10px;
                                                     border: 5px solid rgb(107, 9, 9);
@@ -357,30 +360,33 @@
                                                     transition-duration: 0.4s;
                                                 }
                                                 
-                                                .outer_circle {
-                                                    stroke-width: 3;
-                                                    stroke-dasharray: 410;
-                                                    stroke-dashoffset: 0;
-                                                    stroke-linecap: square;
-                                                    transition: all .4s ease-out;
+                                                .addwatchlist {
+                                                    color: white;
+                                                    text-align: center;
                                                 }
                                                 
-                                                 :hover .outer_circle {
-                                                    stroke-dashoffset: 410;
-                                                    transition: stroke .7s .4s ease-out, stroke-dashoffset .4s ease-out;
+                                                .addwatchlist:hover {
+                                                    transform: scale(1.05);
+                                                    color: rgb(107, 9, 9);
+                                                    transition-duration: 0.4s;
+                                                    cursor: pointer;
                                                 }
                                                 
-                                                .glightbox_video:hover .inner-circle {
-                                                    fill: #BF2428;
-                                                    transition: fill .4s .3s ease-out;
+                                                .playbutton {
+                                                    background: url(https://img.icons8.com/ios/50/000000/play--v1.png) no-repeat center center fixed;
+                                                    -webkit-background-size: cover;
+                                                    -moz-background-size: cover;
+                                                    -o-background-size: cover;
+                                                    background-size: cover;
+                                                    overflow: hidden;
                                                 }
                                                 
                                                 .fade-in {
-                                                    animation: fadeIn ease 2s;
-                                                    -webkit-animation: fadeIn ease 2s;
-                                                    -moz-animation: fadeIn ease 2s;
-                                                    -o-animation: fadeIn ease 2s;
-                                                    -ms-animation: fadeIn ease 2s;
+                                                    animation: fadeIn ease 1s;
+                                                    -webkit-animation: fadeIn ease 1s;
+                                                    -moz-animation: fadeIn ease 1s;
+                                                    -o-animation: fadeIn ease 1s;
+                                                    -ms-animation: fadeIn ease 1s;
                                                 }
                                                 
                                                 @keyframes fadeIn {

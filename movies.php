@@ -73,8 +73,9 @@ session_start();
 
                     // print out image tag with correct source and basic styling
 
-            $str = "<div >";
-            $str .= "<img class= 'videobox' src='".$this->img."'>";
+            $str = "<div>";
+            $str .= "<img class= 'videobox' src=".$this->img.">";
+            $str .= "<h4 class='addwatchlist'>+ Add to Watchlist</h4>";
             $str .= "</div>";
             return $str;
         }
