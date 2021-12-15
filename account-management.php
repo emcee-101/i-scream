@@ -25,17 +25,17 @@ require_once("includes/footer.php");
         <h2 style="text-align:center" id="redfont">Account</h2>
         <form method="POST">
 
-        <p class="center">Email</p><input type="text" name="email">
-            <p>Password</p><input type="password" name="password">
-            <p>Date of birth</p><input type="date" name="Date of birth">
+        <p class="center">Email <input type="text" name="email"><br> <br br>  </p>
+            <p>Password<input type="password" name="password"><br><br> <br> </p>
+            <p>Date of birth<input type="date" name="Date of birth"><br><br> <br ></p>
             
-            <p>Sex</p><input type="radio" name="sex" value="female" >female 
-            <input type="radio" name="sex" value="male">male 
+            <p>Sex<input type="radio" name="sex" value="female" >female 
+            <input type="radio" name="sex" value="male">male <br><br><br>  </p>
 
-            <p>Membership</p><input type="text" name="membership"><br>
+            <p>Membership<input type="text" name="membership"><br><br> <br ></p>
 
-            <input type="button" class="button4" value="Account"><br>
-            <input type="button" class="button5" value="edit profile"><br>
+            
+            <p><input type="button" class="button5" value="Edit profile"><br>
           
         </form>
     
@@ -44,4 +44,3 @@ require_once("includes/footer.php");
 </body>
 
 </html>
-
