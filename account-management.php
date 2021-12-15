@@ -19,9 +19,7 @@ require_once("includes/footer.php");
 </head>
 
 <body class= "background2" >
-                <div id="logo" >
-                        <img class ="headerlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
-                    </div>
+                
                    
                     
         <h2 style="text-align:center" id="redfont">Account</h2>
