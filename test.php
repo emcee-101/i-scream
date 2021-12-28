@@ -1,41 +1,64 @@
-<?php
 
-        include("connection.php");
-
-echo "1";
-        //include("connection.php");
-        // to test it get Group with id = 1
-        $VidGrID = 1;
-
-            //get a Title of a Group of titles by id of group (AKA video_group_id)
-
-        $query = "SELECT title FROM video_group WHERE video_group_id = ".$VidGrID." and isMovies = ".$WantMovie." LIMIT 1;";
-
-echo "1";
-        $parsed_query = mysqli_query($con, $query);
-
-echo "1";
-
-   //     $title =  mysqli_fetch_assoc($parsed_query);
-        $title =mysqli_fetch_object($parsed_query)->title;
+  <?php
 
 
-echo "1";
-        $query = "SELECT entity_id, title FROM video_group_member WHERE video_group_id = ".$VidGrID.";";
-        $parsed_query = mysqli_query($con, $query);
-        $results = array();
+        class vidBoxWrapper {
+            private $title ="";
+            private $grID =0;
+            private $vidGroupElements = array();
 
-            //put lines of values in one array AS one array and repeat   array(array(value1,value2),array(value1,value2)) .....
-        while ($line = mysqli_fetch_array($parsed_query, MYSQLI_ASSOC)) {
-            $results[] = $line;
+            private function getVidBoxElements(){
+                $tmp = "";
+                echo "bubatz";
+               foreach($this->vidGroupElements as $element){
+                    echo "bubatz";
+                    $tmp .= $element->getString();
+               }
+                return $tmp;
+            }
+
+            public function getString() {
+
+                $str = "<h3 id='whitefont' style='margin:5px;'>".$this->title."</h3>";
+                $str .= "<div class='videowrapper'>";
+                $str .= $this->getVidBoxElements();
+                $str .= "</div>";
+                return $str;
+            }
+
+            public function __construct($title, $grID, $vidGroupElements){
+                $this->title = $title;
+                $this->grID = $grID;
+                $this->vidGroupElements = $vidGroupElements;
+            }
+
+    }
+
+
+        class vidBoxElement {
+        private $img ="";
+        private $ent_ID = 0;
+        public function getString() {
+
+
+            $str = "<div >";
+            $str .= "<img class= 'videobox' src='".$this->img."'>";
+            $str .= "</div>";
+            return $str;
+        }
+        public function __construct($imgurl, $ent_id){
+            $this->img = $imgurl;
+            $this->ent_id = $ent_id;
         }
 
-                /* associative array - how the data is returned:*/
-        echo $results[0]["entity_id"].$results[0]["title"]."\n";
-        echo $results[1]["entity_id"].$results[1]["title"];
+    }
+    $test = array(
+        new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1),
+        new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1),
+        new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1)
+            );
+    $test2 = new vidBoxWrapper("Halloween Special", 1, $test);
+    echo $test2->getString();
 
+  ?>
 
-
-
-
- ?>

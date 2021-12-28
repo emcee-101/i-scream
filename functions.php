@@ -61,7 +61,7 @@ function getGroup($WantMovie){
         $title =  mysqli_fetch_assoc($result);
 
 
-        $query = "SELECT entity_id, title FROM video_group_member WHERE video_group_id = ".$VidGrID.";";
+        $query = "SELECT entity_id FROM video_group_member WHERE video_group_id = ".$VidGrID.";";
         $parsed_query = mysqli_query($con, $query);
         $results = array();
 
