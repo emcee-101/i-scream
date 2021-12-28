@@ -24,20 +24,21 @@ function check_login($con)
 
 function getBanner(){
 
-        //include("connection.php");
+        include("connection.php");
 
 
-            //get a banner with id
+        //get a banner with id
         $query = "SELECT `id`, `image_path` FROM `banner_images` LIMIT 3;";
+
         $parsed_query = mysqli_query($con, $query);
+
         $results = array();
 
-            //put lines of values in one array AS one array and repeat
-        while ($line = mysqli_fetch_array($parsed_query, MYSQLI_ASSOC)) {
-            $results[] = $line;
-        }
+        $results = mysqli_fetch_all($parsed_query, MYSQLI_ASSOC);
 
-                /* associative array - how the data is returned:*/
+
+
+                /* associative array - how the data can be read:*/
 //        echo $results[0]["id"].$results[0]["image_path"]."\n";
 //        echo $results[1]["id"].$results[1]["image_path"];
 
@@ -48,34 +49,37 @@ function getBanner(){
 
 function getGroup($WantMovie){
 
-        //include("connection.php");
+        include("connection.php");
         // to test it get Group with id = 1
         $VidGrID = 1;
-
-            //get a Title of a Group of titles by id of group (AKA video_group_id)
+        //get a Title of a Group of titles by id of group (AKA video_group_id)
 
         $query = "SELECT title FROM video_group WHERE video_group_id = ".$VidGrID." and isMovies = ".$WantMovie." LIMIT 1;";
 
-        $parsed_query = mysqli_query($con, $query);
-
-        $title =  mysqli_fetch_assoc($result);
-
+        $parsed_query = mysqli_query($con, $query)  ;
+        $row =  mysqli_fetch_assoc($parsed_query);
+        $title = $row["title"];
 
         $query = "SELECT entity_id FROM video_group_member WHERE video_group_id = ".$VidGrID.";";
         $parsed_query = mysqli_query($con, $query);
-        $results = array();
 
-            //put lines of values in one array AS one array and repeat   array(array(value1,value2),array(value1,value2)) .....
-        while ($line = mysqli_fetch_array($parsed_query, MYSQLI_ASSOC)) {
-            $results[] = $line;
-        }
+        //fetch all IDs of members of the vidoe group
+        $results =  mysqli_fetch_all($parsed_query);
 
-                /* associative array - how the data is returned:*/
-//        echo $results[0]["entity_id"].$results[0]["title"]."\n";
-//        echo $results[1]["entity_id"].$results[1]["title"];
+        $getGroupResult = array($title, $results);
+
+        //at the receiving end: list($title, $results) = $getGroupResult
 
 
-        //return $title, $results;
+        return $getGroupResult;
+
+        // Testcode:
+        // list($title, $results) = getGroup(1);
+        // echo $title."\n";
+        // print_r($results);
+        // Result: Slasher Horror Array ( [0] => Array ( [0] => 1 ) )
+
+
     }
 
 
@@ -83,7 +87,7 @@ function getGroup($WantMovie){
 
 function getMovieBoxInfos($id, $isMovie){
 
-        //include("connection.php");
+        include("connection.php");
         // to test it get Movie with id 1
         //$id = 1;
         //$isMovie = 1;
@@ -98,7 +102,7 @@ function getMovieBoxInfos($id, $isMovie){
 
                 /* associative array - how the data is returned:*/
 //          echo $movData["title"].$movData["picture"]."\n";
- //         print_r($movData);
+//         print_r($movData);
 
     return $movData;
 
