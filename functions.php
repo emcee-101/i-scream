@@ -47,6 +47,41 @@ function getBanner(){
     }
 
 
+function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
+
+    // designed to be used to pick groups to view in movies.php or series.php
+
+        include("connection.php");
+
+        $query = "SELECT video_group_id FROM video_group WHERE isMovies = ".$wantMovies;
+
+        $parsed_query = mysqli_query($con, $query);
+
+        $numRows = mysqli_num_rows($parsed_query);
+
+        $results =  mysqli_fetch_all($parsed_query);
+
+        $arrayOfGroupIds = array();
+
+        $iterateUntil = $numOfWantedGroups;
+
+        for ($i = 1; $i <= $iterateUntil; $i++){
+
+            //select a random row from the result set
+            $randomRow = $results[rand(0,$numRows-1)];
+
+            array_push($arrayOfGroupIds , $randomRow);
+
+        }
+
+        return $arrayOfGroupIds;
+
+        // Testcode
+        // $results = getRandomGroupIDs(1,1);
+        // print_r($results);
+
+}
+
 function getGroup($WantMovie){
 
         include("connection.php");
@@ -92,7 +127,7 @@ function getMovieBoxInfos($id, $isMovie){
         //$id = 1;
         //$isMovie = 1;
 
-            //get a Title, Thumbnail from DB
+        //get a Title, Thumbnail from DB
         $query = "SELECT title, picture FROM entity WHERE entity_id = ".$id." and is_movie = ".$isMovie." LIMIT 1;";
 
         $parsed_query = mysqli_query($con, $query);
