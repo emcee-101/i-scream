@@ -42,8 +42,9 @@ CREATE TABLE `entity` (
  -- Testdaten für Tabelle "entity"
  INSERT INTO `entity` (title, description, picture, is_movie)
  VALUES
- ('Halloween', 'A creepy movie about Halloween.', '/img/mypic1.jpg', 1),
- ('Under the Dome', 'A series about people living under a dome.', '/img/mypic2.jpg', 0);
+ ('Halloween', 'A creepy movie about Halloween.', 'https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg', 1),
+ ('Under the Dome', 'A series about people living under a dome.', '/img/mypic2.jpg', 0),
+ ('Freddy vs Jason', 'A crossover between the movies Nightmare on Elm Street and Friday the 13th', 'https://i.ytimg.com/vi/GqyN4OvWyEE/maxresdefault.jpg', 1;
 
 
   -- Dritte Tabelle "Movies" anlegen
@@ -60,7 +61,9 @@ CREATE TABLE `entity` (
 
   -- Testdaten für Tabelle "Movies"
   INSERT INTO `movies` (`entity_id`, release_year, video_reference)
-  VALUES (1, 2012, "/videos/mymovie.mp4");
+  VALUES
+  (1, 2012, "/videos/mymovie.mp4"),
+  (3, 2003, "/vid/newvod1.mp4");
 
     -- Vierte Tabelle "Series" anlegen
    CREATE TABLE `series` (
@@ -114,7 +117,8 @@ CREATE TABLE `entity` (
     INSERT INTO `video_group_member` (`video_group_id`, `entity_id`)
     VALUES
     (1, 1),
-    (2,2);
+    (2, 2),
+    (1, 3);
 
         -- Fünfte Tabelle "Video Group Member" anlegen
    CREATE TABLE `banner_images` (

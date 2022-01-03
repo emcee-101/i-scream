@@ -6,7 +6,9 @@
         include("connection.php");
         include("functions.php");
 
-        $results = getRandomGroupIDs(1,1);
+        list($title, $results) = getGroup(1, 1);
+        echo $title;
         print_r($results);
+
   ?>
 

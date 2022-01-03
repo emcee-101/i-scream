@@ -27,7 +27,7 @@ function getBanner(){
         include("connection.php");
 
 
-        //get a banner with id
+        //get 3 banner with id
         $query = "SELECT `id`, `image_path` FROM `banner_images` LIMIT 3;";
 
         $parsed_query = mysqli_query($con, $query);
@@ -82,11 +82,11 @@ function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
 
 }
 
-function getGroup($WantMovie){
+function getGroup($GrID , $WantMovie){
 
         include("connection.php");
-        // to test it get Group with id = 1
-        $VidGrID = 1;
+
+        $VidGrID = $GrID;
         //get a Title of a Group of titles by id of group (AKA video_group_id)
 
         $query = "SELECT title FROM video_group WHERE video_group_id = ".$VidGrID." and isMovies = ".$WantMovie." LIMIT 1;";
@@ -109,10 +109,10 @@ function getGroup($WantMovie){
         return $getGroupResult;
 
         // Testcode:
-        // list($title, $results) = getGroup(1);
+        // list($title, $results) = getGroup(1, 1);
         // echo $title."\n";
         // print_r($results);
-        // Result: Slasher Horror Array ( [0] => Array ( [0] => 1 ) )
+        // Result: Slasher HorrorArray ( [0] => Array ( [0] => 1 ) [1] => Array ( [0] => 3 ) )
 
 
     }
@@ -144,4 +144,15 @@ function getMovieBoxInfos($id, $isMovie){
 
 
     }
+
+
+function getWatchURL ($ent_id)
+{
+
+    $url = "/watch.php?id=".$ent_id."";
+    return $url;
+}
+
+
+
 ?>

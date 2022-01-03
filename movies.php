@@ -50,10 +50,12 @@ session_start();
 
                 //print out wrapper
 
+
                 $str = "<h3 id='whitefont' style='margin:5px;'>".$this->title."</h3>";
                 $str .= "<div class='videowrapper'>";
                 $str .= $this->getVidBoxElements();
                 $str .= "</div>";
+
                 return $str;
             }
 
@@ -68,13 +70,15 @@ session_start();
 
         class vidBoxElement {
         private $img ="";
-        private $ent_ID = 0;
+        private $ent_ID;
         public function getString() {
 
                     // print out image tag with correct source and basic styling
 
             $str = "<div>";
+            $str .= "<a href=".getWatchURL($this->ent_ID).">";
             $str .= "<img class= 'videobox' src=".$this->img.">";
+            $str .= "</a>";
             $str .= "<h4 class='addwatchlist'>+ Add to Watchlist</h4>";
             $str .= "</div>";
             return $str;
@@ -86,15 +90,56 @@ session_start();
 
     }
 
-    //testdata
+    //TESTDATA!!!
+            /*
+                $test = array(
+                    new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1),
+                    new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1),
+                    new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1)
+                        );
+                $test2 = new vidBoxWrapper("Halloween Special", 1, $test);
+                echo $test2->getString();
+            */
 
-    $test = array(
-        new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1),
-        new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1),
-        new vidBoxElement("https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg",1)
-            );
-    $test2 = new vidBoxWrapper("Halloween Special", 1, $test);
-    echo $test2->getString();
+
+
+    //get IDs for Groups
+                            // first PARAMETER = MOVIE (0 or 1)
+                            // second PARAMETER = HOW MANY SHALL BE DISPLYED
+    $arrayOfGroupID = getRandomGroupIDs(1, 2);
+
+    foreach ($arrayOfGroupID as $key => $value){
+        // get Data of each group
+
+
+        $getGroupResult = getGroup($value[0], 1);
+
+        //title and list of results of ids get assigned to proper names
+        list($title, $results) = $getGroupResult;
+
+        $groupElements = array();
+
+         // get Data for each specific Movie that is shown
+        foreach($results as $elemtNum => $id){
+
+            // get picture dorm movie ID
+            $tmp = getMovieBoxInfos($id[0], 1);
+
+            array_push($groupElements, new vidBoxElement($tmp["picture"],$id[0]));
+
+        }
+
+        // create new object
+        $OutputGroup = new vidBoxWrapper($title, $value, $groupElements);
+
+        // print out
+        echo $OutputGroup->getString();
+
+    }
+
+
+
+
   ?>
 
 
