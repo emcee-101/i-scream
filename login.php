@@ -22,7 +22,7 @@ include("functions.php");
             if ($result && mysqli_num_rows($result) > 0) {
                 $user_data = mysqli_fetch_assoc($result);
 
-                if ($user_data['password'] === $hashed_password) {
+                if (password_verify($password, $user_data['password'])) {
                     $_SESSION['username'] = $user_data['username'];
                     header("Location: index.php");
                     die;
