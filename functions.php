@@ -148,11 +148,10 @@ function getMovieBoxInfos($id, $isMovie){
 
 function getWatchURL ($ent_id)
 {
-
-    $url = "/watch.php?id=".$ent_id."";
+    $url = "";
+    $url = "watch.php?id=".strval($ent_id);
     return $url;
 }
-
 
 
 ?>

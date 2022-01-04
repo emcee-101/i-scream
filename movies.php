@@ -85,7 +85,7 @@ session_start();
         }
         public function __construct($imgurl, $ent_id){
             $this->img = $imgurl;
-            $this->ent_id = $ent_id;
+            $this->ent_ID = $ent_id;
         }
 
     }
