@@ -1,8 +1,8 @@
 <?php
 
 $dbhost = "localhost"; /* change later to the host we are using*/
-$dbuser = "root";
-$dbpass = "";
+$dbuser = "usr1";
+$dbpass = "pass";
 $dbname = "iscream";
 
 /*establish connection with database*/

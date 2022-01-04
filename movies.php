@@ -8,18 +8,6 @@ session_start();
 
     $user_data = check_login($con);
 
-    // if ADD TO WATCHLIST CLICKED
- if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
-         // ENtity ID to be inserted in user's watchlist
-        $ent_id_watchlist = $_POST['ent_id'];
-
-
-        $query = "insert into watchlist (ent_id,user_id) values ('".$ent_id_watchlist."','".$_SESSION['usr_id']."');";
-
-        // insert
-        mysqli_query($con, $query);
-    }
 ?>
 
 <html lang="de">
@@ -84,23 +72,24 @@ session_start();
         class vidBoxElement {
         private $img ="";
         private $ent_ID;
-        private $isInWatchlist = checkIfWatchlisted($_SESSION['usr_id'],$ent_ID);
+        private $isInWatchlist;
 
         public function getWatchListModule() {
 
-            echo "<a href='watchlist.php?action=status&ent_id=".$ent_id."'>";
+            // submit action to watchlist.php per php "get" when clicked
+            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."'>";
 
-            if ($isInWatchlist){
-                    str = "<h4 class='addwatchlist'>- Remove from Watchlist</h4>";
+            // if already watchlisted: ask to remove
+            if ($this->isInWatchlist == 1){
+                    $str .= "<h4 class='addwatchlist'>- Remove from Watchlist</h4>";
             }
             else{
-                    str = "<h4 class='addwatchlist'>+ Add to Watchlist</h4>";
+                    $str .= "<h4 class='addwatchlist'>+ Add to Watchlist</h4>";
             }
 
-            echo str;
 
-            echo "</a>"
-
+            $str .= "</a>";
+            return $str;
 
         }
 
@@ -117,8 +106,15 @@ session_start();
             return $str;
         }
         public function __construct($imgurl, $ent_id){
+
             $this->img = $imgurl;
             $this->ent_ID = $ent_id;
+
+            $this->isInWatchlist = checkIfWatchlisted($_SESSION['usr_id'],$this->ent_ID);
+
+
+
+
         }
 
     }
@@ -133,6 +129,7 @@ session_start();
                 $test2 = new vidBoxWrapper("Halloween Special", 1, $test);
                 echo $test2->getString();
             */
+
 
 
 
