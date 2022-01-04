@@ -44,7 +44,7 @@ CREATE TABLE `entity` (
  VALUES
  ('Halloween', 'A creepy movie about Halloween.', 'https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg', 1),
  ('Under the Dome', 'A series about people living under a dome.', '/img/mypic2.jpg', 0),
- ('Freddy vs Jason', 'A crossover between the movies Nightmare on Elm Street and Friday the 13th', 'https://i.ytimg.com/vi/GqyN4OvWyEE/maxresdefault.jpg', 1;
+ ('Freddy vs Jason', 'A crossover between the movies Nightmare on Elm Street and Friday the 13th', 'https://i.ytimg.com/vi/GqyN4OvWyEE/maxresdefault.jpg', 1);
 
 
   -- Dritte Tabelle "Movies" anlegen
