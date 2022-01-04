@@ -46,11 +46,12 @@
         private $img ="";
         private $ent_ID;
         private $isInWatchlist;
+        private $location; // 1 for movies site, 2 for Series, 3 for watchlist
 
         public function getWatchListModule() {
 
             // submit action to watchlist.php per php "get" when clicked
-            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."'>";
+            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."&loc=".$this->location."'>";
 
             // if already watchlisted: ask to remove
             if ($this->isInWatchlist == 1){
@@ -78,11 +79,11 @@
             $str .= "</div>";
             return $str;
         }
-        public function __construct($imgurl, $ent_id){
+        public function __construct($imgurl, $ent_id, $location){
 
             $this->img = $imgurl;
             $this->ent_ID = $ent_id;
-
+            $this->location = $location;
             $this->isInWatchlist = checkIfWatchlisted($_SESSION['usr_id'],$this->ent_ID);
 
 

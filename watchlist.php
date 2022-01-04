@@ -30,7 +30,19 @@ else {
     }
 
 
-    header('Location: movies.php');
+    $redirect_to = $_GET["loc"];
+
+    switch($redirect_to){
+        case 1:
+            header('Location: movies.php?site=movies');
+            break;
+        case 2:
+            header('Location: movies.php?site=series');
+            break;
+        case 3:
+            header('Location: watchlist.php');
+            break;
+    }
 
 }
 
@@ -57,7 +69,8 @@ else {
 
     <?php
 
-
+        //mark as watchlist for correct redirectment after editing watchlist
+        $location = 3;
 
 
         //get IDs in Watchlist
@@ -72,7 +85,7 @@ else {
             // get picture dorm movie ID
             $tmp = getEntityBoxInfos($id[0]);
 
-            array_push($watchListElements, new vidBoxElement($tmp["picture"],$id[0]));
+            array_push($watchListElements, new vidBoxElement($tmp["picture"],$id[0],$location));
 
         }
 

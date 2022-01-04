@@ -36,10 +36,16 @@ session_start();
       if ($_GET["site"] == "series")
       {
           $showMovies = 0;
+
+          //mark as series tab for correct redirectment after editing watchlist
+          $location = 2;
       }
       else
       {
          $showMovies = 1;
+
+          //mark as movies tab for correct redirectment after editing watchlist
+         $location = 1;
       }
 
 
@@ -69,7 +75,7 @@ session_start();
             // get picture dorm movie ID
             $tmp = getEntityBoxInfos($id[0]);
 
-            array_push($groupElements, new vidBoxElement($tmp["picture"],$id[0]));
+            array_push($groupElements, new vidBoxElement($tmp["picture"],$id[0],$location));
 
         }
 
