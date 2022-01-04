@@ -10,19 +10,22 @@ USE iscream;
 CREATE TABLE `user` (
   `user_id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `mail_address` varchar(50) NOT NULL,
   `age` int NOT NULL,
   `signUpDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `isSubscribed` tinyint(1) NOT NULL DEFAULT 0,
+  `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
 
    PRIMARY KEY(`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
  -- Testdaten für Tabelle "user"
- INSERT INTO `user` (username, password, mail_address, age, signUpDate, isSubscribed)
- VALUES ('Test1', 'testpass1', 'eins@gmail.com', 19, '2021-09-15 05:30:20', 1);
+ INSERT INTO `user` (username, password, mail_address, age, signUpDate, isSubscribed, isAdmin)
+ VALUES
+ ('Test1', '$2y$10$h2Iup2QJD2SmmapWEdh5YuBP1vk2B6aX5VTBlZ3Y2cjCF81Fy.lAG', 'eins@gmail.com', 19, '2021-09-15 05:30:20', 1, 0),
+ ('Test2', '$2y$10$f39dbnWGLiy5NKqQ98OCQ.MiMTNsxr/1AJ5puDiVKK1lLVvTOS4y.', 'zwei@gmail.com', 30, '2020-03-11 07:50:22', 1, 1);
 
 
 

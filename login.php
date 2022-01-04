@@ -8,6 +8,8 @@ include("functions.php");
         // something was posted
         $user_name = $_POST['username'];
         $password = $_POST['password'];
+        $hashed_password = password_hash($password,  PASSWORD_DEFAULT);
+
 
     if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
         //read from database & find user with the matching username
@@ -20,7 +22,7 @@ include("functions.php");
             if ($result && mysqli_num_rows($result) > 0) {
                 $user_data = mysqli_fetch_assoc($result);
 
-                if ($user_data['password'] === $password) {
+                if ($user_data['password'] === $hashed_password) {
                     $_SESSION['username'] = $user_data['username'];
                     header("Location: index.php");
                     die;

@@ -16,12 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //
     $user_name = $_POST['username'];
     $password = $_POST['password'];
+
+    $hashed_password = password_hash($password,  PASSWORD_DEFAULT);
+
     $mail_address = $_POST['mail_address'];
     $age = $_POST['age'];
 
-    if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
+    if (!empty($user_name) && !empty($password) && !is_numeric($user_name) && !empty($mail_address)) {
         //save to database
-        $query = "insert into user (username,password,mail_address,age) values('$user_name','$password','$mail_mail_address','$age')";
+        $query = "insert into user (username,password,mail_address,age) values('".$user_name."','".$hashed_password."','".$mail_address."','".$age."')";
 
         mysqli_query($con, $query);
         header("Location: login.php");
