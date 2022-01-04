@@ -1,7 +1,7 @@
 <?php
 require_once("includes/header.php");
 require_once("includes/footer.php");
-include("connection.php");
+include("includes/connection.php");
 include("includes/functions.php");
 
 session_start();
@@ -84,6 +84,26 @@ session_start();
         class vidBoxElement {
         private $img ="";
         private $ent_ID;
+        private $isInWatchlist = checkIfWatchlisted($_SESSION['usr_id'],$ent_ID);
+
+        public function getWatchListModule() {
+
+            echo "<a href='watchlist.php?action=status&ent_id=".$ent_id."'>";
+
+            if ($isInWatchlist){
+                    str = "<h4 class='addwatchlist'>- Remove from Watchlist</h4>";
+            }
+            else{
+                    str = "<h4 class='addwatchlist'>+ Add to Watchlist</h4>";
+            }
+
+            echo str;
+
+            echo "</a>"
+
+
+        }
+
         public function getString() {
 
                     // print out image tag with correct source and basic styling
@@ -92,7 +112,7 @@ session_start();
             $str .= "<a href=".getWatchURL($this->ent_ID).">";
             $str .= "<img class= 'videobox' src=".$this->img.">";
             $str .= "</a>";
-            $str .= "<h4 class='addwatchlist'>+ Add to Watchlist</h4>";
+            $str .= $this->getWatchListModule();
             $str .= "</div>";
             return $str;
         }

@@ -3,7 +3,7 @@
 
 
 
-        include("connection.php");
+        include("includes/connection.php");
       include("includes/functions.php");
 
     $temp = getWatchList (1);

@@ -8,7 +8,7 @@ require_once('includes/classes/Account.php');
 require_once('assets/css/style.css');
 */
 session_start();
-include("connection.php");
+include("includes/connection.php");
 include("includes/functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {

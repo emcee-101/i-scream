@@ -1,7 +1,7 @@
 <?php
 require_once("includes/header.php");
 require_once("includes/footer.php");
-include("connection.php");
+include("includes/connection.php");
 include("includes/functions.php");
 session_start();
 

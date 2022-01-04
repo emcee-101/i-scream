@@ -175,4 +175,34 @@ function getWatchList ($usr_id)
 
 }
 
+
+checkIfWatchlisted($usr_id, $ent_ID){
+
+        include("connection.php");
+
+        $query = "SELECT entity_id FROM watchlist WHERE user_id = ".$usr_id." AND entity_id =".$ent_id." LIMIT 1";
+
+
+
+        $parsed_query = mysqli_query($con, $query);
+
+
+
+
+        if(mysqli_num_rows($parsed_query) > 0)
+        {
+            $returnValue=1;
+        }
+        else
+        {
+            $returnValue=0;
+        }
+
+    return $returnValue;
+
+
+}
+
+
+
 ?>
