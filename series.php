@@ -1,32 +1,14 @@
 <?php
-require_once("includes/header.php");
-require_once("includes/footer.php");
+
 include("includes/connection.php");
 include("includes/functions.php");
 
 session_start();
 
     $user_data = check_login($con);
+
+        header('Location: movies.php?site=series');
+
+
 ?>
 
-<html lang="de">
-<head>
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/css/js/script.js"></script>
-
-  </head>
-  <body class="background2">
-  
-  <div class="fade-in">
-   
-    <p></p>
-  
-  <div class="fade-in">
-  
-  </body>
-</html>

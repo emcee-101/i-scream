@@ -24,7 +24,7 @@
 
                 <div class="hovermenu">
                     <div class="headerobj left">
-                    <a href="movies.php" class="button2" style="text-decoration: none">Filme</a>
+                    <a href="movies.php?site=movies" class="button2" style="text-decoration: none">Filme</a>
                     </div>
                         <div class="dropcont">
                             <table>
@@ -39,7 +39,7 @@
 
                 <div class="hovermenu">
                     <div class="headerobj left">
-                        <a href="series.php" class="button2" style="text-decoration: none">Serien</a>
+                        <a href="movies.php?site=series" class="button2" style="text-decoration: none">Serien</a>
                         </div>
                         <div class="dropcont">
                             <table>

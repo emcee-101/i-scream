@@ -31,18 +31,32 @@ session_start();
   <?php
 
 
+        // check if series screen or movies screen
+
+      if ($_GET["site"] == "series")
+      {
+          $showMovies = 0;
+      }
+      else
+      {
+         $showMovies = 1;
+      }
+
+
+
+
   // MOVED CLASSES FOR BOXES TO includes/classes/DisplayElements.php
 
     //get IDs for Groups
                             // first PARAMETER = MOVIE (0 or 1)
                             // second PARAMETER = HOW MANY SHALL BE DISPLYED
-    $arrayOfGroupID = getRandomGroupIDs(1, 2);
+    $arrayOfGroupID = getRandomGroupIDs($showMovies, 2);
 
     foreach ($arrayOfGroupID as $key => $value){
         // get Data of each group
 
 
-        $getGroupResult = getGroup($value[0], 1);
+        $getGroupResult = getGroup($value[0], $showMovies);
 
         //title and list of results of ids get assigned to proper names
         list($title, $results) = $getGroupResult;
@@ -67,6 +81,7 @@ session_start();
 
     }
 
+echo "<h4 class='addwatchlist'>".$showMovies."</h4>";
 
 
 

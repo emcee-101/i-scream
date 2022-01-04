@@ -10,6 +10,9 @@ if (empty($_GET)) {
     session_start();
 
     $user_data = check_login($con);
+
+
+
 }
 else {
 
@@ -25,6 +28,7 @@ else {
         toggleWatchlist($_SESSION["usr_id"],$_GET["ent_id"]);
 
     }
+
 
     header('Location: movies.php');
 
@@ -52,6 +56,9 @@ else {
 
 
     <?php
+
+
+
 
         //get IDs in Watchlist
 
