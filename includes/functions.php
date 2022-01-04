@@ -183,10 +183,10 @@ function checkIfWatchlisted($usr_id, $ent_ID){
         $query = "SELECT COUNT(*) FROM watchlist WHERE user_id = ".$usr_id." AND entity_id =".$ent_ID;
 
         $parsed_query = mysqli_query($con, $query);
+        $row = mysqli_fetch_array($parsed_query, MYSQLI_NUM);
+        $value = $row[0];
 
-        $returnValue = 0;
-
-        if($parsed_query > 0)
+        if($value > 0)
         {
             //already watchlisted = entry in watchlist table
             $returnValue=1;
@@ -196,12 +196,34 @@ function checkIfWatchlisted($usr_id, $ent_ID){
             $returnValue=0;
         }
 
-
     return $returnValue;
 
 
 }
 
+
+function toggleWatchlist($usr_id, $ent_ID){
+
+    include("connection.php");
+    $curState = checkIfWatchlisted($usr_id, $ent_ID);
+
+     $queryAdd = "insert into watchlist (user_id,entity_id) values (".$usr_id.",".$ent_ID.");";
+     $querySub = "delete from watchlist where user_id=".$usr_id." and entity_id=".$ent_ID.";";
+
+
+
+    if($curState == 0)
+    {
+            //not watchlisted -> gets added
+        mysqli_query($con, $queryAdd);
+    }
+    else
+    {
+        mysqli_query($con, $querySub);
+    }
+
+
+}
 
 
 ?>
