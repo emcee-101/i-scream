@@ -8,7 +8,7 @@ USE iscream;
 
  -- erste Tabelle "user" anlegen
 CREATE TABLE `user` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `mail_address` varchar(50) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `user` (
   `signUpDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `isSubscribed` tinyint(1) NOT NULL DEFAULT 0,
 
-   PRIMARY KEY(`id`)
+   PRIMARY KEY(`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -135,6 +135,24 @@ CREATE TABLE `entity` (
     ("img/Halloween_Movie_Feature.jpg", 1),
     ("img/wp5685960-under-the-dome-wallpapers",2);
 
+
+      -- Sechste Tabelle "Watchlist" anlegen
+    CREATE TABLE `watchlist` (
+        `id` int(10) NOT NULL AUTO_INCREMENT,
+        `user_id` int(10) NOT NULL,
+        `entity_id` int(10) NOT NULL,
+         PRIMARY KEY(`id`),
+         KEY `watchl_usr` (`user_id`),
+         KEY `watchl_ent` (`entity_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+      -- Testdaten für Tabelle "Watchlist"
+    INSERT INTO `watchlist` (`user_id`, `entity_id`)
+    VALUES
+    (1,1),
+    (1,3);
+
+
  -- Fremdschlüsselprüfung zu referenzierten Daten hinzufügen
 
   ALTER TABLE `movies` ADD CONSTRAINT `movfr1` FOREIGN KEY (`entity_id`)  REFERENCES `entity`(`entity_id`);
@@ -144,6 +162,9 @@ CREATE TABLE `entity` (
   ALTER TABLE `video_group_member` ADD CONSTRAINT `vidgrmem2` FOREIGN KEY (`entity_id`)  REFERENCES `entity`(`entity_id`);
 
   ALTER TABLE `banner_images` ADD CONSTRAINT `banner_ent` FOREIGN KEY (`entity_id`) REFERENCES `entity`(`entity_id`);
+
+  ALTER TABLE `watchlist` ADD CONSTRAINT `watchl_usr` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
+  ALTER TABLE `watchlist` ADD CONSTRAINT `watchl_ent` FOREIGN KEY (`entity_id`) REFERENCES `entity`(`entity_id`);
 
  --  User für Zugriff von Web erstellen
 CREATE OR REPLACE USER 'usr1'@'localhost' IDENTIFIED BY 'pass';
