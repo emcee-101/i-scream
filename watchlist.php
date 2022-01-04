@@ -25,10 +25,10 @@ session_start();
         <h3 id ="whitefont">My Watchlist</h3>
 
         <div class="videowrapper">
-          <div ><img class= "videobox"src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+          <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
           <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div> 
           <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
-          <div ><img class= "videobox"src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
+          <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
           <div ><img class= "videobox" src="https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg"></div>
         </div>
         

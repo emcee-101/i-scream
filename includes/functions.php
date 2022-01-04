@@ -120,7 +120,7 @@ function getGroup($GrID , $WantMovie){
 
 
 
-function getMovieBoxInfos($id, $isMovie){
+function getEntityBoxInfos($id){
 
         include("connection.php");
         // to test it get Movie with id 1
@@ -128,7 +128,7 @@ function getMovieBoxInfos($id, $isMovie){
         //$isMovie = 1;
 
         //get a Title, Thumbnail from DB
-        $query = "SELECT title, picture FROM entity WHERE entity_id = ".$id." and is_movie = ".$isMovie." LIMIT 1;";
+        $query = "SELECT title, picture FROM entity WHERE entity_id = ".$id." LIMIT 1;";
 
         $parsed_query = mysqli_query($con, $query);
 
@@ -153,5 +153,26 @@ function getWatchURL ($ent_id)
     return $url;
 }
 
+
+function getWatchList ($usr_id)
+{
+
+        include("connection.php");
+
+        $query = "SELECT entity_id FROM watchlist WHERE user_id = ".$usr_id;
+
+        $parsed_query = mysqli_query($con, $query);
+
+        $results =  mysqli_fetch_all($parsed_query);
+
+
+    return $results;
+
+    //    $temp = getWatchList (1);
+    //     print_r($temp);
+    //     Array ( [0] => Array ( [0] => 1 ) [1] => Array ( [0] => 3 ) )
+
+
+}
 
 ?>

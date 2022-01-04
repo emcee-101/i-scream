@@ -6,9 +6,8 @@
         include("connection.php");
         include("functions.php");
 
-        list($title, $results) = getGroup(1, 1);
-        echo $title;
-        print_r($results);
-
+    $temp = getWatchList (1);
+    print_r($temp);
+    Array ( [0] => Array ( [0] => 1 ) [1] => Array ( [0] => 3 ) )
   ?>
 

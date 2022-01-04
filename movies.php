@@ -123,7 +123,7 @@ session_start();
         foreach($results as $elemtNum => $id){
 
             // get picture dorm movie ID
-            $tmp = getMovieBoxInfos($id[0], 1);
+            $tmp = getEntityBoxInfos($id[0]);
 
             array_push($groupElements, new vidBoxElement($tmp["picture"],$id[0]));
 
