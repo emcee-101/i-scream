@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("connection.php");
-include("functions.php");
+include("includes/functions.php");
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -24,6 +24,7 @@ include("functions.php");
 
                 if (password_verify($password, $user_data['password'])) {
                     $_SESSION['username'] = $user_data['username'];
+                    $_SESSION['usr_id'] = $user_data['user_id'];
                     header("Location: index.php");
                     die;
                 }

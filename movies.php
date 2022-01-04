@@ -2,11 +2,24 @@
 require_once("includes/header.php");
 require_once("includes/footer.php");
 include("connection.php");
-include("functions.php");
+include("includes/functions.php");
 
 session_start();
 
     $user_data = check_login($con);
+
+    // if ADD TO WATCHLIST CLICKED
+ if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+         // ENtity ID to be inserted in user's watchlist
+        $ent_id_watchlist = $_POST['ent_id'];
+
+
+        $query = "insert into watchlist (ent_id,user_id) values ('".$ent_id_watchlist."','".$_SESSION['usr_id']."');";
+
+        // insert
+        mysqli_query($con, $query);
+    }
 ?>
 
 <html lang="de">

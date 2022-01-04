@@ -4,7 +4,7 @@
 
 
         include("connection.php");
-        include("functions.php");
+      include("includes/functions.php");
 
     $temp = getWatchList (1);
     print_r($temp);

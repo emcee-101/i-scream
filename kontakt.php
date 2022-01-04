@@ -2,7 +2,8 @@
 require_once("includes/header.php");
 require_once("includes/footer.php");
 include("connection.php");
-include("functions.php");
+include("includes/functions.php");
+
 ?>
 
 <!DOCTYPE html>

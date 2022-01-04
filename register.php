@@ -9,7 +9,7 @@ require_once('assets/css/style.css');
 */
 session_start();
 include("connection.php");
-include("functions.php");
+include("includes/functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // something was posted
