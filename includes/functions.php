@@ -201,7 +201,7 @@ function checkIfWatchlisted($usr_id, $ent_ID){
 
 }
 
-
+// adds or removes watchlist-status for a movie or tv show for one certain user
 function toggleWatchlist($usr_id, $ent_ID){
 
     include("connection.php");
@@ -219,12 +219,14 @@ function toggleWatchlist($usr_id, $ent_ID){
     }
     else
     {
+        //already watchlist -> gets removed
         mysqli_query($con, $querySub);
     }
 
 
 }
 
+// gets total number of entries in Entity in DB
 function getNumOfEntities(){
 
     include("connection.php");
@@ -237,6 +239,20 @@ function getNumOfEntities(){
 
 
     return $numOfEntities;
+
+}
+
+
+function getWatchScreen($ent_ID){
+
+    include("connection.php");
+
+    $query = "SELECT title,description,picture FROM entity where entity_id=".$ent_ID.";";
+    $parsed_query = mysqli_query($con, $query);
+
+    $result = mysqli_fetch_assoc($parsed_query);
+
+    return $result;
 
 }
 
