@@ -56,7 +56,7 @@ session_start();
     //get IDs for Groups
                             // first PARAMETER = MOVIE (0 or 1)
                             // second PARAMETER = HOW MANY SHALL BE DISPLYED
-    $arrayOfGroupID = getRandomGroupIDs($showMovies, 2);
+    $arrayOfGroupID = getRandomGroupIDs($showMovies, 4);
 
     foreach ($arrayOfGroupID as $key => $value){
         // get Data of each group

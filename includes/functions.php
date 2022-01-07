@@ -22,13 +22,13 @@ function check_login($con)
 }
 
 
-function getBanner(){
+function getBanner($numOfBanners){
 
         include("connection.php");
 
 
         //get 3 banner with id
-        $query = "SELECT `id`, `image_path` FROM `banner_images` LIMIT 3;";
+        $query = "SELECT `id`, `image_path` FROM `banner_images` LIMIT ".$numOfBanners.";";
 
         $parsed_query = mysqli_query($con, $query);
 
@@ -222,6 +222,21 @@ function toggleWatchlist($usr_id, $ent_ID){
         mysqli_query($con, $querySub);
     }
 
+
+}
+
+function getNumOfEntities(){
+
+    include("connection.php");
+
+    $query = "SELECT COUNT(*) FROM entity";
+
+    $parsed_query = mysqli_query($con, $query);
+    $row = mysqli_fetch_array($parsed_query, MYSQLI_NUM);
+    $numOfEntities = $row[0];
+
+
+    return $numOfEntities;
 
 }
 

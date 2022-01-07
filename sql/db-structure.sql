@@ -46,7 +46,7 @@ CREATE TABLE `entity` (
  INSERT INTO `entity` (title, description, picture, is_movie)
  VALUES
  ('Halloween', 'A creepy movie about Halloween.', 'https://www.tasteofcinema.com/wp-content/uploads/2015/10/maxresdefault.jpg', 1),
- ('Under the Dome', 'A series about people living under a dome.', '/img/mypic2.jpg', 0),
+ ('Under the Dome', 'A series about people living under a dome.', 'https://vistapointe.net/images/under-the-dome-wallpaper-5.jpg', 0),
  ('Freddy vs Jason', 'A crossover between the movies Nightmare on Elm Street and Friday the 13th', 'https://i.ytimg.com/vi/GqyN4OvWyEE/maxresdefault.jpg', 1);
 
 
@@ -135,8 +135,8 @@ CREATE TABLE `entity` (
        -- Testdaten für Tabelle "Video group Member"
     INSERT INTO `banner_images` (`image_path`, `entity_id`)
     VALUES
-    ("img/Halloween_Movie_Feature.jpg", 1),
-    ("img/wp5685960-under-the-dome-wallpapers",2);
+    ("https://images8.alphacoders.com/841/841728.jpg", 3),
+    ("https://image.tmdb.org/t/p/w1280/8dkD13xlSr51S6xCjDJB6F4Q7Ax.jpg",2);
 
 
       -- Sechste Tabelle "Watchlist" anlegen

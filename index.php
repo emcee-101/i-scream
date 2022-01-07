@@ -24,22 +24,27 @@ session_start();
     <br>
     <?php
 
-    // USER GREETING
-    /*
-    echo "<h3 id='whitefont'>Hello";
-    echo "&nbsp";
-    echo $user_data['username'];
-    echo "!</h3><br>";
-    */
+
     // Slideshow
 
     class SliderElement {
         private $img ="";
-        private $ID =0;
+        private $ID;
+
+        public function getWatchLink() {
+
+            $WatchLink = "";
+            $WatchLink .= "watch.php?id=".$this->ID;
+
+            return $WatchLink;
+        }
+
         public function getString() {
             $str = "<div class='slide crop'>";
             $str .= "<p hidden>".$this->ID."</p>";
+            $str .= "<a href='".$this->getWatchLink()."'>";
             $str .= "<img src='".$this->img."'><img>";
+            $str .= "</a>";
 
             return $str;
         }
@@ -51,19 +56,26 @@ session_start();
     }
 
 
-    // Testdata
-    $slider = array (
-        new SliderElement("https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8",0),
-        new SliderElement("https://wallpaperaccess.com/full/533108.jpg",0),
-        new SliderElement("https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg",0),
-    );
 
-    //output of image
+    $slider = array();
+
+    //load banners from the db
+    $bannersToBeLoaded = 10;
+    $banners = getBanner($bannersToBeLoaded);
+
+    foreach($banners as $key){
+
+        array_push($slider, new SliderElement($key["image_path"],$key["id"]));
+
+    }
+
+    //output of slides
     echo "<div class='fade-in'><div class='slideshow'>";
     foreach($slider as $key){
         $tmp=$key->getString();
         echo $tmp;
 
+        //Javascript fucntions to move between slides
         echo "<a id='left' onclick='showPrevSlide()'>&#10094;</a>";
         echo "<a id='right' onclick='showNextSlide()'>&#10095;</a>";
         echo "<br>";
@@ -78,47 +90,73 @@ session_start();
 
 
   <?php
-    // Slideshow
+
+    // Boxes pf Movie reccomendations at the bottom of the screen
 
     class BoxElement {
         private $img ="";
-        private $ID =0;
-        private $caption ="ya";
+        private $ID;
+        private $caption="";
+
+        public function getWatchLink() {
+
+            $WatchLink = "";
+            $WatchLink .= "watch.php?id=".$this->ID;
+
+            return $WatchLink;
+        }
+
         public function getString() {
             $str = "<div class='movierec_element'>";
+            $str .= "<a href='".$this->getWatchLink()."'>";
             $str .= "<figure>";
             $str .= "<img class='thumbnail' src='".$this->img."'></img>";
             $str .= "<figcaption>".$this->caption."</figcaption>";
-            $str .= "</figure></div>";
+            $str .= "</figure></a></div>";
             return $str;
 
 
         }
-        public function __construct($imgurl, $IDNum){
+        public function __construct($imgurl, $IDNum, $title){
             $this->img = $imgurl;
             $this->ID = $IDNum;
-            // CAPTION?
+            $this->caption = $title;
         }
 
     }
 
 
-    // Testdata
-    $boxview = array (
-        new boxElement("https://designhub.co/wp-content/uploads/2020/06/MainBanner.png",0),
-        new boxElement("https://designhub.co/wp-content/uploads/2020/06/MainBanner.png",0),
-        new boxElement("https://designhub.co/wp-content/uploads/2020/06/MainBanner.png",0),
-    );
+    $arrayOfRandomIds = array();
+    $BoxElements = array();
+
+    // get Number of Entities in DB in TOTAL
+    $numOfEntites = getNumOfEntities();
+
+    // the number of Elements to be displayed
+    $numOfBoxesOnScreen = 5;
+
+    for($i=0;$i<$numOfBoxesOnScreen;$i++){
+
+        //choose random Entity out of all available
+        $tmpRand = rand(1,$numOfEntites);
+
+        // get Thumbnail and title
+        $BoxData = getEntityBoxInfos($tmpRand);
+
+        array_push($BoxElements, new BoxElement($BoxData["picture"],$tmpRand ,$BoxData["title"]));
+
+    }
+
 
     //output of image
     echo "<div class='movierec'>";
-    foreach($boxview as $key){
+    foreach($BoxElements as $key){
         $tmp=$key->getString();
         echo $tmp;
     }
 
         echo "<br>";
-        echo "</div></div>";
+        echo "</div>";
  ?>
 
 </body>
