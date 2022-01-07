@@ -94,5 +94,74 @@
     }
 
 
+    // Slideshow
+
+    class SliderElement {
+        private $img ="";
+        private $ID;
+
+        public function getWatchLink() {
+
+            $WatchLink = "";
+            $WatchLink .= "watch.php?id=".$this->ID;
+
+            return $WatchLink;
+        }
+
+        public function getString() {
+            $str = "<div class='slide crop'>";
+            $str .= "<p hidden>".$this->ID."</p>";
+            $str .= "<a href='".$this->getWatchLink()."'>";
+            $str .= "<img src='".$this->img."'><img>";
+            $str .= "</a>";
+
+            return $str;
+        }
+        public function __construct($imgurl, $IDNum){
+            $this->img = $imgurl;
+            $this->ID = $IDNum;
+        }
+
+    }
+
+
+
+
+
+    // Boxes pf Movie reccomendations at the bottom of the screen
+
+    class BoxElement {
+        private $img ="";
+        private $ID;
+        private $caption="";
+
+        public function getWatchLink() {
+
+            $WatchLink = "";
+            $WatchLink .= "watch.php?id=".$this->ID;
+
+            return $WatchLink;
+        }
+
+        public function getString() {
+            $str = "<div class='movierec_element'>";
+            $str .= "<a href='".$this->getWatchLink()."'>";
+            $str .= "<figure>";
+            $str .= "<img class='thumbnail' src='".$this->img."'></img>";
+            $str .= "<figcaption>".$this->caption."</figcaption>";
+            $str .= "</figure></a></div>";
+            return $str;
+
+
+        }
+        public function __construct($imgurl, $IDNum, $title){
+            $this->img = $imgurl;
+            $this->ID = $IDNum;
+            $this->caption = $title;
+        }
+
+    }
+
+
 
 ?>
