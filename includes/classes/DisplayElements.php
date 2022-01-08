@@ -25,7 +25,7 @@
                 //print out wrapper
 
 
-                $str = "<h3 id='whitefont' style='margin:5px;'>".$this->title."</h3>";
+                $str = "<h3 id='whitefont' style='padding-top:5px;'>".$this->title."</h3>";
                 $str .= "<div class='videowrapper'>";
                 $str .= $this->getVidBoxElements();
                 $str .= "</div>";
@@ -51,7 +51,7 @@
         public function getWatchListModule() {
 
             // submit action to watchlist.php per php "get" when clicked
-            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."&loc=".$this->location."'>";
+            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."&loc=".$this->location."';>";
 
             // if already watchlisted: ask to remove
             if ($this->isInWatchlist == 1){

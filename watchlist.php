@@ -2,8 +2,6 @@
 
 if (empty($_GET)) {
     // not a request for adding something to watchlist
-    require_once("includes/header.php");
-    require_once("includes/footer.php");
     include("includes/connection.php");
     include("includes/functions.php");
     include("includes/classes/DisplayElements.php");
@@ -96,11 +94,11 @@ else {
         echo $OutputGroup->getString();
 
 
+    echo "</div>";
 
-    ?>
-
-    </div>
-
+require_once("includes/header.php");
+require_once("includes/footer.php");
+?>
 
 </body>
 </html>

@@ -16,14 +16,23 @@
                                                     font-family: 'outfit-black';
                                                     src: url('./fonts/Outfit-Black.ttf');
                                                 }
-                                                
+
+                                                html,body{
+                                                    margin-top:40px;
+                                                    margin-bottom:40px;
+                                                    height:100%;
+                                                    position: relative;
+
+                                                }
+
+
                                                 .background1 {
                                                     background: url(https://images.hdqwalls.com/wallpapers/the-nun-movie-4k-fz.jpg) no-repeat center center fixed;
                                                     -webkit-background-size: cover;
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: hidden;
+                                                    overflow: scroll;
                                                 }
                                                 
                                                 .background2 {
@@ -32,7 +41,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: hidden;
+                                                    overflow: scroll;
                                                 }
                                                 
                                                 .background3 {
@@ -41,7 +50,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: hidden;
+                                                    overflow: scroll;
                                                 }
                                                 
                                                 .background4 {
@@ -50,7 +59,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: hidden;
+                                                    overflow: scroll;
                                                 }
                                                 
                                                 .background5 {
@@ -59,7 +68,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: hidden;
+                                                    overflow: scroll;
                                                 }
                                                 
                                                 * {
@@ -106,6 +115,14 @@
                                                     top: 50%;
                                                     left: 50%;
                                                     padding: 15px;
+                                                    background: black;
+                                                }
+                                                .Impressum{
+                                                    border-radius: 25px;
+                                                    border: 3px solid rgb(107, 9, 9);
+                                                    top: 50%;
+                                                    left: 50%;
+                                                    padding: 25px;
                                                     background: black;
                                                 }
                                                 
@@ -173,7 +190,7 @@
                                                 .button5 {
                                                     background-color: rgb(214, 198, 191);
                                                     color: black;
-                                                    border: 2px solid rrgb(107, 9, 9);
+                                                    border: 2px solid rgb(107, 9, 9);
                                                     margin-left: 20px;
                                                 }
                                                 
@@ -186,15 +203,20 @@
                                                 }
                                                 
                                                 .slideshow {
-                                                    position: absolute;
+                                                    position: relative;
                                                     max-width: 1000px;
-                                                    left: 75%;
-                                                    transform: translateX(-100%);
-                                                    margin: auto;
+                                                    height:auto;
+                                                    width:auto;
+                                                    margin:auto;
+                                                    margin-top:100px;
+                                                    align-self: center;
                                                 }
                                                 
                                                 .slide {
+                                                    align: center;
                                                     display: none;
+                                                    border: 5px solid rgb(107, 9, 9);
+                                                    border-radius: 20px;
                                                 }
                                                 
                                                 .crop {
@@ -260,16 +282,25 @@
                                                     position: relative;
                                                     bottom: 14px;
                                                 }
+
                                                 /*Header CSS*/
                                                 
-                                                .headerwrap {
+
+                                                header {
+                                                    position:fixed;
+                                                    left:0;
+                                                    top:0;
+                                                    flex:1;
+                                                    margin-bottom: 40px;
+                                                    width: 100%;
                                                     height: 80px;
-                                                    margin-bottom: 1em;
-                                                    margin-top: 0;
+                                                    background-color: rgb(107, 9, 9);
                                                     display: flex;
                                                     flex-direction: row;
-                                                    background-color: rgb(107, 9, 9);
                                                     align-items: flex-start;
+
+
+
                                                 }
                                                 
                                                 .headerobj {
@@ -324,27 +355,33 @@
                                                 .headerlogo {
                                                     height: 60px;
                                                     width: 60px;
+                                                    position: relative;
                                                 }
                                                 
-                                                .footer {
+                                                footer {
                                                     position: fixed;
                                                     left: 0;
-                                                    bottom: 0;
-                                                    margin-top: 1px;
+                                                    bottom:0;
+                                                    height:80px;
+                                                    margin-top:20px;
                                                     width: 100%;
                                                     background-color: rgb(107, 9, 9);
                                                     text-align: center;
+
                                                 }
                                                 
                                                 .videowrapper {
+                                                    position:relative;
                                                     display: grid;
                                                     grid-template-columns: repeat(5, 1fr);
                                                     grid-gap: 1em;
                                                     margin-left: 10px;
                                                     margin-right: 10px;
+
                                                 }
                                                 
                                                 .videobox {
+                                                    position:relative;
                                                     width: 1fr;
                                                     height: 200px;
                                                     align-self: center;
@@ -363,6 +400,7 @@
                                                 .addwatchlist {
                                                     color: white;
                                                     text-align: center;
+                                                    text-decoration: none;
                                                 }
                                                 
                                                 .addwatchlist:hover {
@@ -388,7 +426,7 @@
                                                     -o-animation: fadeIn ease 1s;
                                                     -ms-animation: fadeIn ease 1s;
                                                 }
-                                                
+
                                                 @keyframes fadeIn {
                                                     0% {
                                                         opacity: 0;

@@ -1,6 +1,4 @@
 <?php
-require_once("includes/header.php");
-require_once("includes/footer.php");
 include("includes/connection.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
@@ -23,7 +21,7 @@ session_start();
 
 </head>
 
-<body class="background3">
+<body class="background3" >
   <div class="fade-in">
 
 
@@ -87,9 +85,10 @@ session_start();
 
     }
 
-echo "<h4 class='addwatchlist'>".$showMovies."</h4>";
+echo "<h4 class='addwatchlist'>".$showMovies."</h4></div>";
 
-
+require_once("includes/header.php");
+require_once("includes/footer.php");
 
   ?>
 

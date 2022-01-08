@@ -1,6 +1,5 @@
 <?php
-require_once("includes/header.php");
-require_once("includes/footer.php");
+
 include("includes/connection.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
@@ -96,7 +95,10 @@ session_start();
     }
 
         echo "<br>";
-        echo "</div>";
+        echo "</div></div></div>";
+
+require_once("includes/header.php");
+require_once("includes/footer.php");
  ?>
 
 </body>

@@ -9,8 +9,8 @@
 </head>
 
 <body>
-<div class ="footer">
-  <a href="Impressum.php" style="text-decoration: none"><h4 class ="button3">Impressum</h4></a><br><a href="kontakt.php" style="text-decoration: none"><h4 class ="button3">Kontakt</h4></a><br>
-</div>
+<footer>
+  <a href="Impressum.php" style="text-decoration: none"><h4 class ="button3">Impressum</h4></a><a href="kontakt.php" style="text-decoration: none"><h4 class ="button3">Kontakt</h4></a>
+</footer>
 </body>
 </html> 
