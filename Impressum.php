@@ -1,6 +1,9 @@
 <?php
 include("includes/connection.php");
 include("includes/functions.php");
+
+session_start();
+$isAdmin = check_admin($con);
 ?>
 
 

@@ -1,7 +1,9 @@
 <?php
+
+
 function check_login($con)
 {
-    // Check if User is in database
+    // Check if User is in database0000000000000000
     if(isset($_SESSION['username']))
     {
         $user_name = $_SESSION['username'];
@@ -11,14 +13,42 @@ function check_login($con)
         $result = mysqli_query($con,$query);
         if($result && mysqli_num_rows($result) > 0)
         {
+
+
             $user_data = mysqli_fetch_assoc($result);
+            mysqli_free_result($result);
             return $user_data;
         }
-
     }
     //redirect to login if session value does not exist
     header("Location: login.php");
     die;
+}
+
+function check_admin($con)
+{
+    if(isset($_SESSION['username']))
+    {
+
+    // check if user is admin
+
+    $user_name = $_SESSION['username'];
+    $query = "select isAdmin from user where username = '$user_name'";
+
+    $result = mysqli_query($con, $query);
+
+    $isAdmin = mysqli_fetch_assoc($result);
+
+    if($isAdmin["isAdmin"] == 1)
+    {
+         echo "<a href='addcontent.php' class='button button1' style='width:100px;'>Edit Entities</a>";
+    }
+    else
+    {
+        echo "You are just a filthy casual";
+    }
+    }
+
 }
 
 
