@@ -18,6 +18,7 @@ CREATE TABLE `user` (
   `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
 
    PRIMARY KEY(`user_id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -37,8 +38,8 @@ CREATE TABLE `entity` (
   `picture` varchar(100) NOT NULL,
   `is_movie` tinyint(1) NOT NULL DEFAULT 0,
 
-
    PRIMARY KEY(`entity_id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -55,18 +56,19 @@ CREATE TABLE `entity` (
    `id` int(10) NOT NULL AUTO_INCREMENT,
    `entity_id` int(10) NOT NULL,
    `release_year` int(4) NOT NULL,
-   `video_reference` varchar(100) NOT NULL,
+   `video_embed` text NULL,
 
     PRIMARY KEY(`id`),
     KEY `movfr1` (`entity_id`)
+
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
   -- Testdaten für Tabelle "Movies"
-  INSERT INTO `movies` (`entity_id`, release_year, video_reference)
+  INSERT INTO `movies` (`entity_id`, release_year)
   VALUES
-  (1, 2012, "/videos/mymovie.mp4"),
-  (3, 2003, "/vid/newvod1.mp4");
+  (1, 2012),
+  (3, 2003);
 
     -- Vierte Tabelle "Series" anlegen
    CREATE TABLE `series` (
@@ -75,7 +77,7 @@ CREATE TABLE `entity` (
      `start_year` int(4) NOT NULL,
      `season` int(2) NOT NULL,
      `episode` int(2) NOT NULL,
-     `video_reference` varchar(100) NOT NULL,
+     `video_embed` text NULL,
 
       PRIMARY KEY(`id`),
       KEY `serfr1` (`entity_id`)
@@ -84,8 +86,8 @@ CREATE TABLE `entity` (
 
 
     -- Testdaten für Tabelle "Series"
-    INSERT INTO `series` (entity_id, start_year, season, episode, video_reference)
-    VALUES (2, 2012, 5, 12, "/videos/myseries.mp4");
+    INSERT INTO `series` (entity_id, start_year, season, episode)
+    VALUES (2, 2012, 5, 12);
 
 
     -- Fünfte Tabelle "Video Group" anlegen
@@ -93,6 +95,7 @@ CREATE TABLE `entity` (
      `video_group_id` int(10) NOT NULL,
      `title` varchar(20) NOT NULL,
      `isMovies` tinyint(1) NOT NULL,
+
       PRIMARY KEY(`video_group_id`)
 
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -112,8 +115,10 @@ CREATE TABLE `entity` (
      `video_group_id` int(10) NOT NULL,
      `entity_id` int(10) NOT NULL,
       PRIMARY KEY(`id`),
+
       KEY `vidgrmem1` (`video_group_id`),
       KEY `vidgrmem2` (`entity_id`)
+
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
        -- Testdaten für Tabelle "Video group Member"
@@ -128,8 +133,10 @@ CREATE TABLE `entity` (
      `id` int(10) NOT NULL AUTO_INCREMENT,
      `image_path` varchar(100) NOT NULL,
      `entity_id` int(10) NOT NULL,
+
       PRIMARY KEY(`id`),
       KEY `banner_ent` (`entity_id`)
+
    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
        -- Testdaten für Tabelle "Video group Member"
@@ -144,9 +151,11 @@ CREATE TABLE `entity` (
         `id` int(10) NOT NULL AUTO_INCREMENT,
         `user_id` int(10) NOT NULL,
         `entity_id` int(10) NOT NULL,
+
          PRIMARY KEY(`id`),
          KEY `watchl_usr` (`user_id`),
          KEY `watchl_ent` (`entity_id`)
+
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
       -- Testdaten für Tabelle "Watchlist"
@@ -155,6 +164,22 @@ CREATE TABLE `entity` (
     (1,1),
     (1,3);
 
+
+      -- Siebte Tabelle "Ticket" anlegen
+    CREATE TABLE `ticket` (
+        `id` int(10) NOT NULL AUTO_INCREMENT,
+        `user_id` int(10) NOT NULL,
+        `topic` varchar(200) NOT NULL,
+        `description` text NOT NULL,
+
+        PRIMARY KEY(`id`),
+        KEY `ticket_usr` (`user_id`)
+
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+    INSERT INTO `ticket` (`user_id`,`topic`,`description`)
+    VALUES
+    (1,"The index site looks bad :(", "So on the first page when logging in there is this slideshow tingy, but it doesnt work or soemthing and iam reyll angry!!!1!");
 
  -- Fremdschlüsselprüfung zu referenzierten Daten hinzufügen
 

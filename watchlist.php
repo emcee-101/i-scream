@@ -73,7 +73,7 @@ else {
 
         //get IDs in Watchlist
 
-        $arrayOfEntID = getWatchList ($_SESSION["usr_id"]);
+        $arrayOfEntID = getWatchList($_SESSION["usr_id"]);
 
         $watchListElements = array();
 
