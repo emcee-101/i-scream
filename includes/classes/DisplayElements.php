@@ -25,7 +25,7 @@
                 //print out wrapper
 
 
-                $str = "<h3 id='whitefont' style='padding-top:5px;'>".$this->title."</h3>";
+                $str = "<h3 id='whitefont'>".$this->title."</h3>";
                 $str .= "<div class='videowrapper'>";
                 $str .= $this->getVidBoxElements();
                 $str .= "</div>";

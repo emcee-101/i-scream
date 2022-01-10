@@ -3,14 +3,15 @@ include("includes/connection.php");
 include("includes/functions.php");
 
 session_start();
-$isAdmin = check_admin($con);
+require_once("includes/header.php");
+require_once("includes/footer.php");
 ?>
 
 
 <DOCTYPE! html>
 <html>
-<body style ="background-color:black; margin-bottom: 90px; margin-top: 90px;">
-<div class ="Impressum" >
+<body style ="background-color:black;">
+<div class ="impressum">
     <h1 id="whitefont">Impressum</h1>
     <p id="whitefont">Angaben gemäß § 5 TMG<br>
     Max Muster <br> 
@@ -39,8 +40,7 @@ Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten d
  </div>
 
 <?
-require_once("includes/header.php");
-require_once("includes/footer.php");
+
 ?>
 </body>
 </html>

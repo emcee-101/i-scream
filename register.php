@@ -53,10 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <body class="background1">
     <div class="fade-in">
-        <div id="logo" >
+         <p class = "alignment">
             <img id="startlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
-        </div>
-    
+         </p>
         <h1 id= "redfont">Let's get started!</h1>
     
         <div class ="box" id="cent">

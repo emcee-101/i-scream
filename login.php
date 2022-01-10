@@ -45,7 +45,6 @@ include("includes/functions.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/css/js/script.js"></script>
 
     <title>Login</title>
 
@@ -56,11 +55,12 @@ include("includes/functions.php");
 <body class="background1">
 
 <div class= "fade-in">
-    <div id="logo" >
-        <img id= "startlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
-    </div>
+    <p class = "alignment">
+        <img src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
+    </p>
 
-    <h1 id= "redfont">Welcome to I-Scream</h1>
+    <h1 class="alignment" id= "redfont">Welcome to I-Scream</h1>
+
 
     <div class = "box" id="cent">
         <h2 style="text-align:center" id="redfont">Login</h2><br>
