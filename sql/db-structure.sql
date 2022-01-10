@@ -156,6 +156,20 @@ CREATE TABLE `entity` (
     (1,3);
 
 
+      -- Siebte Tabelle "Ticket" anlegen
+    CREATE TABLE `ticket` (
+        `id` int(10) NOT NULL AUTO_INCREMENT,
+        `user_id` int(10) NOT NULL,
+        `topic` varchar(200) NOT NULL,
+        `description` text NOT NULL,
+        PRIMARY KEY(`id`),
+        KEY `ticket_usr` (`user_id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+    INSERT INTO `ticket` (`user_id`,`topic`,`description`)
+    VALUES
+    (1,"The index site looks bad :(", "So on the first page when logging in there is this slideshow tingy, but it doesnt work or soemthing and iam reyll angry!!!1!");
+
  -- Fremdschlüsselprüfung zu referenzierten Daten hinzufügen
 
   ALTER TABLE `movies` ADD CONSTRAINT `movfr1` FOREIGN KEY (`entity_id`)  REFERENCES `entity`(`entity_id`);
