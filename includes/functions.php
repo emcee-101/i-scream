@@ -3,7 +3,7 @@
 
 function check_login($con)
 {
-    // Check if User is in database0000000000000000
+    // Check if User is in database
     if(isset($_SESSION['username']))
     {
         $user_name = $_SESSION['username'];
@@ -24,6 +24,7 @@ function check_login($con)
     header("Location: login.php");
     die;
 }
+
 
 function check_admin($con)
 {
@@ -48,7 +49,7 @@ function check_admin($con)
 
 }
 
-
+// get banners for the slideshow in index.php
 function getBanner($numOfBanners){
 
         include("connection.php");
@@ -74,9 +75,9 @@ function getBanner($numOfBanners){
     }
 
 
+    //  pick random groups to display in movies.php or series.php
 function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
 
-    // designed to be used to pick groups to view in movies.php or series.php
 
         include("connection.php");
 
@@ -109,6 +110,8 @@ function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
 
 }
 
+
+    // get a Group of Movies or TV Shows with title and numeric id listing the entity ids of the entities that are part of the group
 function getGroup($GrID , $WantMovie){
 
         include("connection.php");
@@ -146,7 +149,7 @@ function getGroup($GrID , $WantMovie){
 
 
 
-
+    // get The Data necessary for the Displays in movies.php
 function getEntityBoxInfos($id){
 
         include("connection.php");
@@ -173,6 +176,9 @@ function getEntityBoxInfos($id){
     }
 
 
+
+
+    //get URL that refers to the watch.php with the correct entitity
 function getWatchURL ($ent_id)
 {
     $url = "";
@@ -181,6 +187,8 @@ function getWatchURL ($ent_id)
 }
 
 
+
+// get full wathclist of a user as a numeric array of entity ids
 function getWatchList ($usr_id)
 {
 
@@ -202,7 +210,7 @@ function getWatchList ($usr_id)
 
 };
 
-
+// check if a entity (movie or series) is watchlsited by a certain user
 function checkIfWatchlisted($usr_id, $ent_ID){
 
         include("connection.php");
@@ -347,7 +355,8 @@ function getWatchData($ent_id){
 // get a Youtube Embed Key and return the whole HTML segment to be embedded in the waatch.php
 function getYTembed($embed_key){
 
-    echo "<h3 id='whitefont'>".$embed_key."</h3>";
+    //Test if running correctly:
+        //echo "<h3 id='whitefont'>".$embed_key."</h3>";
 
     // take the components that make a youtube embed and put the embed-key in the middle of them
     $tmpString = Constants::$YTembedStart.$embed_key.Constants::$YTembedEnd;
