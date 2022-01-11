@@ -1,7 +1,8 @@
 <?php
 session_start();
-include("includes/connection.php");
+include_once("includes/connection.php");
 include("includes/functions.php");
+
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -15,7 +16,11 @@ include("includes/functions.php");
         //read from database & find user with the matching username
         $query = "select * from user where username = '$user_name' limit 1";
 
+        $con = establish_connection_db();
+
         $result = mysqli_query($con, $query);
+
+        abolish_connection_db($con);
 
         //if user was found check if password is correct
         if ($result) {
@@ -33,6 +38,8 @@ include("includes/functions.php");
     } else {
         echo "please enter some valid information";
     }
+
+
 }
 ?>
 

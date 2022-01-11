@@ -1,4 +1,5 @@
 <?php
+        include_once("connection.php");
 /*
  function edit_movies($con)
 {
@@ -58,8 +59,11 @@
 }
 */
 
-function check_login($con)
+function check_login()
 {
+
+    $con = establish_connection_db();
+
     // Check if User is in database
     if(isset($_SESSION['username']))
     {
@@ -74,44 +78,53 @@ function check_login($con)
 
             $user_data = mysqli_fetch_assoc($result);
             mysqli_free_result($result);
+
+            abolish_connection_db($con);
+
             return $user_data;
         }
     }
+
+    abolish_connection_db($con);
+
     //redirect to login if session value does not exist
     header("Location: login.php");
     die;
 }
 
 
-function check_admin($con)
+function check_admin()
 {
+    $con = establish_connection_db();
+
+
     if(isset($_SESSION['username']))
     {
 
-    // check if user is admin
+        // check if user is admin
 
-    $user_name = $_SESSION['username'];
-    $query = "select isAdmin from user where username = '$user_name'";
+        $user_name = $_SESSION['username'];
+        $query = "select isAdmin from user where username = '$user_name'";
 
-    $result = mysqli_query($con, $query);
+        $result = mysqli_query($con, $query);
 
-    $isAdmin = mysqli_fetch_assoc($result);
+        $isAdmin = mysqli_fetch_assoc($result);
 
-    if($isAdmin["isAdmin"] == 1)
-    {
-         echo "<a href='editmovies.php' class='button button1' style='width:100px; margin:20px;'>Edit a Movie</a>";
-         echo "<a href='editseries.php' class='button button1' style='width:100px; margin:20px;'>Edit a Series</a><br>";
-
-    }
+        if($isAdmin["isAdmin"] == 1)
+        {
+            echo "<a href='addcontent.php' class='button button1' style='width:100px; margin-top:20px;'>Edit Entities</a>";
+        }
 
     }
+
+    abolish_connection_db($con);
 
 }
 
 // get banners for the slideshow in index.php
 function getBanner($numOfBanners){
 
-        include("connection.php");
+        $con = establish_connection_db();
 
 
         //get 3 banner with id
@@ -126,9 +139,10 @@ function getBanner($numOfBanners){
 
 
                 /* associative array - how the data can be read:*/
-//        echo $results[0]["id"].$results[0]["image_path"]."\n";
-//        echo $results[1]["id"].$results[1]["image_path"];
+            //        echo $results[0]["id"].$results[0]["image_path"]."\n";
+            //        echo $results[1]["id"].$results[1]["image_path"];
 
+        abolish_connection_db($con);
         return $results;
 
     }
@@ -137,8 +151,8 @@ function getBanner($numOfBanners){
     //  pick random groups to display in movies.php or series.php
 function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
 
+        $con = establish_connection_db();
 
-        include("connection.php");
 
         $query = "SELECT video_group_id FROM video_group WHERE isMovies = ".$wantMovies;
 
@@ -161,6 +175,8 @@ function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
 
         }
 
+        abolish_connection_db($con);
+
         return $arrayOfGroupIds;
 
         // Testcode
@@ -173,7 +189,7 @@ function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
     // get a Group of Movies or TV Shows with title and numeric id listing the entity ids of the entities that are part of the group
 function getGroup($GrID , $WantMovie){
 
-        include("connection.php");
+        $con = establish_connection_db();
 
         $VidGrID = $GrID;
         //get a Title of a Group of titles by id of group (AKA video_group_id)
@@ -195,6 +211,8 @@ function getGroup($GrID , $WantMovie){
         //at the receiving end: list($title, $results) = $getGroupResult
 
 
+        abolish_connection_db($con);
+
         return $getGroupResult;
 
         // Testcode:
@@ -211,7 +229,8 @@ function getGroup($GrID , $WantMovie){
     // get The Data necessary for the Displays in movies.php
 function getEntityBoxInfos($id){
 
-        include("connection.php");
+        $con = establish_connection_db();
+
         // to test it get Movie with id 1
         //$id = 1;
         //$isMovie = 1;
@@ -225,10 +244,12 @@ function getEntityBoxInfos($id){
 
 
                 /* associative array - how the data is returned:*/
-//          echo $movData["title"].$movData["picture"]."\n";
-//         print_r($movData);
+            //         echo $movData["title"].$movData["picture"]."\n";
+            //         print_r($movData);
 
-    return $movData;
+        abolish_connection_db($con);
+
+        return $movData;
 
 
 
@@ -251,7 +272,7 @@ function getWatchURL ($ent_id)
 function getWatchList ($usr_id)
 {
 
-        include("connection.php");
+        $con = establish_connection_db();
 
         $query = "SELECT entity_id FROM watchlist WHERE user_id = ".$usr_id;
 
@@ -272,7 +293,7 @@ function getWatchList ($usr_id)
 // check if a entity (movie or series) is watchlsited by a certain user
 function checkIfWatchlisted($usr_id, $ent_ID){
 
-        include("connection.php");
+    $con = establish_connection_db();
 
         $query = "SELECT COUNT(*) FROM watchlist WHERE user_id = ".$usr_id." AND entity_id =".$ent_ID;
 
@@ -290,7 +311,8 @@ function checkIfWatchlisted($usr_id, $ent_ID){
             $returnValue=0;
         }
 
-    return $returnValue;
+        abolish_connection_db($con);
+        return $returnValue;
 
 
 }
@@ -298,7 +320,8 @@ function checkIfWatchlisted($usr_id, $ent_ID){
 // adds or removes watchlist-status for a movie or tv show for one certain user
 function toggleWatchlist($usr_id, $ent_ID){
 
-    include("connection.php");
+    $con = establish_connection_db();
+
     $curState = checkIfWatchlisted($usr_id, $ent_ID);
 
      $queryAdd = "insert into watchlist (user_id,entity_id) values (".$usr_id.",".$ent_ID.");";
@@ -317,13 +340,14 @@ function toggleWatchlist($usr_id, $ent_ID){
         mysqli_query($con, $querySub);
     }
 
+    abolish_connection_db($con);
 
 }
 
 // gets total number of entries in Entity in DB
 function getNumOfEntities(){
 
-    include("connection.php");
+    $con = establish_connection_db();
 
     $query = "SELECT COUNT(*) FROM entity";
 
@@ -331,7 +355,7 @@ function getNumOfEntities(){
     $row = mysqli_fetch_array($parsed_query, MYSQLI_NUM);
     $numOfEntities = $row[0];
 
-
+    abolish_connection_db($con);
     return $numOfEntities;
 
 }
@@ -340,20 +364,21 @@ function getNumOfEntities(){
 
 // used in Kontakt.php to add a ticket to the Database
 function newTicket($con, $topic, $description, $user_id){
-    include("connection.php");
+
+    $con = establish_connection_db();
 
 
     $queryAdd = "insert into ticket (user_id, topic, description) values (".$user_id.",'".$topic."','".$description."');";
 
     mysqli_query($con, $queryAdd);
 
-
+    abolish_connection_db($con);
 }
 
 // used in watch.php and retrieves every piece of data needed to display the site
 function getWatchData($ent_id){
 
-    include("connection.php");
+    $con = establish_connection_db();
 
     $query = "SELECT * FROM entity where entity_id=".$ent_id.";";
 
@@ -404,6 +429,7 @@ function getWatchData($ent_id){
 
     $returnValue = $tmpArray;
 
+    abolish_connection_db($con);
 
     return $returnValue;
 

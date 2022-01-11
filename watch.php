@@ -1,12 +1,11 @@
 <?php
+include_once("includes/connection.php");
 require_once("includes/header.php");
 require_once("includes/footer.php");
-include("includes/connection.php");
 include("includes/functions.php");
 
 session_start();
-
-    $user_data = check_login($con);
+    $user_data = check_login();
 ?>
 
 <!DOCTYPE html>

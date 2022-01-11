@@ -2,24 +2,22 @@
 
 if (empty($_GET)) {
     // not a request for adding something to watchlist
-    include("includes/connection.php");
+    include_once("includes/connection.php");
     include("includes/functions.php");
     include("includes/classes/DisplayElements.php");
     session_start();
 
-    $user_data = check_login($con);
-
-
+    $user_data = check_login();
 
 }
 else {
 
-    include("includes/connection.php");
+    include_once("includes/connection.php");
     include("includes/functions.php");
 
     session_start();
 
-    $user_data = check_login($con);
+    $user_data = check_login();
 
     if ($_GET["action"]=="status"){
 
