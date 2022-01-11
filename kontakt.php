@@ -4,6 +4,22 @@ require_once("includes/footer.php");
 include("includes/connection.php");
 include("includes/functions.php");
 
+session_start();
+
+    $user_data = check_login($con);
+
+    // if posted run newTicket()
+if (isset($_POST['topic']) && isset($_POST["Explanation"])){
+
+    newTicket($con, $_POST["topic"], $_POST["Explanation"], $_SESSION["usr_id"]);
+
+        echo "<h3 id='whitefont'>You sucessfully sent your Ticket:'".$_POST["topic"]."'</h3>";
+
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +37,7 @@ include("includes/functions.php");
             
             <h2 id="redfont">Get in Contact</h2>
 
-            <form method="POST">
+            <form action="kontakt.php" method="POST">
 
             <p>Topic</p><input type="text" name ="topic" style="width:220px" required><br><br>
 

@@ -269,7 +269,7 @@ function getNumOfEntities(){
 
 }
 
-
+// retrieve User's Watchlist, to be displayed in watchlist.php
 function getWatchScreen($ent_ID){
 
     include("connection.php");
@@ -283,5 +283,17 @@ function getWatchScreen($ent_ID){
 
 }
 
+
+// used in Kontakt.php to add a ticket to the Database
+function newTicket($con, $topic, $description, $user_id){
+    include("connection.php");
+
+
+    $queryAdd = "insert into ticket (user_id, topic, description) values (".$user_id.",'".$topic."','".$description."');";
+
+    mysqli_query($con, $queryAdd);
+
+
+}
 
 ?>
