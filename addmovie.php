@@ -14,7 +14,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-<title>Add Content</title>
+<title>Add Movie</title>
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -22,10 +22,11 @@ session_start();
 
 <body class="background5">
 
+<a href='addseries.php' class='button button1' style='width:100px; margin-top:20px;'>Add Series</a>
 
 <div class="box" id='cent'>
 
-        <h2 id="redfont">Add a Movie</h2>
+        <h2 id="redfont">Add a Series</h2>
         <form method="POST">
 
             <input type="file" name="movie_image" accept ="image/*"id="file" onchange ="loadFile(event)" style="display:none;" required><br><br>

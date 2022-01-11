@@ -41,7 +41,7 @@ function check_admin($con)
 
     if($isAdmin["isAdmin"] == 1)
     {
-         echo "<a href='addcontent.php' class='button button1' style='width:100px; margin-top:20px;'>Edit Entities</a>";
+         echo "<a href='addmovie.php' class='button button1' style='width:100px; margin-top:20px;'>Edit Entities</a>";
     }
 
     }
