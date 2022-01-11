@@ -1,5 +1,62 @@
 <?php
+/*
+ function edit_movies($con)
+{
+    include ("connection.php");
 
+    // if edit value for movies was posted
+    if(isset($_POST['edit_movies']))
+    {
+    $edit = $_POST['edit_movies'];
+    $title = $_POST['movie_title'];
+
+    // add movie, delete movie or edit description of existing movie according to edit value
+    switch($edit)
+    {
+    case "add_movie":
+
+        //Checks if all the necessary attributes were posted
+        if (isset($_POST['movie_description']) && isset($_POST['release']) && isset($_POST['thumbnail']) && isset($_POST['movie_group']) && isset($_POST['movie_embed']))
+        {
+            $description = $_POST['movie_description'];
+            $release = $_POST['release'];
+            $thumbnail = $_POST['thumbnail'];
+            $group = $_POST['movie_group'];
+            $embed = $_POST['movie_embed'];
+
+            // Inserts only into movies table --> some values must also be inserted into entities table
+            $query = "insert into movies ('$release, $embed')";
+            $result = mysqli_query($con,$query);
+
+            return $result;
+        }
+        else
+        {
+            $error = "Please fill out the whole form to add a movie";
+            print_r ($error);
+
+        }
+
+    case "delete_movie":
+
+        $query = "delete * from entity where title = '$title' limit 1";
+        $result = mysqli_query($con,$query);
+        return $result;
+
+    case "edit_description":
+
+        $description = $_POST['movie_description'];
+        // Is this right syntax?
+        $query = "set $description = description from entity where title = '$title' AND is_movie = '1' limit 1";
+        $result = mysqli_query($con,$query);
+
+        return $result;
+    }
+
+    }
+
+}
+*/
 
 function check_login($con)
 {
@@ -42,7 +99,9 @@ function check_admin($con)
 
     if($isAdmin["isAdmin"] == 1)
     {
-         echo "<a href='addmovie.php' class='button button1' style='width:100px; margin-top:20px;'>Edit Entities</a>";
+         echo "<a href='editmovies.php' class='button button1' style='width:100px; margin:20px;'>Edit a Movie</a>";
+         echo "<a href='editseries.php' class='button button1' style='width:100px; margin:20px;'>Edit a Series</a><br>";
+
     }
 
     }
