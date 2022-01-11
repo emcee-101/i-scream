@@ -26,15 +26,43 @@ session_start();
     <?php
 
         if (empty($_GET)){
+
             header('Location: index.php');
         }
         else{
 
-                    // included in $data: title,description,picture
-            $data = getWatchScreen($_GET["id"]);
+            include("includes/classes/Constants.php");
 
-                    // Test if Data is accessible correctly:
-             echo "<h3 id='whitefont' style='margin:5px;'>".$_GET["id"].$data["title"]."</h3>";
+            $Data = getWatchData($_GET["id"]);
+
+            list($is_movie, $entity_data, $specific_data) = $Data;
+
+
+            if($is_movie == 1){
+
+                echo getYTembed($specific_data["video_embed"]);
+
+            }
+            else{
+
+                $tmpString = "";
+
+                foreach($specific_data as $key => $value){
+
+                    // TESTa Output:
+                        //echo "<h3 id='whitefont'>".print_r($specific_data[$key])."</h3>";
+                            //Array ( [id] => 1 [entity_id] => 2 [start_year] => 2013 [season] => 1 [episode] => 0 [video_embed] => f_Y5YeYrqUk )
+                            //Array ( [id] => 2 [entity_id] => 2 [start_year] => 2014 [season] => 2 [episode] => 0 [video_embed] => ZlMVVdw1a8w )
+
+
+                    $tmpString .= getYTembed($value["video_embed"]);
+
+
+
+                }
+
+                echo $tmpString;
+            }
 
         }
 

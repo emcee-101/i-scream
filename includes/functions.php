@@ -3,7 +3,7 @@
 
 function check_login($con)
 {
-    // Check if User is in database0000000000000000
+    // Check if User is in database
     if(isset($_SESSION['username']))
     {
         $user_name = $_SESSION['username'];
@@ -24,6 +24,7 @@ function check_login($con)
     header("Location: login.php");
     die;
 }
+
 
 function check_admin($con)
 {
@@ -48,7 +49,7 @@ function check_admin($con)
 
 }
 
-
+// get banners for the slideshow in index.php
 function getBanner($numOfBanners){
 
         include("connection.php");
@@ -74,9 +75,9 @@ function getBanner($numOfBanners){
     }
 
 
+    //  pick random groups to display in movies.php or series.php
 function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
 
-    // designed to be used to pick groups to view in movies.php or series.php
 
         include("connection.php");
 
@@ -109,6 +110,8 @@ function getRandomGroupIDs($wantMovies, $numOfWantedGroups){
 
 }
 
+
+    // get a Group of Movies or TV Shows with title and numeric id listing the entity ids of the entities that are part of the group
 function getGroup($GrID , $WantMovie){
 
         include("connection.php");
@@ -146,7 +149,7 @@ function getGroup($GrID , $WantMovie){
 
 
 
-
+    // get The Data necessary for the Displays in movies.php
 function getEntityBoxInfos($id){
 
         include("connection.php");
@@ -173,6 +176,9 @@ function getEntityBoxInfos($id){
     }
 
 
+
+
+    //get URL that refers to the watch.php with the correct entitity
 function getWatchURL ($ent_id)
 {
     $url = "";
@@ -181,6 +187,8 @@ function getWatchURL ($ent_id)
 }
 
 
+
+// get full wathclist of a user as a numeric array of entity ids
 function getWatchList ($usr_id)
 {
 
@@ -202,7 +210,7 @@ function getWatchList ($usr_id)
 
 };
 
-
+// check if a entity (movie or series) is watchlsited by a certain user
 function checkIfWatchlisted($usr_id, $ent_ID){
 
         include("connection.php");
@@ -270,18 +278,95 @@ function getNumOfEntities(){
 }
 
 
-function getWatchScreen($ent_ID){
+
+// used in Kontakt.php to add a ticket to the Database
+function newTicket($con, $topic, $description, $user_id){
+    include("connection.php");
+
+
+    $queryAdd = "insert into ticket (user_id, topic, description) values (".$user_id.",'".$topic."','".$description."');";
+
+    mysqli_query($con, $queryAdd);
+
+
+}
+
+// used in watch.php and retrieves every piece of data needed to display the site
+function getWatchData($ent_id){
 
     include("connection.php");
 
-    $query = "SELECT title,description,picture FROM entity where entity_id=".$ent_ID.";";
+    $query = "SELECT * FROM entity where entity_id=".$ent_id.";";
+
     $parsed_query = mysqli_query($con, $query);
 
     $result = mysqli_fetch_assoc($parsed_query);
 
-    return $result;
+    $returnValue = array();
 
+    $returnValue = $result;
+
+
+
+    if ($result["is_movie"]){
+
+            $query = "SELECT * FROM movies where entity_id=".$ent_id.";";
+
+            $parsed_query = mysqli_query($con, $query);
+
+            $result = mysqli_fetch_assoc($parsed_query);
+
+    }
+    else{
+
+            $query = "SELECT * FROM series where entity_id=".$ent_id.";";
+
+            $parsed_query = mysqli_query($con, $query);
+
+            $result = mysqli_fetch_all($parsed_query, MYSQLI_ASSOC);
+
+
+    }
+
+    $tmpArray = array();
+
+                        //      [0]                     [1]         [2]
+    array_push($tmpArray, $returnValue["is_movie"], $returnValue, $result);
+
+        // [0] integer (0 or 1) that indicates wether the entity is a movie or a series
+
+        // [1]  entity_id 	title 	description 	picture 	is_movie
+
+        // [2] when movie:	id 	entity_id 	release_year 	video_embed
+
+        // [2] when a series:  NUMERIC ARRAY WITH ALL ELMENTS OF SERIES WITH THE FOLLOWING ELEMENTS (associative) INSIDE THEM
+                                        //  id 	entity_id 	start_year 	season 	episode 	video_embed
+
+
+    $returnValue = $tmpArray;
+
+
+    return $returnValue;
+
+    // returns a numeric array with entity results
 }
 
+
+// get a Youtube Embed Key and return the whole HTML segment to be embedded in the waatch.php
+function getYTembed($embed_key){
+
+    //Test if running correctly:
+        //echo "<h3 id='whitefont'>".$embed_key."</h3>";
+
+    // take the components that make a youtube embed and put the embed-key in the middle of them
+    $tmpString = Constants::$YTembedStart.$embed_key.Constants::$YTembedEnd;
+
+
+    return $tmpString;
+
+
+
+
+}
 
 ?>
