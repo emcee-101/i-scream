@@ -1,19 +1,13 @@
 <?php
-/* weird stuff shows up on screen
 
-require_once('includes/config.php');
-require_once('includes/classes/FormSanitizer.php');
-require_once('includes/classes/Constants.php');
-require_once('includes/classes/Account.php');
-require_once('assets/css/style.css');
-*/
 session_start();
-include("includes/connection.php");
+include_once("includes/connection.php");
 include("includes/functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // something was posted
     //
+
     $user_name = $_POST['username'];
     $password = $_POST['password'];
 
@@ -26,12 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //save to database
         $query = "insert into user (username,password,mail_address,age) values('".$user_name."','".$hashed_password."','".$mail_address."','".$age."')";
 
+
+        $con = establish_connection_db();
+
         mysqli_query($con, $query);
+
+        abolish_connection_db($con);
+
         header("Location: login.php");
+
         die;
     } else {
         echo "Please enter some valid information!";
     }
+
+
+
 }
 ?>
 

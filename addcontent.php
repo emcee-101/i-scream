@@ -1,14 +1,13 @@
 <?php
-include("includes/connection.php");
-include("includes/functions.php");
+
 include("includes/classes/DisplayElements.php");
 require_once("includes/header.php");
 require_once("includes/footer.php");
 
 session_start();
 
-    $user_data = check_login($con);
-    $isAdmin = check_admin($con);
+    $user_data = check_login();
+    $isAdmin = check_admin();
 ?>
 
 <!DOCTYPE html>

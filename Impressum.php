@@ -1,6 +1,4 @@
 <?php
-include("includes/connection.php");
-include("includes/functions.php");
 
 session_start();
 require_once("includes/header.php");
