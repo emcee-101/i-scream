@@ -269,19 +269,6 @@ function getNumOfEntities(){
 
 }
 
-// retrieve User's Watchlist, to be displayed in watchlist.php
-function getWatchScreen($ent_ID){
-
-    include("connection.php");
-
-    $query = "SELECT title,description,picture FROM entity where entity_id=".$ent_ID.";";
-    $parsed_query = mysqli_query($con, $query);
-
-    $result = mysqli_fetch_assoc($parsed_query);
-
-    return $result;
-
-}
 
 
 // used in Kontakt.php to add a ticket to the Database
@@ -292,6 +279,83 @@ function newTicket($con, $topic, $description, $user_id){
     $queryAdd = "insert into ticket (user_id, topic, description) values (".$user_id.",'".$topic."','".$description."');";
 
     mysqli_query($con, $queryAdd);
+
+
+}
+
+// used in watch.php and retrieves every piece of data needed to display the site
+function getWatchData($ent_id){
+
+    include("connection.php");
+
+    $query = "SELECT * FROM entity where entity_id=".$ent_id.";";
+
+    $parsed_query = mysqli_query($con, $query);
+
+    $result = mysqli_fetch_assoc($parsed_query);
+
+    $returnValue = array();
+
+    $returnValue = $result;
+
+
+
+    if ($result["is_movie"]){
+
+            $query = "SELECT * FROM movies where entity_id=".$ent_id.";";
+
+            $parsed_query = mysqli_query($con, $query);
+
+            $result = mysqli_fetch_assoc($parsed_query);
+
+    }
+    else{
+
+            $query = "SELECT * FROM series where entity_id=".$ent_id.";";
+
+            $parsed_query = mysqli_query($con, $query);
+
+            $result = mysqli_fetch_all($parsed_query, MYSQLI_ASSOC);
+
+
+    }
+
+    $tmpArray = array();
+
+                        //      [0]                     [1]         [2]
+    array_push($tmpArray, $returnValue["is_movie"], $returnValue, $result);
+
+        // [0] integer (0 or 1) that indicates wether the entity is a movie or a series
+
+        // [1]  entity_id 	title 	description 	picture 	is_movie
+
+        // [2] when movie:	id 	entity_id 	release_year 	video_embed
+
+        // [2] when a series:  NUMERIC ARRAY WITH ALL ELMENTS OF SERIES WITH THE FOLLOWING ELEMENTS (associative) INSIDE THEM
+                                        //  id 	entity_id 	start_year 	season 	episode 	video_embed
+
+
+    $returnValue = $tmpArray;
+
+
+    return $returnValue;
+
+    // returns a numeric array with entity results
+}
+
+
+// get a Youtube Embed Key and return the whole HTML segment to be embedded in the waatch.php
+function getYTembed($embed_key){
+
+    echo "<h3 id='whitefont'>".$embed_key."</h3>";
+
+    // take the components that make a youtube embed and put the embed-key in the middle of them
+    $tmpString = Constants::$YTembedStart.$embed_key.Constants::$YTembedEnd;
+
+
+    return $tmpString;
+
+
 
 
 }

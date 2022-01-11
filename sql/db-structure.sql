@@ -56,7 +56,7 @@ CREATE TABLE `entity` (
    `id` int(10) NOT NULL AUTO_INCREMENT,
    `entity_id` int(10) NOT NULL,
    `release_year` int(4) NOT NULL,
-   `video_embed` text NULL,
+   `video_embed` varchar(20) NULL,
 
     PRIMARY KEY(`id`),
     KEY `movfr1` (`entity_id`)
@@ -65,10 +65,10 @@ CREATE TABLE `entity` (
 
 
   -- Testdaten für Tabelle "Movies"
-  INSERT INTO `movies` (`entity_id`, release_year)
+  INSERT INTO `movies` (`entity_id`, `release_year`, `video_embed`)
   VALUES
-  (1, 2012),
-  (3, 2003);
+  (1, 1978, "idXwM4FXpDs"),
+  (3, 2003, "ipbCUW3umJU");
 
     -- Vierte Tabelle "Series" anlegen
    CREATE TABLE `series` (
@@ -77,7 +77,7 @@ CREATE TABLE `entity` (
      `start_year` int(4) NOT NULL,
      `season` int(2) NOT NULL,
      `episode` int(2) NOT NULL,
-     `video_embed` text NULL,
+     `video_embed` varchar(20) NULL,
 
       PRIMARY KEY(`id`),
       KEY `serfr1` (`entity_id`)
@@ -86,9 +86,10 @@ CREATE TABLE `entity` (
 
 
     -- Testdaten für Tabelle "Series"
-    INSERT INTO `series` (entity_id, start_year, season, episode)
-    VALUES (2, 2012, 5, 12);
-
+    INSERT INTO `series` (entity_id, start_year, season, episode, `video_embed`)
+    VALUES
+    (2, 2013, 1, 0, "f_Y5YeYrqUk"),
+    (2, 2014, 2, 0, "ZlMVVdw1a8w");
 
     -- Fünfte Tabelle "Video Group" anlegen
    CREATE TABLE `video_group` (
@@ -193,6 +194,9 @@ CREATE TABLE `entity` (
 
   ALTER TABLE `watchlist` ADD CONSTRAINT `watchl_usr` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
   ALTER TABLE `watchlist` ADD CONSTRAINT `watchl_ent` FOREIGN KEY (`entity_id`) REFERENCES `entity`(`entity_id`);
+
+  ALTER TABLE `ticket` ADD CONSTRAINT `ticket_usr` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
+
 
  --  User für Zugriff von Web erstellen
 CREATE OR REPLACE USER 'usr1'@'localhost' IDENTIFIED BY 'pass';

@@ -12,4 +12,13 @@ class Constants
     public static $passwordLength = "Your password must be between 5 and 25 characters";
     public static $loginFailed = "Your username or password was incorrect";
     public static $passwordIncorrect = "Your old password is incorrect";
+
+
+
+    // Youtube Embed
+
+    public static $YTembedStart = "<iframe width='560' height='315' src='https://www.youtube.com/embed/";
+    public static $YTembedEnd = "' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+
+
 }
