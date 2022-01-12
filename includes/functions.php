@@ -1,63 +1,66 @@
 <?php
         include_once("connection.php");
-/*
- function edit_movies($con)
+
+ function edit_movies($POSTDATA)
 {
-    include ("connection.php");
+
+    $con = establish_connection_db();
 
     // if edit value for movies was posted
-    if(isset($_POST['edit_movies']))
+    if(isset($POSTDATA['edit_movies']))
     {
-    $edit = $_POST['edit_movies'];
-    $title = $_POST['movie_title'];
+        $edit = $POSTDATA['edit_movies'];
+        $title = $POSTDATA['movie_title'];
 
-    // add movie, delete movie or edit description of existing movie according to edit value
-    switch($edit)
-    {
-    case "add_movie":
-
-        //Checks if all the necessary attributes were posted
-        if (isset($_POST['movie_description']) && isset($_POST['release']) && isset($_POST['thumbnail']) && isset($_POST['movie_group']) && isset($_POST['movie_embed']))
+        // add movie, delete movie or edit description of existing movie according to edit value
+        switch($edit)
         {
-            $description = $_POST['movie_description'];
-            $release = $_POST['release'];
-            $thumbnail = $_POST['thumbnail'];
-            $group = $_POST['movie_group'];
-            $embed = $_POST['movie_embed'];
+            case "add_movie":
 
-            // Inserts only into movies table --> some values must also be inserted into entities table
-            $query = "insert into movies ('$release, $embed')";
-            $result = mysqli_query($con,$query);
+                //Checks if all the necessary attributes were posted
+                if (isset($POSTDATA['movie_description']) && isset($POSTDATA['release']) && isset($POSTDATA['thumbnail']) && isset($POSTDATA['movie_group']) && isset($POSTDATA['movie_embed']))
+                {
+                    $description = $POSTDATA['movie_description'];
+                    $release = $POSTDATA['release'];
+                    $thumbnail = $POSTDATA['thumbnail'];
+                    $group = $POSTDATA['movie_group'];
+                    $embed = $POSTDATA['movie_embed'];
 
-            return $result;
+                    // Inserts only into movies table --> some values must also be inserted into entities table
+                    $query = "insert into movies ('$release, $embed')";
+                    $result = mysqli_query($con,$query);
+
+                }
+                else
+                {
+                    $error = "Please fill out the whole form to add a movie";
+                    print_r ($error);
+                    $result = "";
+
+                }
+
+            case "delete_movie":
+
+                $query = "delete * from entity where title = '$title' limit 1";
+                $result = mysqli_query($con,$query);
+
+            case "edit_description":
+
+                $description = $POSTDATA['movie_description'];
+                // Is this right syntax?
+                $query = "set $description = description from entity where title = '$title' AND is_movie = '1' limit 1";
+                $result = mysqli_query($con,$query);
+
         }
-        else
-        {
-            $error = "Please fill out the whole form to add a movie";
-            print_r ($error);
 
-        }
-
-    case "delete_movie":
-
-        $query = "delete * from entity where title = '$title' limit 1";
-        $result = mysqli_query($con,$query);
-        return $result;
-
-    case "edit_description":
-
-        $description = $_POST['movie_description'];
-        // Is this right syntax?
-        $query = "set $description = description from entity where title = '$title' AND is_movie = '1' limit 1";
-        $result = mysqli_query($con,$query);
-
-        return $result;
     }
 
-    }
+    abolish_connection_db($con);
+    return $result;
+
 
 }
-*/
+
 
 function check_login()
 {
