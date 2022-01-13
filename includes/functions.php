@@ -3,21 +3,23 @@
 
  function edit_movies($POSTDATA)
 {
-
+    $message = 0;
+    $result ="";
     $con = establish_connection_db();
+    //IMPORTANT: ITERATE THROUGH DB FIRST TO CHECK IF A MOVIE WITH THAT TITLE IS IN THERE
 
-    // if edit value for movies was posted
+    // If edit value for movies was posted
     if(isset($POSTDATA['edit_movies']))
     {
         $edit = $POSTDATA['edit_movies'];
         $title = $POSTDATA['movie_title'];
 
-        // add movie, delete movie or edit description of existing movie according to edit value
+        // Add, delete movie or edit movie description of existing movie according to edit value
         switch($edit)
         {
             case "add_movie":
 
-                //Checks if all the necessary attributes were posted
+                // Checks if all the necessary attributes were posted
                 if (isset($POSTDATA['movie_description']) && isset($POSTDATA['release']) && isset($POSTDATA['thumbnail']) && isset($POSTDATA['movie_group']) && isset($POSTDATA['movie_embed']))
                 {
                     $description = $POSTDATA['movie_description'];
@@ -26,38 +28,84 @@
                     $group = $POSTDATA['movie_group'];
                     $embed = $POSTDATA['movie_embed'];
 
-                    // Inserts only into movies table --> some values must also be inserted into entities table
-                    $query = "insert into movies ('$release, $embed')";
+
+                    echo"<p>add movie condition entered</p>";
+
+
+
+                    // Inserts into Entities Table
+                    $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) limit 1";
                     $result = mysqli_query($con,$query);
 
+                    // Selects entity id corresponding with the given title
+                    $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
+                    $result = mysqli_query($con,$sql);
+                    $rs = mysqli_fetch_array($result);
+                    $entity_id = $rs['entity_id'];
+
+                    // Adds remaining values into movies table
+                    $query = "insert into movies(entity_id, release_year, video_embed) values ('$entity_id','$release','$thumbnail')";
+                    $result = mysqli_query($con,$query);
+                    break;
                 }
+
                 else
                 {
-                    $error = "Please fill out the whole form to add a movie";
-                    print_r ($error);
-                    $result = "";
-
+                    $message = "Please fill out the whole form to add a movie.";
+                    break;
                 }
 
             case "delete_movie":
+                if (isset($POSTDATA['movie_title']))
+                {
+                    echo"<p>delete movie condition entered</p>";
+                    $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
+                    $result = mysqli_query($con,$sql);
+                    $rs = mysqli_fetch_array($result);
+                    $entity_id = $rs['entity_id'];
 
-                $query = "delete * from entity where title = '$title' limit 1";
-                $result = mysqli_query($con,$query);
+                    // Deletes movie entry with this id from movies db
+                    $query = "delete from movies where entity_id = '$entity_id'";
+                    $result = mysqli_query($con,$query);
+
+                    // Deletes movie entry with this id from entity db
+                    $query = "delete from entity where entity_id = '$entity_id'";
+                    $result = mysqli_query($con,$query);
+
+                    $message ="Movie with the title ".$title." was successfully deleted.";
+                }
+                else
+                {
+                    $message ="Please enter an existing Movie title.";
+                }
+                break;
 
             case "edit_description":
+                if (isset($POSTDATA['movie_description']) && isset($POSTDATA['movie_title']))
+                {
+                    $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
+                    $result = mysqli_query($con,$sql);
+                    $rs = mysqli_fetch_array($result);
+                    $entity_id = $rs['entity_id'];
 
-                $description = $POSTDATA['movie_description'];
-                // Is this right syntax?
-                $query = "set $description = description from entity where title = '$title' AND is_movie = '1' limit 1";
-                $result = mysqli_query($con,$query);
+                    $description = $POSTDATA['movie_description'];
+                    $query = "update entity set description = '$description' where entity_id = '$entity_id'";
+                    $result = mysqli_query($con,$query);
+                    $message = "Edit was successful.";
+                    break;
+                }
 
+                else
+                {
+                    $message = "Please enter an existing and a description.";
+                }
         }
-
     }
-
-    abolish_connection_db($con);
+    if($message)
+    {
+        echo"<div class='fade-in'><p class='button'>".$message."</p></div>";
+    }
     return $result;
-
 
 }
 
@@ -73,7 +121,7 @@ function check_login()
         $user_name = $_SESSION['username'];
         $query = "select * from user where username = '$user_name' limit 1";
 
-        /*read from database*/
+        // read from database
         $result = mysqli_query($con,$query);
         if($result && mysqli_num_rows($result) > 0)
         {
@@ -90,7 +138,7 @@ function check_login()
 
     abolish_connection_db($con);
 
-    //redirect to login if session value does not exist
+    // Redirect to login if session value does not exist
     header("Location: login.php");
     die;
 }
@@ -115,7 +163,8 @@ function check_admin()
 
         if($isAdmin["isAdmin"] == 1)
         {
-            echo "<a href='addcontent.php' class='button button1' style='width:100px; margin-top:20px;'>Edit Entities</a>";
+            echo "<a href='editmovies.php' class='button button1' style='width:100px; margin:10px;'>Edit Movies</a>";
+            echo "<a href='editseries.php' class='button button1' style='width:100px; margin-top:20px;'>Edit Series</a>";
         }
 
     }

@@ -8,7 +8,7 @@ session_start();
 
     $user_data = check_login();
     $isAdmin = check_admin();
-    $MovieEdit = edit_movies($_POST);
+    $MoviesEdit = edit_movies($_POST);
 ?>
 
 <!DOCTYPE html>

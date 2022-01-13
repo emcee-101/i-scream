@@ -8,6 +8,7 @@ session_start();
 
     $user_data = check_login();
     $isAdmin = check_admin();
+    $SeriesEdit = edit_series($_POST);
 ?>
 
 
@@ -32,10 +33,10 @@ session_start();
               <input type= "radio" name = "add_series" value="add_series" checked>
               <label for="yes">Add a Series</label><br><br>
 
-              <input type= "radio" name = "add_series" value="add_season" checked>
+              <input type= "radio" name = "add_series" value="add_season">
               <label for="add_season">Add a Season</label><br><br>
 
-              <input type= "radio" name = "add_series" value="add_episode" checked>
+              <input type= "radio" name = "add_series" value="add_episode">
               <label for="add_episode">Add an Episode</label><br><br>
                </p>
 
