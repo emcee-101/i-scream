@@ -30,10 +30,10 @@ else {
 
     switch($redirect_to){
         case 1:
-            header('Location: movies.php?site=movies');
+            header('Location: movies.php?site=movies&objlist='.$_GET["objlist"]);
             break;
         case 2:
-            header('Location: movies.php?site=series');
+            header('Location: movies.php?site=series&objlist='.$_GET["objlist"]);
             break;
         case 3:
             header('Location: watchlist.php');

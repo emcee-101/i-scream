@@ -52,7 +52,7 @@ CREATE TABLE `entity` (
  ('Friday the 13th', 'A classic Slasher Film','https://assets.cdn.moviepilot.de/files/b9d196ccab9f50516ba3e3615a0ef867371cb9b7162fc3bea4ef5591c0a9/limit/1024/2000/promo.jpg', 1),
  ('Casper', 'A haunted house horror classic, that portrays a child-ghost.', 'https://images8.alphacoders.com/110/thumb-1920-1108557.jpg', 1),
  ('Garfield', 'A drama about a cat from hell, torturing its owner John', 'https://cdn.mos.cms.futurecdn.net/cNLu3sFaaKtM2wNwf2FRMR-1200-80.jpg', 1),
- ('The Conjuring','A movie about a possessed doll, that tortures a family and the people trying to help this family.','https://cutewallpaper.org/21/the-conjuring-wallpaper/Conjuring-Download,-Hd-Wallpapers-and-backgrounds-Download-.jpg', 1);
+ ('The Conjuring','A movie about a possessed doll, that tortures a family and the people trying to help this family.','https://www.filmfutter.com/wp-content/uploads/2013/07/The-Conjuring-Movie.jpg', 1);
 
 
   -- Dritte Tabelle "Movies" anlegen

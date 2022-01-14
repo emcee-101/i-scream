@@ -49,9 +49,20 @@ session_start();
   // MOVED CLASSES FOR BOXES TO includes/classes/DisplayElements.php
 
     //get IDs for Groups
-                            // first PARAMETER = MOVIE (0 or 1)
-                            // second PARAMETER = HOW MANY SHALL BE DISPLYED
-    $arrayOfGroupID = getRandomGroupIDs($showMovies, 4);
+
+    $numGroups = 6;
+
+    // Workaround to have same display after adding / removing from watchlist
+    if(isset($_GET["objlist"])){
+        $arrayOfGroupID = explode(":",$_GET["objlist"], $numGroups);
+    }
+                                 // first PARAMETER = MOVIE (0 or 1)
+    else{                        // second PARAMETER = HOW MANY SHALL BE DISPLYED
+
+        $arrayOfGroupID = getRandomGroupIDs($showMovies, $numGroups);
+    }
+
+
 
     foreach ($arrayOfGroupID as $key => $value){
         // get Data of each group
@@ -70,7 +81,7 @@ session_start();
             // get picture dorm movie ID
             $tmp = getEntityBoxInfos($id[0]);
 
-            array_push($groupElements, new vidBoxElement($tmp["picture"],$id[0],$location));
+            array_push($groupElements, new vidBoxElement($tmp["picture"],$id[0],$location, $arrayOfGroupID));
 
         }
 
