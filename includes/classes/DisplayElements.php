@@ -47,11 +47,20 @@
         private $ent_ID;
         private $isInWatchlist;
         private $location; // 1 for movies site, 2 for Series, 3 for watchlist
+        private $arrayOfGroupID;
 
         public function getWatchListModule() {
 
+            // Workaround: transmits current GroupIDs, so tehy can be redisplayed, after something is added or eremoved from the watchlist
+            $tstr = "";
+            foreach($this->arrayOfGroupID as $key => $value){
+
+                $tstr .=  $value[0].":";
+
+            }
+
             // submit action to watchlist.php per php "get" when clicked
-            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."&loc=".$this->location."';>";
+            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."&loc=".$this->location."&objlist=".$tstr."';>";
 
             // if already watchlisted: ask to remove
             if ($this->isInWatchlist == 1){
@@ -79,13 +88,13 @@
             $str .= "</div>";
             return $str;
         }
-        public function __construct($imgurl, $ent_id, $location){
+        public function __construct($imgurl, $ent_id, $location, $arrayOfGroupID){
 
             $this->img = $imgurl;
             $this->ent_ID = $ent_id;
             $this->location = $location;
             $this->isInWatchlist = checkIfWatchlisted($_SESSION['usr_id'],$this->ent_ID);
-
+            $this->arrayOfGroupID = $arrayOfGroupID;
 
 
 
