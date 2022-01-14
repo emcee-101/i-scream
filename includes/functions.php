@@ -34,13 +34,13 @@
 
 
                     // Inserts into Entities Table
-                    $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) limit 1";
+                    $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) ";
                     $result = mysqli_query($con,$query);
 
                     // Selects entity id corresponding with the given title
                     $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
                     $result = mysqli_query($con,$sql);
-                    $rs = mysqli_fetch_array($result);
+                    $rs = mysqli_fetch_assoc($result);
                     $entity_id = $rs['entity_id'];
 
                     // Adds remaining values into movies table
