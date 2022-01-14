@@ -69,21 +69,8 @@
             case "delete_movie":
                 if (isset($POSTDATA['movie_title']))
                 {
-                    $sql = "select entity_id from entity where title = '$title' AND is_movie = 1";
-                    $result = mysqli_query($con,$sql);
-                    $rs = mysqli_fetch_assoc($result);
-                    $entity_id = $rs['entity_id'];
+                    delete_entity($con, $title, 1);
 
-                    // Deletes movie entry with this id from movies db
-                    $query = "delete from movies where entity_id = '$entity_id'";
-                    $result = mysqli_query($con,$query);
-
-                    // Deletes movie entry with this id from entity db
-                    $query = "delete from entity where entity_id = '$entity_id'";
-                    $result = mysqli_query($con,$query);
-
-                    $message ="Movie with the title ".$title." was successfully deleted.";
-                }
                 else
                 {
                     $message ="Please enter an existing Movie title.";
@@ -116,6 +103,24 @@
         echo"<div class='fade-in'><p class='button'>".$message."</p></div>";
     }
     abolish_connection_db($con);
+}
+
+function delete_entity($con, $entityTitle, $editValue)
+{
+
+    $sql = "select entity_id from entity where title = '$entityTitle' AND is_movie = "."$editValue"."";
+    $result = mysqli_query($con,$sql);
+    $rs = mysqli_fetch_assoc($result);
+    $entity_id = $rs['entity_id'];
+
+    // Deletes movie entry with this id from movies db
+    $query = "delete from movies where entity_id = '$entity_id'";
+    $result = mysqli_query($con,$query);
+
+    // Deletes movie entry with this id from entity db
+    $query = "delete from entity where entity_id = '$entity_id'";
+    $result = mysqli_query($con,$query);
+
 }
 
 

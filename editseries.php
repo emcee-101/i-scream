@@ -8,7 +8,7 @@ session_start();
 
     $user_data = check_login();
     $isAdmin = check_admin();
-    $SeriesEdit = edit_series($_POST);
+    //$SeriesEdit = edit_series($_POST);
 ?>
 
 
@@ -24,21 +24,32 @@ session_start();
   <body class="background5">
 
 
-  <div class="box" id='cent' style="margin-top:-30em;">
+  <div class="box" id='cent' style="margin-top:-40em;">
 
           <h2 id="redfont">Edit a Series</h2><br>
           <form method="POST">
 
               <p>
-              <input type= "radio" name = "add_series" value="add_series" checked>
-              <label for="yes">Add a Series</label><br><br>
+              <input type= "radio" name = "edit_value" value="add" checked>
+              <label for="add">Add</label><br><br>
 
+              <input type= "radio" name = "edit_value" value="delete">
+              <label for="delete">Delete</label><br><br>
+
+              <input type= "radio" name = "edit_value" value="edit">
+              <label for="edit">Edit Description</label><br><br>
+
+              What would you like to delete?<br><br>
               <input type= "radio" name = "add_series" value="add_season">
-              <label for="add_season">Add a Season</label><br><br>
+              <label for="add_season">A Series</label><br><br>
 
               <input type= "radio" name = "add_series" value="add_episode">
-              <label for="add_episode">Add an Episode</label><br><br>
+              <label for="add_episode">A Season</label><br><br>
+
+              <input type= "radio" name = "add_series" value="add_episode">
+              <label for="add_delete">An Episode</label><br><br>
                </p>
+
 
               <p>Series Title</p><input type="text" name="series_title" required><br><br>
               <p>Season</p><input type="number" min="1" max ="99" name="series_title" required><br></br>
