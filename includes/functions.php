@@ -19,6 +19,7 @@
         $result = mysqli_query($con,$query);
         $rs = mysqli_fetch_array($result);
 
+
         if(($edit != "add_movie") && ($rs == 0))
         {
             $message = $title." does not exist in the database. Please enter an existing movie title.";
@@ -32,7 +33,7 @@
             case "add_movie":
 
                 // Checks if all the necessary attributes were posted
-                if (isset($POSTDATA['movie_description']) && isset($POSTDATA['release']) && isset($POSTDATA['thumbnail']) && isset($POSTDATA['movie_group']) && isset($POSTDATA['movie_embed']))
+                if ($POSTDATA['movie_description'] && $POSTDATA['release'] && $POSTDATA['thumbnail'] && $POSTDATA['movie_group'] && $POSTDATA['movie_embed'])
                 {
                     // Sets posted data to local variables
                     $description = $POSTDATA['movie_description'];
@@ -40,6 +41,7 @@
                     $thumbnail = $POSTDATA['thumbnail'];
                     $group = $POSTDATA['movie_group'];
                     $embed = $POSTDATA['movie_embed'];
+
 
                     // Inserts into Entities Table
                     $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) ";
@@ -67,9 +69,9 @@
             case "delete_movie":
                 if (isset($POSTDATA['movie_title']))
                 {
-                    $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
+                    $sql = "select entity_id from entity where title = '$title' AND is_movie = 1";
                     $result = mysqli_query($con,$sql);
-                    $rs = mysqli_fetch_array($result);
+                    $rs = mysqli_fetch_assoc($result);
                     $entity_id = $rs['entity_id'];
 
                     // Deletes movie entry with this id from movies db
@@ -115,7 +117,6 @@
     }
     abolish_connection_db($con);
 }
-
 
 
 function check_login()
