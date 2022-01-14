@@ -69,8 +69,8 @@
             case "delete_movie":
                 if (isset($POSTDATA['movie_title']))
                 {
-                    delete_entity($con, $title, 1);
-
+                    delete_entity($con, $title, 0);
+                }
                 else
                 {
                     $message ="Please enter an existing Movie title.";
@@ -107,6 +107,10 @@
 
 function delete_entity($con, $entityTitle, $editValue)
 {
+    /*
+    $editTable;
+    $editValue == 1? $editTable = "movies": $editTable = "series";
+    */
 
     $sql = "select entity_id from entity where title = '$entityTitle' AND is_movie = "."$editValue"."";
     $result = mysqli_query($con,$sql);
@@ -114,7 +118,7 @@ function delete_entity($con, $entityTitle, $editValue)
     $entity_id = $rs['entity_id'];
 
     // Deletes movie entry with this id from movies db
-    $query = "delete from movies where entity_id = '$entity_id'";
+    $query = "delete from ".$editTable."  where entity_id = '$entity_id'";
     $result = mysqli_query($con,$query);
 
     // Deletes movie entry with this id from entity db
