@@ -52,7 +52,9 @@ CREATE TABLE `entity` (
  ('Friday the 13th', 'A classic Slasher Film','https://assets.cdn.moviepilot.de/files/b9d196ccab9f50516ba3e3615a0ef867371cb9b7162fc3bea4ef5591c0a9/limit/1024/2000/promo.jpg', 1),
  ('Casper', 'A haunted house horror classic, that portrays a child-ghost.', 'https://images8.alphacoders.com/110/thumb-1920-1108557.jpg', 1),
  ('Garfield', 'A drama about a cat from hell, torturing its owner John', 'https://cdn.mos.cms.futurecdn.net/cNLu3sFaaKtM2wNwf2FRMR-1200-80.jpg', 1),
- ('The Conjuring','A movie about a possessed doll, that tortures a family and the people trying to help this family.','https://www.filmfutter.com/wp-content/uploads/2013/07/The-Conjuring-Movie.jpg', 1);
+ ('The Conjuring','A movie about a possessed doll, that tortures a family and the people trying to help this family.','https://www.filmfutter.com/wp-content/uploads/2013/07/The-Conjuring-Movie.jpg', 1),
+ ('The Thing', 'The Prequel to John Carpenters The Thing', 'https://www.dafont.com/forum/attach/orig/1/2/122268.jpg', 1),
+ ('The Fog', 'John Carpenters classic Horror Film about a city being engulfed in murderous fog', 'https://trendblog.euronics.de/wp-content/uploads/2015/07/Carpenter_TheFog.jpg', 1);
 
 
   -- Dritte Tabelle "Movies" anlegen
@@ -76,7 +78,9 @@ CREATE TABLE `entity` (
   (4, 2009, "cCfO1aB8CIE"),
   (5, 1995, "BBEB9OSfeCA"),
   (6, 2004, "GV5y4yTDtBI"),
-  (7, 2013, "k10ETZ41q5o");
+  (7, 2013, "k10ETZ41q5o"),
+  (8, 2011, "Txjm94GnrPA"),
+  (9, 1980, "nOZwnivtLbc");
 
     -- Vierte Tabelle "Series" anlegen
    CREATE TABLE `series` (
@@ -116,7 +120,8 @@ CREATE TABLE `entity` (
     (1, "Slasher Horror", 1),
     (2, "Stephen King Series", 0),
     (3, "Haunted House", 1),
-    (4, "Creature Horror", 1);
+    (4, "Creature Horror", 1),
+    (5, "John Carpenter", 1);
 
 
 
@@ -141,7 +146,12 @@ CREATE TABLE `entity` (
     (1, 4),
     (3, 5),
     (4, 6),
-    (3, 7);
+    (3, 7),
+    (5, 1),
+    (5, 9),
+    (5, 8),
+    (4, 5),
+    (4, 8);
 
         -- Fünfte Tabelle "Video Group Member" anlegen
    CREATE TABLE `banner_images` (
