@@ -6,13 +6,25 @@
     $message = 0;
     $result ="";
     $con = establish_connection_db();
-    //IMPORTANT: ITERATE THROUGH DB FIRST TO CHECK IF A MOVIE WITH THAT TITLE IS IN THERE
+
 
     // If edit value for movies was posted
     if(isset($POSTDATA['edit_movies']))
     {
         $edit = $POSTDATA['edit_movies'];
         $title = $POSTDATA['movie_title'];
+
+        // IMPORTANT: ITERATE THROUGH DB FIRST TO CHECK IF A MOVIE WITH THAT TITLE IS IN THERE
+        $query = "select * from entity where title = '$title'";
+        $result = mysqli_query($con,$query);
+        $rs = mysqli_fetch_array($result);
+
+        if(($edit != "add_movie") && ($rs == 0))
+        {
+            $message = $title." does not exist in the database. Please enter an existing movie title.";
+            echo "<div class='fade-in'><p class='button'>".$message."</p></div>";
+            return;
+        }
 
         // Add, delete movie or edit movie description of existing movie according to edit value
         switch($edit)
@@ -22,16 +34,12 @@
                 // Checks if all the necessary attributes were posted
                 if (isset($POSTDATA['movie_description']) && isset($POSTDATA['release']) && isset($POSTDATA['thumbnail']) && isset($POSTDATA['movie_group']) && isset($POSTDATA['movie_embed']))
                 {
+                    // Sets posted data to local variables
                     $description = $POSTDATA['movie_description'];
                     $release = $POSTDATA['release'];
                     $thumbnail = $POSTDATA['thumbnail'];
                     $group = $POSTDATA['movie_group'];
                     $embed = $POSTDATA['movie_embed'];
-
-
-                    echo"<p>add movie condition entered</p>";
-
-
 
                     // Inserts into Entities Table
                     $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) limit 1";
@@ -46,6 +54,7 @@
                     // Adds remaining values into movies table
                     $query = "insert into movies(entity_id, release_year, video_embed) values ('$entity_id','$release','$thumbnail')";
                     $result = mysqli_query($con,$query);
+                    $message = "".$title." was added.";
                     break;
                 }
 
@@ -58,7 +67,6 @@
             case "delete_movie":
                 if (isset($POSTDATA['movie_title']))
                 {
-                    echo"<p>delete movie condition entered</p>";
                     $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
                     $result = mysqli_query($con,$sql);
                     $rs = mysqli_fetch_array($result);
@@ -91,7 +99,7 @@
                     $description = $POSTDATA['movie_description'];
                     $query = "update entity set description = '$description' where entity_id = '$entity_id'";
                     $result = mysqli_query($con,$query);
-                    $message = "Edit was successful.";
+                    $message = "Description of movie ".$title." was changed.";
                     break;
                 }
 
@@ -105,9 +113,9 @@
     {
         echo"<div class='fade-in'><p class='button'>".$message."</p></div>";
     }
-    return $result;
-
+    abolish_connection_db($con);
 }
+
 
 
 function check_login()
