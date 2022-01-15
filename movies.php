@@ -3,25 +3,12 @@ include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 
 session_start();
-    $user_data = check_login();
+$user_data = check_login();
+
+$HTML = new SiteGenerator("Movies Page","background3");
+$HTML->generateSiteStart();
 ?>
-
-<html lang="de">
-<head>
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/css/js/script.js"></script>
-
-</head>
-
-<body class="background3" >
-  <div class="fade-in">
-
-
+<div class ="fade-in">
 
   <?php
 
@@ -97,10 +84,5 @@ echo "<h4 class='addwatchlist'>".$showMovies."</h4></div>";
 
 require_once("includes/header.php");
 require_once("includes/footer.php");
-
+$HTML->generateSiteEnd();
   ?>
-
-
-
-</body>
-</html>

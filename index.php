@@ -9,24 +9,8 @@ session_start();
     $user_data = check_login();
     $isAdmin = check_admin();
 
-
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-
-    <title>Welcome to IScream</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-
-
-
-</head>
-<body class="background5">
-
-    <br>
-    <?php
-
+    $HTML = new SiteGenerator("Welcome to IScream","background5");
+    $HTML->generateSiteStart();
 
 // moved Class SliderElement to /includes/classes/DisplayElements.php
 
@@ -102,6 +86,8 @@ session_start();
 
 require_once("includes/header.php");
 require_once("includes/footer.php");
+$HTML->generateSiteEnd();
+
  ?>
 
 </body>

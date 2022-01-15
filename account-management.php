@@ -1,26 +1,11 @@
 <?php
 require_once("includes/header.php");
 require_once("includes/footer.php");
+include("includes/classes/DisplayElements.php");
+
+$HTML = new SiteGenerator("Account Page","background5");
+$HTML->generateSiteStart();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/css/js/script.js"></script>
-
-    <title>Account </title>
- 
-</head>
-
-<body class= "background2" >
-                
-                   
         <div class="box" id="cent">
         <h2 id="redfont">Account</h2>
         <form method="POST">
@@ -34,11 +19,8 @@ require_once("includes/footer.php");
         <p><input class="button button2" style="padding:10px 0px" value="Edit profile"><br>
         
         </div>
-          
         </form>
     
 
 
-</body>
-
-</html>
+<? $HTML->generateSiteStart("Account Page","background2"); ?>

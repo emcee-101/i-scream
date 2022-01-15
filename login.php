@@ -2,6 +2,7 @@
 session_start();
 include_once("includes/connection.php");
 include("includes/functions.php");
+include("includes/classes/DisplayElements.php");
 
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -39,28 +40,11 @@ include("includes/functions.php");
         echo "please enter some valid information";
     }
 
+$HTML = new SiteGenerator("Login Page","background1");
+$HTML->generateSiteStart();
 
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <title>Login</title>
-
-
-</head>
-
-
-<body class="background1">
-
 <div class= "fade-in">
     <p class = "alignment">
         <img src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
@@ -83,6 +67,4 @@ include("includes/functions.php");
     </div>
 </div>
 
-</body>
-
-</html>
+<? $HTML->generateSiteStart(); ?>

@@ -42,26 +42,10 @@ else {
 
 }
 
-
+$HTML = new SiteGenerator("Watchlist","background4");
+$HTML->generateSiteStart();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watchlist</title>
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body class = "background4">
-
     <div class="fade-in">
-
-        
-
 
     <?php
 
@@ -96,7 +80,7 @@ else {
 
 require_once("includes/header.php");
 require_once("includes/footer.php");
+
+$HTML->generateSiteEnd();
 ?>
 
-</body>
-</html>

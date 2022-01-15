@@ -34,28 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo "Please enter some valid information!";
     }
 
-
-
+$HTML = new SiteGenerator("Register Page","background1");
+$HTML->generateSiteStart();
 }
 ?>
-
-
-<!DOCTYPE html>
-<html>
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/css/js/script.js"></script>
-
-    <title>Register</title>
-</head>
-
-<body class="background1">
     <div class="fade-in">
          <p class = "alignment">
             <img id="startlogo" src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
@@ -77,6 +59,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </form>
         </div>
     </div>
-</body>
 
-</html>
+<?$HTML->generateSiteStart();?>

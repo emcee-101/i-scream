@@ -9,18 +9,10 @@ session_start();
     $user_data = check_login();
     $isAdmin = check_admin();
     $MoviesEdit = edit_movies($_POST);
+    $HTML = new SiteGenerator("Edit Movies Page","background5");
+    $HTML->generateSiteStart();
+
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<title>Edit Movie</title>
-
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="assets/css/style.css">
-
-
-<body class="background5">
 
 
 <div class="box" id='cent' style="margin-top:-30em;">
@@ -49,10 +41,4 @@ session_start();
         </form>
     </div>
 
-</div>
-
-</body>
-
-
-
-</html>
+<?  $HTML->generateSiteEnd();?>

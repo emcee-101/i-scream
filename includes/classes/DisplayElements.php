@@ -171,6 +171,42 @@
 
     }
 
+  class SiteGenerator{
 
+  private $bodyClass = "";
+  private $bodyID = "";
+  private $pageTitle = "";
+
+  public function generateSiteStart(){
+  $str ="<!DOCTYPE html>
+         <html lang='en'>
+         <meta charset='UTF-8'>
+         <title>".$this->pageTitle."</title>
+         <meta name='viewport' content='width=device-width,initial-scale=1'>
+         <link rel='stylesheet' href='assets/css/style.css'>
+         <script src='assets/css/js/script.js'></script>
+         <body class=".$this->bodyClass." ".$this->bodyID.">";
+
+   echo $str;
+  }
+
+  public function generateSiteEnd(){
+  $str =  "</body></html>";
+  echo $str;
+  }
+
+  public function setBodyClass($bodyClass){
+    $this->bodyClass = $bodyClass;
+  }
+
+  public function setBodyID($bodyID){
+      $this->bodyID = $bodyID;
+  }
+
+  public function __construct($pageTitle, $bodyClass){
+         $this->bodyClass = $bodyClass;
+         $this->pageTitle = $pageTitle;
+         }
+  }
 
 ?>

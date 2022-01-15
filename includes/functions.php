@@ -3,24 +3,16 @@
 
  function edit_movies($POSTDATA)
 {
-    $message = 0;
-    $result ="";
     $con = establish_connection_db();
-
-
+    $message = 0;
     // If edit value for movies was posted
     if(isset($POSTDATA['edit_movies']))
     {
         $edit = $POSTDATA['edit_movies'];
         $title = $POSTDATA['movie_title'];
 
-        // IMPORTANT: ITERATE THROUGH DB FIRST TO CHECK IF A MOVIE WITH THAT TITLE IS IN THERE
-        $query = "select * from entity where title = '$title'";
-        $result = mysqli_query($con,$query);
-        $rs = mysqli_fetch_array($result);
-
-
-        if(($edit != "add_movie") && ($rs == 0))
+        // Check in DB if movie is in there
+        if(($edit != "add_movie") && (is_title_in_table($con,$title,1) == 0))
         {
             $message = $title." does not exist in the database. Please enter an existing movie title.";
             echo "<div class='fade-in'><p class='button'>".$message."</p></div>";
@@ -69,7 +61,8 @@
             case "delete_movie":
                 if (isset($POSTDATA['movie_title']))
                 {
-                    delete_entity($con, $title, 0);
+                    delete_entity($con, $title, 1);
+                    $message = "".$title." was deleted.";
                 }
                 else
                 {
@@ -78,17 +71,102 @@
                 break;
 
             case "edit_description":
-                if (isset($POSTDATA['movie_description']) && isset($POSTDATA['movie_title']))
+                if ($POSTDATA['movie_description'] != "" && isset($POSTDATA['movie_title']))
                 {
+                    edit_entity_description($con, $title, 1, $POSTDATA['movie_description']);
+                    $message = "Description of ".$title." was changed.";
+                    break;
+                }
+
+                else
+                {
+                    $message = "Please enter an existing title and a description.";
+                }
+        }
+    }
+    if($message)
+    {
+        echo"<div class='fade-in'><p class='button'>".$message."</p></div>";
+    }
+    abolish_connection_db($con);
+}
+
+function edit_series($POSTDATA)
+{
+  $con = establish_connection_db();
+  $message=0;
+
+    // If edit value was posted
+    if(isset($POSTDATA['edit_value']) && isset($POSTDATA['edit_series']) && isset($POSTDATA['series_title']))
+    {
+        $editValue = $POSTDATA['edit_value'];
+        $itemEditType = $POSTDATA['edit_series'];
+        $title = $POSTDATA['series_title'];
+
+        // Check in DB if series is in there
+        if(($editValue != "add") && (is_title_in_table($con,$title,0) == 0))
+        {
+            $message = $title." does not exist in the database. Please enter an existing series title.";
+            echo "<div class='fade-in'><p class='button'>".$message."</p></div>";
+            return;
+        }
+
+        // Add, delete movie or edit series description of existing movie according to edit value
+        switch($editValue)
+        {
+            case "add":
+
+                // Checks if conditions to add series are fulfilled
+                if ($POSTDATA['season_number'] && $POSTDATA['episode_number'] && $POSTDATA['series_img_link'] && $POSTDATA['series_group'] && $POSTDATA['embed_code'])
+                {
+                    // Sets posted data to local variables
+                    $description = $POSTDATA['movie_description'];
+                    $release = $POSTDATA['release'];
+                    $thumbnail = $POSTDATA['thumbnail'];
+                    $group = $POSTDATA['movie_group'];
+                    $embed = $POSTDATA['movie_embed'];
+
+
+                    // Inserts into Entities Table
+                    $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) ";
+                    $result = mysqli_query($con,$query);
+
+                    // Selects entity id corresponding with the given title
                     $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
                     $result = mysqli_query($con,$sql);
-                    $rs = mysqli_fetch_array($result);
+                    $rs = mysqli_fetch_assoc($result);
                     $entity_id = $rs['entity_id'];
 
-                    $description = $POSTDATA['movie_description'];
-                    $query = "update entity set description = '$description' where entity_id = '$entity_id'";
+                    // Adds remaining values into movies table
+                    $query = "insert into movies(entity_id, release_year, video_embed) values ('$entity_id','$release','$thumbnail')";
                     $result = mysqli_query($con,$query);
-                    $message = "Description of movie ".$title." was changed.";
+                    $message = "".$title." was added.";
+                    break;
+                }
+
+                else
+                {
+                    $message = "Please fill out the whole form to add a movie.";
+                    break;
+                }
+
+            case "delete":
+                if (isset($POSTDATA['series_title']))
+                {
+                    delete_entity($con, $title, 0);
+                    $message = "".$title." was deleted.";
+                }
+                else
+                {
+                    $message ="Please enter an existing Movie title.";
+                }
+                break;
+
+            case "edit":
+                if (isset($POSTDATA['series_description']) && isset($POSTDATA['series_title']))
+                {
+                    edit_entity_description($con, $title, 0, $POSTDATA['series_description']);
+                    $message = "Description of ".$title." was changed.";
                     break;
                 }
 
@@ -105,28 +183,58 @@
     abolish_connection_db($con);
 }
 
+// $editValue must be 1 for movies, 0 for series
 function delete_entity($con, $entityTitle, $editValue)
 {
-    /*
-    $editTable;
-    $editValue == 1? $editTable = "movies": $editTable = "series";
-    */
 
-    $sql = "select entity_id from entity where title = '$entityTitle' AND is_movie = "."$editValue"."";
+  $editTable = ($editValue === 1? "movies": "series");
+
+    // Selects the entity id where the title is fitting
+    $sql = "select entity_id from entity where title = '$entityTitle' AND is_movie = ".$editValue."";
     $result = mysqli_query($con,$sql);
     $rs = mysqli_fetch_assoc($result);
     $entity_id = $rs['entity_id'];
 
-    // Deletes movie entry with this id from movies db
+    // Deletes entry with this id from movies or series table
     $query = "delete from ".$editTable."  where entity_id = '$entity_id'";
     $result = mysqli_query($con,$query);
 
-    // Deletes movie entry with this id from entity db
-    $query = "delete from entity where entity_id = '$entity_id'";
+    // Deletes entry with this id from banner_images table
+    $query = "delete from banner_images where entity_id = '$entity_id'";
     $result = mysqli_query($con,$query);
 
+    // Deletes entry with this id from video_group_member table
+    $query = "delete from video_group_member where entity_id = '$entity_id'";
+    $result = mysqli_query($con,$query);
+
+    // Deletes entry with this id from watchlist table
+    $query = "delete from watchlist where entity_id = '$entity_id'";
+    $result = mysqli_query($con,$query);
+
+    // Deletes entry with this id from entity table
+    $query = "delete from entity where entity_id = '$entity_id'";
+    $result = mysqli_query($con,$query);
 }
 
+function is_title_in_table ($con, $entityTitle, $editValue)
+{
+
+    $query = "select * from entity where title = '$entityTitle' AND is_movie = ".$editValue."";
+    $result = mysqli_query($con,$query);
+    $rs = mysqli_fetch_array($result);
+    return $rs;
+}
+
+function edit_entity_description($con, $entityTitle, $editValue, $entityDescription)
+{
+    $sql = "select entity_id from entity where title = '$entityTitle' AND is_movie =".$editValue." limit 1";
+    $result = mysqli_query($con,$sql);
+    $rs = mysqli_fetch_array($result);
+
+    $entity_id = $rs['entity_id'];
+    $query = "update entity set description = '$entityDescription' where entity_id = '$entity_id'";
+    $result = mysqli_query($con,$query);
+}
 
 function check_login()
 {
@@ -181,8 +289,10 @@ function check_admin()
 
         if($isAdmin["isAdmin"] == 1)
         {
-            echo "<a href='editmovies.php' class='button button1' style='width:100px; margin:10px;'>Edit Movies</a>";
-            echo "<a href='editseries.php' class='button button1' style='width:100px; margin-top:20px;'>Edit Series</a>";
+            show_admin_button("Edit Movies","editmovies.php");
+            show_admin_button("Edit Series", "editseries.php");
+            show_admin_button("View Tickets", "tickets.php");
+
         }
 
     }
@@ -190,6 +300,12 @@ function check_admin()
     abolish_connection_db($con);
 
 }
+function show_admin_button($buttonName, $buttonLink)
+{
+    echo "<a href='".$buttonLink."' class='button button1' style='width:100px; margin:10px;'>".$buttonName."</a>";
+}
+
+//function view tickets
 
 // get banners for the slideshow in index.php
 function getBanner($numOfBanners){

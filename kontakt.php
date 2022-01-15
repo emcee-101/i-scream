@@ -3,6 +3,7 @@ require_once("includes/header.php");
 require_once("includes/footer.php");
 include_once("includes/connection.php");
 include("includes/functions.php");
+include("includes/classes/DisplayElements.php");
 
 session_start();
 
@@ -19,19 +20,9 @@ if (isset($_POST['topic']) && isset($_POST["Explanation"])){
 
 
 
-
+$HTML = new SiteGenerator("Contact Page","background5");
+$HTML->generateSiteStart();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Page</title>
-</head>
-<body class="background5">
-    
     <div class="fade-in">
         <div class="box" id="cent">
             
@@ -44,13 +35,8 @@ if (isset($_POST['topic']) && isset($_POST["Explanation"])){
             <p>State your Issue</p><textarea class="inputbox" type="text" style="width:220px"; maxlength="100" name="Explanation" required></textarea><br><br>
 
             <input type="submit" class="button button1" value="Send"><br><br>
-    </div>
-</form>
-
-        
-        
-
+            </form>
+       </div>
     </div>
 
-</body>
-</html>
+<?$HTML->generateSiteEnd();?>
