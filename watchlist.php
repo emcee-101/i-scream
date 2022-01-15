@@ -65,7 +65,7 @@ $HTML->generateSiteStart();
             // get picture dorm movie ID
             $tmp = getEntityBoxInfos($id[0]);
 
-            array_push($watchListElements, new vidBoxElement($tmp["picture"],$id[0],$location));
+            array_push($watchListElements, new vidBoxElement($tmp["picture"],$id[0],$location, array(0,0)));
 
         }
 
