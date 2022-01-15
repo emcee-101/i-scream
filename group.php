@@ -8,11 +8,8 @@ session_start();
 
     $user_data = check_login();
     $isAdmin = check_admin();
+    $SeriesEdit = edit_series($_POST);
 
-$HTML = new SiteGenerator("Tickets Page","background5");
-$HTML->generateSiteStart();
-$TicketShower = new TicketShower();
-
-$HTML->generateSiteEnd();
-
+    $HTML = new SiteGenerator("Video Group Edit","background5");
+    $HTML->generateSiteStart();
 ?>

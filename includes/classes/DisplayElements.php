@@ -182,7 +182,7 @@
          <html lang='en'>
          <meta charset='UTF-8'>
          <title>".$this->pageTitle."</title>
-         <meta name='viewport' content='width=device-width,initial-scale=1'>
+         <meta name='viewport' content='width=device-width,initial-scale=1, maximum-scale=2.00, minimum-scale=1.00 ,'>
          <link rel='stylesheet' href='assets/css/style.css'>
          <script src='assets/css/js/script.js'></script>
          <body class=".$this->bodyClass." ".$this->bodyID.">";
@@ -208,5 +208,6 @@
          $this->pageTitle = $pageTitle;
          }
   }
+
 
 ?>

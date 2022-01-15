@@ -34,22 +34,42 @@
                     $group = $POSTDATA['movie_group'];
                     $embed = $POSTDATA['movie_embed'];
 
-
-                    // Inserts into Entities Table
-                    $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) ";
-                    $result = mysqli_query($con,$query);
-
-                    // Selects entity id corresponding with the given title
-                    $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
+                    //Check if group exists
+                    $sql = "select video_group_id from video_group where title = '$group' AND isMovies = 1 limit 1";
                     $result = mysqli_query($con,$sql);
-                    $rs = mysqli_fetch_assoc($result);
-                    $entity_id = $rs['entity_id'];
+                    $groupAssoc = mysqli_fetch_assoc($result);
 
-                    // Adds remaining values into movies table
-                    $query = "insert into movies(entity_id, release_year, video_embed) values ('$entity_id','$release','$thumbnail')";
-                    $result = mysqli_query($con,$query);
-                    $message = "".$title." was added.";
-                    break;
+                    if($groupAssoc != 0)
+                    {
+                        // Inserts into Entities Table
+                        $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) ";
+                        $result = mysqli_query($con,$query);
+
+                        // Selects entity id corresponding with the given title
+                        $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
+                        $result = mysqli_query($con,$sql);
+                        $rs = mysqli_fetch_assoc($result);
+                        $entity_id = $rs['entity_id'];
+
+                        // Adds values into movies table
+                        $query = "insert into movies(entity_id, release_year, video_embed) values ('$entity_id','$release','$thumbnail')";
+                        $result = mysqli_query($con,$query);
+                        $message = "".$title." was added.";
+
+                        // Adds remaining values into video_group_member table
+                        $video_group_id = $groupAssoc['video_group_id'];
+                        $query = "insert into video_group_member (video_group_id, entity_id) values('$video_group_id', '$entity_id')";
+                        $result = mysqli_query($con,$query);
+
+                        $message = "Video Group with Title ".$group." found for movies.";
+                        break;
+                    }
+                    else
+                    {
+                     $message = "No Video Group with Title ".$group." found for movies.";
+                     break;
+                    }
+
                 }
 
                 else
@@ -94,19 +114,22 @@
 function edit_series($POSTDATA)
 {
   $con = establish_connection_db();
-  $message=0;
+  $message = 0;
 
-    // If edit value was posted
-    if(isset($POSTDATA['edit_value']) && isset($POSTDATA['edit_series']) && isset($POSTDATA['series_title']))
+  // If radios were filled out
+  if(isset($POSTDATA['edit_value']) && isset($POSTDATA['edit_series']))
+
+    // Which title
+     if($POSTDATA['series_title'])
     {
         $editValue = $POSTDATA['edit_value'];
-        $itemEditType = $POSTDATA['edit_series'];
+        $itemType = $POSTDATA['edit_series'];
         $title = $POSTDATA['series_title'];
 
-        // Check in DB if series is in there
+        // Check in DB if title is in there
         if(($editValue != "add") && (is_title_in_table($con,$title,0) == 0))
         {
-            $message = $title." does not exist in the database. Please enter an existing series title.";
+            $message = $title." does not exist. Please enter an existing series title.";
             echo "<div class='fade-in'><p class='button'>".$message."</p></div>";
             return;
         }
@@ -117,36 +140,61 @@ function edit_series($POSTDATA)
             case "add":
 
                 // Checks if conditions to add series are fulfilled
-                if ($POSTDATA['season_number'] && $POSTDATA['episode_number'] && $POSTDATA['series_img_link'] && $POSTDATA['series_group'] && $POSTDATA['embed_code'])
+                if ($POSTDATA['season_number'] && $POSTDATA['episode_number'] && $POSTDATA['series_description'] && $POSTDATA['thumbnail'] && $POSTDATA['series_group'] && $POSTDATA['embed_code'])
                 {
                     // Sets posted data to local variables
-                    $description = $POSTDATA['movie_description'];
-                    $release = $POSTDATA['release'];
+                    $season = $POSTDATA['season_number'];
+                    $episode = $POSTDATA['episode_number'];
+                    $description = $POSTDATA['series_description'];
+                    $start = $POSTDATA['start_year'];
                     $thumbnail = $POSTDATA['thumbnail'];
-                    $group = $POSTDATA['movie_group'];
-                    $embed = $POSTDATA['movie_embed'];
+                    $group = $POSTDATA['series_group'];
+                    $embed = $POSTDATA['embed_code'];
 
 
-                    // Inserts into Entities Table
-                    $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 1) ";
-                    $result = mysqli_query($con,$query);
-
-                    // Selects entity id corresponding with the given title
-                    $sql = "select entity_id from entity where title = '$title' AND is_movie = 1 limit 1";
+                    // Check if video group exists
+                    $sql = "select video_group_id from video_group where title = '$group' AND isMovies = 0 limit 1";
                     $result = mysqli_query($con,$sql);
-                    $rs = mysqli_fetch_assoc($result);
-                    $entity_id = $rs['entity_id'];
+                    $groupAssoc = mysqli_fetch_assoc($result);
 
-                    // Adds remaining values into movies table
-                    $query = "insert into movies(entity_id, release_year, video_embed) values ('$entity_id','$release','$thumbnail')";
-                    $result = mysqli_query($con,$query);
-                    $message = "".$title." was added.";
-                    break;
+                    if($groupAssoc != 0)
+                    {
+                        // Inserts into Entities Table
+                        $query = "insert into entity(title,description,picture,is_movie) values ('$title','$description','$thumbnail', 0) ";
+                        $result = mysqli_query($con,$query);
+
+                        // Selects entity id corresponding with the given title
+                        $sql = "select entity_id from entity where title = '$title' AND is_movie = 0 limit 1";
+                        $result = mysqli_query($con,$sql);
+                        $rs = mysqli_fetch_assoc($result);
+                        $entity_id = $rs['entity_id'];
+
+
+                        // Adds values into video_group_member table
+                        $video_group_id = $groupAssoc['video_group_id'];
+                        $query = "insert into video_group_member (video_group_id, entity_id) values('$video_group_id', '$entity_id')";
+                        $result = mysqli_query($con,$query);
+                        var_dump($result);
+                        $message = $title." was successfully added.";
+
+                        // Adds remaining values into series table
+                        $query = "insert into series(entity_id, start_year, season, episode, video_embed) values ('$entity_id','$start','$season','$episode','$embed')";
+                        $result = mysqli_query($con,$query);
+                        var_dump($result);
+
+                        break;
+                    }
+                    else
+                    {
+                        $message = "No Video Group called ".$group." found for series.";
+                        break;
+                    }
+
                 }
 
                 else
                 {
-                    $message = "Please fill out the whole form to add a movie.";
+                    $message = "Please fill out the whole form to add a series.";
                     break;
                 }
 
@@ -158,12 +206,12 @@ function edit_series($POSTDATA)
                 }
                 else
                 {
-                    $message ="Please enter an existing Movie title.";
+                    $message ="Please enter an existing series title.";
                 }
                 break;
 
             case "edit":
-                if (isset($POSTDATA['series_description']) && isset($POSTDATA['series_title']))
+                if ($POSTDATA['series_description'] != "" && isset($POSTDATA['series_title']))
                 {
                     edit_entity_description($con, $title, 0, $POSTDATA['series_description']);
                     $message = "Description of ".$title." was changed.";
@@ -172,7 +220,8 @@ function edit_series($POSTDATA)
 
                 else
                 {
-                    $message = "Please enter an existing and a description.";
+                    $message = "Please enter an existing series title and a description.";
+                    break;
                 }
         }
     }
@@ -218,7 +267,6 @@ function delete_entity($con, $entityTitle, $editValue)
 
 function is_title_in_table ($con, $entityTitle, $editValue)
 {
-
     $query = "select * from entity where title = '$entityTitle' AND is_movie = ".$editValue."";
     $result = mysqli_query($con,$query);
     $rs = mysqli_fetch_array($result);
@@ -291,6 +339,7 @@ function check_admin()
         {
             show_admin_button("Edit Movies","editmovies.php");
             show_admin_button("Edit Series", "editseries.php");
+            show_admin_button("Edit Groups" ,"group.php");
             show_admin_button("View Tickets", "tickets.php");
 
         }

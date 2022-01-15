@@ -67,4 +67,4 @@ $HTML->generateSiteStart();
     </div>
 </div>
 
-<? $HTML->generateSiteStart(); ?>
+<? $HTML->generateSiteEnd(); ?>

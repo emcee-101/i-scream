@@ -31,9 +31,6 @@ session_start();
               <input type= "radio" name = "edit_series" value="series" checked>
               <label for="series">A Series</label>
 
-              <input type= "radio" name = "edit_series" value="season">
-              <label for="season">A Season</label>
-
               <input type= "radio" name = "edit_series" value="episode">
               <label for="episode">An Episode</label><br><br>
 
@@ -41,7 +38,8 @@ session_start();
               Season<br><input type="number" min="1" max ="99" name="season_number"><br><br>
               Episode<br><input type="number" min="1" max ="99" name="episode_number"><br><br>
               Description<br><textarea class= "inputbox" input type="text" name="series_description"></textarea><br><br>
-              Reference Link<br><input type="text" name="series_img_link"><br><br>
+              Start Year<br><input type="number" min="1900" max ="2021" name="start_year" ><br><br>
+              Reference Link<br><input type="text" name="thumbnail"><br><br>
               Video Group<br><input type="text" name="series_group"><br><br>
               Embed Code<br><input type="text" name="embed_code"><br><br>
               </p>
