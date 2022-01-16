@@ -105,7 +105,7 @@ CREATE TABLE `entity` (
 
     -- Fünfte Tabelle "Video Group" anlegen
    CREATE TABLE `video_group` (
-     `video_group_id` int(10) NOT NULL,
+     `video_group_id` int(10) NOT NULL AUTO_INCREMENT,
      `title` varchar(20) NOT NULL,
      `isMovies` tinyint(1) NOT NULL,
 
@@ -115,13 +115,13 @@ CREATE TABLE `entity` (
 
 
     -- Testdaten für Tabelle "Video group"
-    INSERT INTO `video_group` (`video_group_id`, `title`, `isMovies`)
+    INSERT INTO `video_group` (`title`, `isMovies`)
     VALUES
-    (1, "Slasher Horror", 1),
-    (2, "Stephen King Series", 0),
-    (3, "Haunted House", 1),
-    (4, "Creature Horror", 1),
-    (5, "John Carpenter", 1);
+    ("Slasher Horror", 1),
+    ("Stephen King Series", 0),
+    ("Haunted House", 1),
+    ("Creature Horror", 1),
+    ("John Carpenter", 1);
 
 
 

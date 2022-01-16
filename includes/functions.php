@@ -232,6 +232,81 @@ function edit_series($POSTDATA)
     abolish_connection_db($con);
 }
 
+function edit_groups($POSTDATA)
+{
+    $con = establish_connection_db();
+    $message = 0;
+    if(isset($POSTDATA['edit_type']) && isset($POSTDATA['group_type']) && isset($POSTDATA['group_title']))
+    {
+        $editType = $POSTDATA['edit_type'];
+        $groupType = $POSTDATA['group_type'];
+        $groupTitle = $POSTDATA['group_title'];
+        $isMovies = $POSTDATA['group_type'] == "movie_group" ? 1: 0;
+
+        // Check if Video Group exists when it is not to be added
+        if($editType != "add_group")
+        {
+            $query = "select * from video_group where title = '$groupTitle' AND isMovies = ".$isMovies."";
+            $result = mysqli_query($con,$query);
+            $rs = mysqli_fetch_array($result);
+
+            if($rs === 0)
+            {
+                $message = $title." does not exist. Please enter an existing series title.";
+                echo "<div class='fade-in'><p class='button'>".$message."</p></div>";
+                return;
+            }
+        }
+
+        switch($editType)
+        {
+             case "add_group":
+                 // Inserts new Group into video_group Table
+                 $query = "insert into video_group(title,isMovies) values ('$groupTitle','$isMovies') ";
+                 $result = mysqli_query($con,$query);
+
+             case "delete_group":
+
+                // Select Video Group ID, check if there are still members of that group left and give an error message if there are
+                $sql = "select video_group_id from video_group where title = '$groupTitle' AND isMovies = '$isMovies' limit 1";
+                $result = mysqli_query($con,$sql);
+                $rs = mysqli_fetch_assoc($result);
+                $groupID = $rs['video_group_id'];
+
+                $sql = "select * from video_group_member where video_group_id = '$groupID'";
+                $result = mysqli_query($con,$sql);
+                $rs = mysqli_fetch_assoc($result);
+
+                if ($rs != 0)
+                {
+                    $message = "There are still Members of that Group.";
+                    break;
+                }
+                else
+                {
+                    // Deletes Group from video_group Table
+                    $query = "delete from video_group where video_group_id = '$groupID'";
+                    $result = mysqli_query($con,$query);
+
+                    $result? $message = $groupTitle." was successfully deleted.": $message = "something went wrong.";
+                    break;
+                }
+                //IMPORTANT
+             case "":
+        }
+
+    }
+    else
+    {
+    $message = "Please fill out the whole form.";
+    }
+
+if($message)
+    {
+        echo"<div class='fade-in'><p class='button'>".$message."</p></div>";
+    }
+    abolish_connection_db($con);
+}
 // $editValue must be 1 for movies, 0 for series
 function delete_entity($con, $entityTitle, $editValue)
 {
@@ -283,6 +358,7 @@ function edit_entity_description($con, $entityTitle, $editValue, $entityDescript
     $query = "update entity set description = '$entityDescription' where entity_id = '$entity_id'";
     $result = mysqli_query($con,$query);
 }
+
 
 function check_login()
 {
@@ -339,7 +415,7 @@ function check_admin()
         {
             show_admin_button("Edit Movies","editmovies.php");
             show_admin_button("Edit Series", "editseries.php");
-            show_admin_button("Edit Groups" ,"group.php");
+            show_admin_button("Edit Groups" ,"editgroups.php");
             show_admin_button("View Tickets", "tickets.php");
 
         }

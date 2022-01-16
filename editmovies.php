@@ -27,16 +27,14 @@ session_start();
                 <label for="add_season">Delete a Movie </label><br><br>
                 <input type= "radio" name = "edit_movies" value="edit_description" checked>
                 <label for="add_episode">Change Description</label><br><br>
+
+                Title<br><input type="text" name="movie_title" required><br><br>
+                Description<br><textarea class= "inputbox" input type="text" maxlength="200" name="movie_description"></textarea><br><br>
+                Release Year<br><input id="releaseYear" type="number" min="1900" max ="2021" name="release" ><br><br>
+                Reference Link<br><input type="text" name="thumbnail" ><br><br>
+                Video Group<br><input type="text" name="movie_group" ><br><br>
+                Embed Code<br><input type="text" name="movie_embed" ><br><br>
             </p>
-
-            <p>Title</p><input type="text" name="movie_title" required><br><br>
-            <p>Description</p><textarea class= "inputbox" input type="text" maxlength="200" name="movie_description"></textarea><br><br>
-            <p>Release Year</p><input id="releaseYear" type="number" min="1900" max ="2021" name="release" ><br><br>
-            <p>Reference Link</p><input type="text" name="thumbnail" ><br><br>
-            <p>Video Group</p><input type="text" name="movie_group" ><br><br>
-            <p>Embed Code</p><input type="text" name="movie_embed" ><br><br>
-
-
 
             <input type="submit" class="button button1" value="Submit"><br><br>
         </form>
