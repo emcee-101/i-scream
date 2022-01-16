@@ -3,6 +3,7 @@
 session_start();
 include_once("includes/connection.php");
 include("includes/functions.php");
+include("includes/classes/DisplayElements.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // something was posted
@@ -33,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
         echo "Please enter some valid information!";
     }
+}
 
 $HTML = new SiteGenerator("Register Page","background1");
 $HTML->generateSiteStart();
-}
 ?>
     <div class="fade-in">
          <p class = "alignment">
@@ -60,4 +61,4 @@ $HTML->generateSiteStart();
         </div>
     </div>
 
-<?$HTML->generateSiteStart();?>
+<?$HTML->generateSiteEnd();?>

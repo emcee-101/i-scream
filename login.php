@@ -1,9 +1,8 @@
 <?php
-session_start();
 include_once("includes/connection.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
-
+session_start();
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -39,12 +38,13 @@ include("includes/classes/DisplayElements.php");
     } else {
         echo "please enter some valid information";
     }
+    }
 
 $HTML = new SiteGenerator("Login Page","background1");
 $HTML->generateSiteStart();
 
-}
 ?>
+
 <div class= "fade-in">
     <p class = "alignment">
         <img src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
@@ -66,5 +66,5 @@ $HTML->generateSiteStart();
         </form>
     </div>
 </div>
+<?$HTML->generateSiteEnd();?>
 
-<? $HTML->generateSiteEnd(); ?>
