@@ -241,7 +241,8 @@ function edit_groups($POSTDATA)
         $editType = $POSTDATA['edit_type'];
         $groupType = $POSTDATA['group_type'];
         $groupTitle = $POSTDATA['group_title'];
-        $isMovies = $POSTDATA['group_type'] == "movie_group" ? 1: 0;
+        $POSTDATA['group_type'] == "movie_group" ? $isMovies = 1 : $isMovies = 0;
+
 
         // Check if Video Group exists when it is not to be added
         if($editType != "add_group")
@@ -264,37 +265,90 @@ function edit_groups($POSTDATA)
                  // Inserts new Group into video_group Table
                  $query = "insert into video_group(title,isMovies) values ('$groupTitle','$isMovies') ";
                  $result = mysqli_query($con,$query);
+                 $message = "Group with the title ".$groupTitle." was added!";
+                 break;
 
              case "delete_group":
 
-                // Select Video Group ID, check if there are still members of that group left and give an error message if there are
+                // Select Video Group ID for input values
                 $sql = "select video_group_id from video_group where title = '$groupTitle' AND isMovies = '$isMovies' limit 1";
-                $result = mysqli_query($con,$sql);
-                $rs = mysqli_fetch_assoc($result);
-                $groupID = $rs['video_group_id'];
-
-                $sql = "select * from video_group_member where video_group_id = '$groupID'";
                 $result = mysqli_query($con,$sql);
                 $rs = mysqli_fetch_assoc($result);
 
                 if ($rs != 0)
                 {
-                    $message = "There are still Members of that Group.";
-                    break;
+                    //sets ID
+                    $groupID = $rs['video_group_id'];
+
+                    // Check if there are still members of that group left and give an error message if there are
+                    $sql = "select * from video_group_member where video_group_id = '$groupID'";
+                    $result = mysqli_query($con,$sql);
+
+                    // If at least one Group member was found
+                    if($result != 0)
+                    {
+                        $message = "There are still Members of that Group.";
+                        break;
+                    }
+
+                    else
+                    {
+                        // Deletes Group from video_group Table
+                        $query = "delete from video_group where video_group_id = '$groupID'";
+                        $result = mysqli_query($con,$query);
+
+                        // If there is a group associated with that ID
+                        if ($result)
+                        {
+                            $message = $groupTitle." was successfully deleted.";
+                            break;
+                        }
+                        else
+                        {
+                            $message = "Please enter the valid Group type for ".$groupTitle;
+                            break;
+                        }
+
+                    }
+
                 }
                 else
                 {
-                    // Deletes Group from video_group Table
-                    $query = "delete from video_group where video_group_id = '$groupID'";
-                    $result = mysqli_query($con,$query);
-
-                    $result? $message = $groupTitle." was successfully deleted.": $message = "something went wrong.";
+                    $message = "Please enter an existing Group.";
                     break;
                 }
-                //IMPORTANT
-             case "":
-        }
 
+             case "edit_group_type":
+
+             // Is there a group Id for an associated Title and Group Value?
+             $sql = "select video_group_id from video_group where title = '$groupTitle' AND isMovies = '$isMovies' limit 1";
+             $result = mysqli_query($con,$sql);
+             $rs = mysqli_fetch_assoc($result);
+
+             // If yes
+             if ($rs != 0)
+             {
+
+                $groupID = $rs['video_group_id'];
+
+                // Sets local to the opposite value of $isMovies to change it in the db
+                $isMovies === 0 ? $isMoviesSwitch = 1: $isMoviesSwitch = 0;
+                $sql = "update video_group set isMovies = '$isMoviesSwitch' where video_group_id = '$groupID'";
+                var_dump($sql);
+                $result = mysqli_query($con,$sql);
+
+                $isMoviesSwitch === 1 ? $changedType = "movie" : $changedType = "series";
+                $message = $groupTitle." is now a ".$changedType.".";
+
+                break;
+             }
+             else
+             {
+
+                $message = "Please enter the correct group Type.";
+                break;
+             }
+        }
     }
     else
     {
@@ -307,6 +361,7 @@ if($message)
     }
     abolish_connection_db($con);
 }
+
 // $editValue must be 1 for movies, 0 for series
 function delete_entity($con, $entityTitle, $editValue)
 {

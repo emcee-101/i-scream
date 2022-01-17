@@ -13,7 +13,6 @@ session_start();
     $HTML = new SiteGenerator("Video Group Edit","background5");
     $HTML->generateSiteStart();
 
-
 ?>
 
 <div class="box" id='cent' style="margin-top:-30em;">
@@ -31,7 +30,7 @@ session_start();
                 <input type= "radio" name = "edit_type" value="edit_group_type" checked>
                 <label for="edit_group_type">Change Group Type</label><br><br>
 
-                Group Type<br><br>
+                 Current Group Type<br><br>
                 <input type= "radio" name = "group_type" value="movie_group" checked>
                 <label for="movie_group">Movie Group</label>
 

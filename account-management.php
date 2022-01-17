@@ -3,6 +3,7 @@ session_start();
 include_once("includes/connection.php");
 require_once("includes/header.php");
 require_once("includes/footer.php");
+include("includes/classes/DisplayElements.php");
 
 
 $con = establish_connection_db();
@@ -37,7 +38,7 @@ $HTML->generateSiteStart();
         <h2 id="redfont">Account</h2>
         <form method="POST">
 
-        <p>Email:<br>  <p type="text" name="email"> <?php echo $email; ?>  </p>  <br></p> 
+        <p>Email:<br>  <p type="text" name="email"> <?php echo $email; ?>  </p>  <br></p>
         <p>Password:<br> <p type="password" name="password"><?php echo $password; ?>  </p> <br></p>
         <p>Age: <br> <p type="date" name="Age"> <?php echo $age; ?> </p> <br> </p>
         <p>Membership: <p type="text" name="membership"> <?php echo $membership; ?>  </p> <br><br></p>
@@ -49,5 +50,5 @@ $HTML->generateSiteStart();
           
         </form>
 
-<?$HTML->generateSiteStart();?>
+<?$HTML->generateSiteEnd();?>
 

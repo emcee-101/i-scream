@@ -209,5 +209,35 @@
          }
   }
 
+  class ticketDisplayer{
+
+  private $ticketID ="";
+  private $userID ="";
+  private $username = "";
+  private $ticketTopic="";
+  private $ticketDescription="";
+  private $con;
+
+
+  public function printTicket(){
+  $str = "<div class='box'>
+            <h4>".$this->ticketTopic."</h4><br>
+            <p>".$this->username."(ID: ".$this->userID.") wrote:<br>
+            ".$this->ticketDescription."</p> </div>";
+   echo $str;
+  }
+  public function setUsername($con, $userID)
+  {
+    $query = "select username from user where user_id = '$this->userID'";
+    $sql = mysqli_query($con, $query);
+    $rs = mysqli_fetch_assoc($sql);
+    $this->username = $rs['username'];
+  }
+
+  public function __construct($con){
+  $this->con = $con;
+  }
+
+  }
 
 ?>
