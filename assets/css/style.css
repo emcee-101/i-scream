@@ -92,6 +92,7 @@
                                                     resize: none;
                                                 }
 
+
                                                 h1,
                                                 h2,
                                                 h3,
@@ -123,6 +124,20 @@
                                                     background: black;
                                                 }
 
+                                                .ticketParent{
+                                                    display:flex;
+                                                    flex-wrap: wrap;
+                                                }
+                                                .ticketBox{
+                                                    flex:1 0 20%;
+                                                    margin: 5px;
+                                                    background-color:black;
+                                                    border: 5px solid rgb(107, 9, 9);
+                                                    border-radius: 10px;
+                                                    max-width:300px;
+                                                    max-height:400px;
+                                                }
+
                                                 .inputbox {
                                                     height: 10em;
                                                 }
@@ -146,6 +161,8 @@
                                                     color: black;
                                                     border: 2px solid rgb(107, 9, 9);
                                                     width: 100%;
+                                                    margin:2px;
+                                                    max-width:300px;
                                                     text-decoration: none;
                                                 }
                                                 
@@ -412,14 +429,14 @@
                                                     padding-bottom:5em;
                                                 }
 
-                                                .answerbox{
+                                                .answerBox{
                                                     position:relative;
-                                                    width: 1fr;
-                                                    height: 200px;
-                                                    align-self: center;
                                                     object-fit: contain;
                                                     border-radius: 10px;
                                                     border: 5px solid rgb(107, 9, 9);
+                                                    margin: 25px;
+                                                    width:80%;
+                                                    height:100px;
                                                 }
 
                                                 

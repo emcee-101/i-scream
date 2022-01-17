@@ -211,19 +211,26 @@
 
   class ticketDisplayer{
 
-  private $ticketID ="";
-  private $userID ="";
-  private $username = "";
-  private $ticketTopic="";
-  private $ticketDescription="";
   private $con;
+  private $ticketTable;
+  private $ticketID;
+  private $userID;
+  private $username;
+  private $ticketTopic;
+  private $ticketDescription;
 
 
   public function printTicket(){
-  $str = "<div class='box'>
-            <h4>".$this->ticketTopic."</h4><br>
-            <p>".$this->username."(ID: ".$this->userID.") wrote:<br>
-            ".$this->ticketDescription."</p> </div>";
+  $str = "<div class='ticketBox'><form method ='POST'>
+            <h4 id='whitefont'>".$this->ticketTopic."</h4><br>
+            <p>Ticket ID: ".$this->ticketID."<br>
+            ".$this->username." (User ID: ".$this->userID.")<br><br>
+            ".$this->ticketDescription."<br>
+            <textarea class='answerBox' input type='text' name='series_description'></textarea><br><br>
+            </p>
+
+            <input type='submit' class='button button1' style ='width:100%;'value='Reply'><br><br>
+            </form></div>";
    echo $str;
   }
   public function setUsername($con, $userID)
@@ -234,8 +241,13 @@
     $this->username = $rs['username'];
   }
 
-  public function __construct($con){
+  public function __construct($con,$ticketTable, $ticketID, $userID, $ticketTopic, $ticketDescription){
   $this->con = $con;
+  $this->ticketTable = $ticketTable;
+  $this->ticketID = $ticketID;
+  $this->userID = $userID;
+  $this->ticketTopic = $ticketTopic;
+  $this->ticketDescription = $ticketDescription;
   }
 
   }
