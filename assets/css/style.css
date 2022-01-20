@@ -23,8 +23,8 @@
                                                     height:100%;
                                                     position: relative;
 
-                                                }
 
+                                                }
 
                                                 .background1 {
                                                     background: url(https://images.hdqwalls.com/wallpapers/the-nun-movie-4k-fz.jpg) no-repeat center center fixed;
@@ -113,15 +113,19 @@
                                                 #whitefont {
                                                     color: white;
                                                 }
-                                                
+
                                                 .box {
-                                                    position:relative;
                                                     border-radius: 25px;
                                                     border: 3px solid rgb(107, 9, 9);
-                                                    top: 50%;
-                                                    left: 50%;
-                                                    padding: 15px;
                                                     background: black;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    flex-direction: column;
+                                                    padding: 2em;
+                                                    max-width:300px;
+                                                    max-height: 800px;
+                                                    margin: 0 auto;
+                                                    align-items: center;
                                                 }
 
                                                 .ticketParent{
@@ -130,12 +134,13 @@
                                                 }
                                                 .ticketBox{
                                                     flex:1 0 20%;
-                                                    margin: 5px;
+                                                    margin: auto;
                                                     background-color:black;
                                                     border: 5px solid rgb(107, 9, 9);
                                                     border-radius: 10px;
                                                     max-width:300px;
                                                     max-height:400px;
+                                                    paddin: 1em;
                                                 }
 
                                                 .inputbox {
@@ -206,16 +211,7 @@
                                                     border: 2px solid rgb(107, 9, 9);
                                                     margin-left: 20px;
                                                 }
-                                                
-                                                #cent {
-                                                    position: absolute;
-                                                    top: 50%;
-                                                    left: 50%;
-                                                    margin-top: -200px;
-                                                    margin-left: -120px;
-                                                }
 
-                                                
                                                 .slideshow {
                                                     position: relative;
                                                     max-width: 1000px;

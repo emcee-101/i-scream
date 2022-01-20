@@ -13,7 +13,7 @@ session_start();
     $HTML = new SiteGenerator("Edit Movies Page","background5");
     $HTML->generateSiteStart("Add Series","background5");
 ?>
-  <div class="box" id='cent' style="margin-top:-40em;">
+  <div class="box">
 
           <h2 id="redfont">Edit a Series</h2><br>
           <form method="POST">

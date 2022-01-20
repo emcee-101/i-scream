@@ -5,6 +5,7 @@
 {
     $con = establish_connection_db();
     $message = 0;
+
     // If edit value for movies was posted
     if(isset($POSTDATA['edit_movies']))
     {

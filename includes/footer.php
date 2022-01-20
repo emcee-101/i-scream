@@ -13,7 +13,8 @@
   <div class="footer-body">
     <a href="Impressum.php" style="text-decoration: none"><h4 class ="button3">Impressum</h4></a>
     <a href="kontakt.php" style="text-decoration: none"><h4 class ="button3">Kontakt</h4></a>
-  <div class="footer-body">
+  </div>
+      </div>
 </footer>
 </body>
 </html> 

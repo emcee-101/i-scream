@@ -15,7 +15,7 @@ session_start();
 ?>
 
 
-<div class="box" id='cent' style="margin-top:-30em;">
+<div class="box">
 
         <h2 id="redfont">Edit a Movie</h2>
         <form method="POST">
