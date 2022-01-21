@@ -40,7 +40,7 @@
                         </div>
                         <div class="dropcont">
                             <table>
-                                <tr><td><p><a href="series.php?action=sub&type=science&mov=0">Science Fiction</p></td></tr>
+                                <tr><td><p><a href="movies.php?action=sub&type=science&mov=0">Science Fiction</p></td></tr>
                             </table>
                         </div>
                     </div>

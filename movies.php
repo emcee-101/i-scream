@@ -35,10 +35,9 @@ $HTML->generateSiteStart();
 
   // MOVED CLASSES FOR BOXES TO includes/classes/DisplayElements.php
 
-    if(($_GET["action"] == "sub")&&(isset($_GET["mov"]))&&(isset($_GET["type"])){
+    if(($_GET["action"] == "sub")AND(isset($_GET["mov"]))AND(isset($_GET["type"]))){
 
         // if a subcategory from the header got clicked do this!!!
-
         $showMovies = $_GET["mov"];
 
         $GROUP = $_GET["type"];
@@ -59,7 +58,7 @@ $HTML->generateSiteStart();
                 $neededGroupID = 3;
                 break;
 
-            case(default):
+            default:
                 // ERROR MESSAGE
                 break;
         }
@@ -90,7 +89,6 @@ $HTML->generateSiteStart();
         }
 
 
-    }
     else{
 
         //the regular usage of movies.php (multiple categories)
