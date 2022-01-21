@@ -24,7 +24,7 @@ else{
     list($is_movie, $entity_data, $specific_data) = $Data;
 
 
-            echo "<div style=' display: relative;left: 80%;transform: translateX(45%);'>";
+            echo "<div style='position: relative;max-width: 1000px;height: auto;width: auto;margin: auto;margin-top: 200px;align-self: center;left: 10%;'>";
 
     if($is_movie == 1){
 
@@ -53,7 +53,12 @@ else{
         echo $tmpString;
 
     }
-       echo "</div>";
+
+
+    $description = $entity_data["description"];
+
+    echo "<h3 id='whitefont'>".$description."</h3>";
+    echo "</div>";
 }
 
 $HTML->generateSiteEnd();?>
