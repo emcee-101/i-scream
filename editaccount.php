@@ -29,7 +29,7 @@ $HTML->generateSiteStart();
         <input></input> 
         <p>New Password:</p>
         <input></input>
-        <p><a href="editaccount.php" input class="button button1" style="padding:10px 0px">Submit Edit</a><br>
+        <p><a href="account-management.php" input class="button button1" style="padding:10px 0px">Submit Edit</a><br>
 
         </div>
 
