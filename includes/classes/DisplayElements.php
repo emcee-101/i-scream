@@ -51,14 +51,16 @@
 
         public function getWatchListModule() {
 
-            // Workaround: transmits current GroupIDs, so tehy can be redisplayed, after something is added or eremoved from the watchlist
+            // Workaround: transmits current GroupIDs, so tehy can be redisplayed, after something is added or eremoved from the watchlist (not inside of the watchlist (location 3) tough)
             $tstr = "";
-            foreach($this->arrayOfGroupID as $key => $value){
 
-                $tstr .=  $value[0].":";
+            if($this->location != 3){
+                foreach($this->arrayOfGroupID as $key => $value){
 
+                    $tstr .=  $value[0].":";
+
+                }
             }
-
             // submit action to watchlist.php per php "get" when clicked
             $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."&loc=".$this->location."&objlist=".$tstr."';>";
 
