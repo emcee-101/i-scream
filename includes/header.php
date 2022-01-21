@@ -27,10 +27,8 @@
                     </div>
                         <div class="dropcont">
                             <table>
-                                <tr><td><p><a href="movies.php">Zombie</p></a></td></tr>
-                                <tr><td><p><a href="movies.php">Psycho</p></td></tr>
-                                <tr><td><p><a href="movies.php">Gore</p></td></tr>
-                                <tr><td><p><a href="movies.php">Haunted</p></td></tr>
+                                <tr><td><p><a href="movies.php?action=sub&type=slasher&mov=1">Slasher</p></td></tr>
+                                <tr><td><p><a href="movies.php?action=sub&type=haunted&mov=1">Haunted</p></td></tr>
                             </table>
                         </div>
                     </div>
@@ -42,10 +40,7 @@
                         </div>
                         <div class="dropcont">
                             <table>
-                                <tr><td><p><a href="series.php">Zombie</p></a></td></tr>
-                                <tr><td><p><a href="series.php">Haunted</p></td></tr>
-                                <tr><td><p><a href="series.php">Psycho</p></td></tr>
-                                <tr><td><p><a href="series.php">Gore</p></td></tr>
+                                <tr><td><p><a href="movies.php?action=sub&type=science&mov=0">Science Fiction</p></td></tr>
                             </table>
                         </div>
                     </div>

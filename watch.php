@@ -24,6 +24,8 @@ else{
     list($is_movie, $entity_data, $specific_data) = $Data;
 
 
+            echo "<div style=' display: relative;left: 80%;transform: translateX(45%);'>";
+
     if($is_movie == 1){
 
         echo getYTembed($specific_data["video_embed"]);
@@ -32,6 +34,7 @@ else{
     else{
 
         $tmpString = "";
+
 
         foreach($specific_data as $key => $value){
 
@@ -48,8 +51,9 @@ else{
         }
 
         echo $tmpString;
-    }
 
+    }
+       echo "</div>";
 }
 
 $HTML->generateSiteEnd();?>

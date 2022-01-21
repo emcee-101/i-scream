@@ -35,34 +35,42 @@ $HTML->generateSiteStart();
 
   // MOVED CLASSES FOR BOXES TO includes/classes/DisplayElements.php
 
-    //get IDs for Groups
+    if(($_GET["action"] == "sub")AND(isset($_GET["mov"]))AND(isset($_GET["type"]))){
 
-    $numGroups = 6;
+        // if a subcategory from the header got clicked do this!!!
+        $showMovies = $_GET["mov"];
 
-    // Workaround to have same display after adding / removing from watchlist
-    if(isset($_GET["objlist"])){
-        $arrayOfGroupID = explode(":",$_GET["objlist"], $numGroups);
-    }
-                                 // first PARAMETER = MOVIE (0 or 1)
-    else{                        // second PARAMETER = HOW MANY SHALL BE DISPLYED
+        $GROUP = $_GET["type"];
+        $neededGroupID = 0;
 
-        $arrayOfGroupID = getRandomGroupIDs($showMovies, $numGroups);
-    }
+        switch($GROUP){
 
+            // assign the group id's from the db to the term
+            case("science"):
+                $neededGroupID = 8;
+                break;
 
+            case("slasher"):
+                $neededGroupID = 1;
+                break;
 
-    foreach ($arrayOfGroupID as $key => $value){
-        // get Data of each group
+            case("haunted"):
+                $neededGroupID = 3;
+                break;
 
+            default:
+                // ERROR MESSAGE
+                break;
+        }
 
-        $getGroupResult = getGroup($value[0], $showMovies);
+        $getGroupResult = getGroup($neededGroupID, $showMovies);
 
-        //title and list of results of ids get assigned to proper names
+                //title and list of results of ids get assigned to proper names
         list($title, $results) = $getGroupResult;
 
         $groupElements = array();
 
-         // get Data for each specific Movie that is shown
+        // get Data for each specific Movie that is shown
         foreach($results as $elemtNum => $id){
 
             // get picture dorm movie ID
@@ -70,7 +78,7 @@ $HTML->generateSiteStart();
 
             array_push($groupElements, new vidBoxElement($tmp["picture"],$id[0],$location, $arrayOfGroupID));
 
-        }
+            }
 
         // create new object
         $OutputGroup = new vidBoxWrapper($title, $value, $groupElements);
@@ -78,9 +86,61 @@ $HTML->generateSiteStart();
         // print out
         echo $OutputGroup->getString();
 
-    }
+        }
 
-echo "<h4 class='addwatchlist'>".$showMovies."</h4></div>";
+
+    else{
+
+        //the regular usage of movies.php (multiple categories)
+
+        //get IDs for Groups
+
+        $numGroups = 6;
+
+        // Workaround to have same display after adding / removing from watchlist
+        if(isset($_GET["objlist"])){
+            $arrayOfGroupID = explode(":",$_GET["objlist"], $numGroups);
+        }
+                                    // first PARAMETER = MOVIE (0 or 1)
+        else{                        // second PARAMETER = HOW MANY SHALL BE DISPLYED
+
+            $arrayOfGroupID = getRandomGroupIDs($showMovies, $numGroups);
+        }
+
+
+
+        foreach ($arrayOfGroupID as $key => $value){
+            // get Data of each group
+
+
+            $getGroupResult = getGroup($value[0], $showMovies);
+
+            //title and list of results of ids get assigned to proper names
+            list($title, $results) = $getGroupResult;
+
+            $groupElements = array();
+
+            // get Data for each specific Movie that is shown
+            foreach($results as $elemtNum => $id){
+
+                // get picture dorm movie ID
+                $tmp = getEntityBoxInfos($id[0]);
+
+                array_push($groupElements, new vidBoxElement($tmp["picture"],$id[0],$location, $arrayOfGroupID));
+
+            }
+
+            // create new object
+            $OutputGroup = new vidBoxWrapper($title, $value, $groupElements);
+
+            // print out
+            echo $OutputGroup->getString();
+
+        }
+
+    echo "<h4 class='addwatchlist'>".$showMovies."</h4></div>";
+
+    }
 
 require_once("includes/header.php");
 require_once("includes/footer.php");
