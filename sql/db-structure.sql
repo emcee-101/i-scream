@@ -54,7 +54,14 @@ CREATE TABLE `entity` (
  ('Garfield', 'A drama about a cat from hell, torturing its owner John', 'https://cdn.mos.cms.futurecdn.net/cNLu3sFaaKtM2wNwf2FRMR-1200-80.jpg', 1),
  ('The Conjuring','A movie about a possessed doll, that tortures a family and the people trying to help this family.','https://www.filmfutter.com/wp-content/uploads/2013/07/The-Conjuring-Movie.jpg', 1),
  ('The Thing', 'The Prequel to John Carpenters The Thing', 'https://www.dafont.com/forum/attach/orig/1/2/122268.jpg', 1),
- ('The Fog', 'John Carpenters classic Horror Film about a city being engulfed in murderous fog', 'https://trendblog.euronics.de/wp-content/uploads/2015/07/Carpenter_TheFog.jpg', 1);
+ ('The Fog', 'John Carpenters classic Horror Film about a city being engulfed in murderous fog', 'https://trendblog.euronics.de/wp-content/uploads/2015/07/Carpenter_TheFog.jpg', 1),
+ ('Supernatural', 'TV SHow about two brothers solving supernatural mysteries.', 'http://www.robots-and-dragons.de/sites/default/files/styles/large/public/supernatural-banner.jpg', 0),
+ ('Preacher', 'About a small-town preacher that gets convinced he has a gift of god.', 'https://www.tracking-board.com/wp-content/uploads/2017/06/preacher-banner.jpg', 0),
+ ('Ash vs Evil Dead', 'About Ash from The Evil Dead who gets hunted by demons yet again.', 'https://geekroniques.fr/wp-content/uploads/2016/02/une-ash-vs-evildead.jpg', 0),
+ ('Evil Dead', 'Remake of the classic Horror Movie where young people are trapped in a cabin in the woods with demons attaqcking them.', 'https://www.pophorror.com/wp-content/uploads/2017/04/evil-dead-banner-new-5.jpg', 1),
+ ('The Strain', 'Series about a murderous parasite that gets infects a lot of people', 'https://flixable.b-cdn.net/disney-plus/large/de/the-strain.png', 0),
+ ('The Walking Dead', 'Series about People surviving in a Zombie Apocalypse.', 'https://s-cdn.serienjunkies.de/n/the-walking-dead-og.jpg', 0),
+ ('American Horror Story', 'Anthology Series about People trapped in horrifying places modelled after classical horror scenarios.', 'https://glitcheffekt.de/wp-content/uploads/Ecran_Titre_dAmerican_Horror_Story.png', 0);
 
 
   -- Dritte Tabelle "Movies" anlegen
@@ -80,7 +87,8 @@ CREATE TABLE `entity` (
   (6, 2004, "GV5y4yTDtBI"),
   (7, 2013, "k10ETZ41q5o"),
   (8, 2011, "Txjm94GnrPA"),
-  (9, 1980, "nOZwnivtLbc");
+  (9, 1980, "nOZwnivtLbc"),
+  (13, 2013, "TVWQmdKmct4");
 
     -- Vierte Tabelle "Series" anlegen
    CREATE TABLE `series` (
@@ -101,7 +109,13 @@ CREATE TABLE `entity` (
     INSERT INTO `series` (entity_id, start_year, season, episode, `video_embed`)
     VALUES
     (2, 2013, 1, 0, "f_Y5YeYrqUk"),
-    (2, 2014, 2, 0, "ZlMVVdw1a8w");
+    (2, 2014, 2, 0, "ZlMVVdw1a8w"),
+    (10, 2005, 1, 0, "t-775JyzDTk"),
+    (11, 2016, 1, 0, "GLcapWjVXoE"),
+    (12, 2015, 1, 0, "-Yq3jeOmxSk"),
+    (14, 2014, 1, 0, "GqiDTt5WP7s"),
+    (15, 2010 ,1, 0, "sfAc2U20uyg"),
+    (16, 2011, 1, 0, "-tC3wIAIBx8");
 
     -- Fünfte Tabelle "Video Group" anlegen
    CREATE TABLE `video_group` (
@@ -121,7 +135,10 @@ CREATE TABLE `entity` (
     ("Stephen King Series", 0),
     ("Haunted House", 1),
     ("Creature Horror", 1),
-    ("John Carpenter", 1);
+    ("John Carpenter", 1),
+    ("Biblical Themes", 0),
+    ("Supernatural Themes", 0),
+    ("Science Fiction Horror", 0);
 
 
 
@@ -151,7 +168,16 @@ CREATE TABLE `entity` (
     (5, 9),
     (5, 8),
     (4, 5),
-    (4, 8);
+    (4, 8),
+    (6, 10),
+    (7, 10),
+    (6, 11),
+    (7, 12),
+    (4, 13),
+    (1, 13),
+    (8, 14),
+    (8, 15),
+    (7, 16);
 
         -- Fünfte Tabelle "Video Group Member" anlegen
    CREATE TABLE `banner_images` (
