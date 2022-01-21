@@ -24,7 +24,7 @@ else{
     list($is_movie, $entity_data, $specific_data) = $Data;
 
 
-            echo "<div style=' display: relative;left: 80%;transform: translateX(45%);'>";
+            echo "<div style='position: relative;max-width: 1000px;height: auto;width: auto;margin: auto;margin-top: 100px;align-self: center;'>";
 
     if($is_movie == 1){
 

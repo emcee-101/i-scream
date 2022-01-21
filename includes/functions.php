@@ -816,9 +816,25 @@ function getYTembed($embed_key){
 
     return $tmpString;
 
+}
 
 
+// get the description of a movie or a tv show
+function getDescription($ent_id){
 
+    $con = establish_connection_db();
+
+    $query = "SELECT description FROM entity where entity_id=".$ent_id.";";
+
+    $parsed_query = mysqli_query($con, $query);
+
+    $result = mysqli_fetch_assoc($parsed_query);
+
+    $description = $result["description"];
+
+    abolish_connection_db($con);
+
+    return $description;
 }
 
 ?>
