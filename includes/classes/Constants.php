@@ -17,7 +17,7 @@ class Constants
 
     // Youtube Embed
 
-    public static $YTembedStart = "<iframe width='560' height='315' src='https://www.youtube.com/embed/";
+    public static $YTembedStart = "<iframe class='YTVideoBox' src='https://www.youtube.com/embed/";
     public static $YTembedEnd = "' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
 
 

@@ -8,6 +8,7 @@ session_start();
 $user_data = check_login();
 
 $HTML = new SiteGenerator("Watch a Video","background5");
+$HTML->setBodyID("fixed");
 $HTML->generateSiteStart();
 
 if (empty($_GET)){
@@ -23,7 +24,7 @@ else{
     list($is_movie, $entity_data, $specific_data) = $Data;
 
 
-            echo "<div style='position: relative;max-width: 1000px;height: auto;width: auto;margin: auto;margin-top: 200px;align-self: center;left: 10%;margin-bottom: 40px'>";
+            echo "<div class= 'YTVideoBox'>";
 
     if($is_movie == 1){
 
@@ -56,8 +57,9 @@ else{
 
     $description = $entity_data["description"];
 
-    echo "<h3 id='whitefont'>".$description."</h3>";
     echo "</div>";
+    echo "<h3 id='whitefont'>".$description."</h3>";
+
 }
 require_once("includes/header.php");
 require_once("includes/footer.php");

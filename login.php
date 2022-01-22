@@ -53,7 +53,7 @@ $HTML->generateSiteStart();
     <h1 class="alignment" id= "redfont">Welcome to I-Scream</h1>
 
 
-    <div class = "box" id="cent">
+    <div class = "box">
         <h2 style="text-align:center" id="redfont">Login</h2><br>
         <form method="POST">
 

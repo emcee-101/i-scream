@@ -27,18 +27,23 @@ session_start();
     }
 
     //output of slides
-    echo "<div class='fade-in'><div class='slideshow'>";
+    echo "<div class = 'fade-in'><div class='slideshow'>";
     foreach($slider as $key){
         $tmp=$key->getString();
         echo $tmp;
 
         //Javascript fucntions to move between slides
-        echo "<a id='left' onclick='showPrevSlide()'>&#10094;</a>";
-        echo "<a id='right' onclick='showNextSlide()'>&#10095;</a>";
+
         echo "<br>";
         echo "</div>";
+        }
+        echo "<div class = 'arrows'>";
+        echo "<a id='left' onclick='showPrevSlide()'>&#10094;</a>";
+        echo "<a id='right' onclick='showNextSlide()'>&#10095;</a>";
+        echo "</div></div>";
+        echo "<br>";
 
-    }
+
 
  ?>
 

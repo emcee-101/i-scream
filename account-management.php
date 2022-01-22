@@ -31,7 +31,7 @@ $membership == 1? $membership = "Full Membership": $membership = "No Membership"
 $HTML = new SiteGenerator("Account","background2");
 $HTML->generateSiteStart();
 ?>
-        <div class="box" id="cent">
+        <div class="box">
         <h2 id="redfont">Account</h2>
         <form method="POST">
 
@@ -41,10 +41,11 @@ $HTML->generateSiteStart();
 
             
         <p><a href="editaccount.php" input class="button button1" style="padding:10px 0px">Edit Profile</a><br>
-        
-        </div>
-          
-        </form>
 
-<?$HTML->generateSiteEnd();?>
+        </form>
+        </div>
+
+<?php
+$HTML->generateSiteEnd();
+?>
 

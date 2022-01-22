@@ -47,5 +47,6 @@ session_start();
               <input type="submit" class="button button1" value="Submit"><br><br>
           </form>
 
- <? $HTML->generateSiteEnd() ?>
+ <?php
+  $HTML->generateSiteEnd() ?>
 

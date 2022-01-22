@@ -30,7 +30,7 @@ $HTML->generateSiteStart();
 
             <form action="kontakt.php" method="POST">
 
-            <p>Topic</p><input type="text" name ="topic" style="width:220px" required><br><br>
+            <p>Topic</p><input type="text" name ="topic" style="width:220px" maxlength="20"required><br><br>
 
             <p>State your Issue</p><textarea class="inputbox" type="text" style="width:220px"; maxlength="100" name="Explanation" required></textarea><br><br>
 
@@ -39,4 +39,6 @@ $HTML->generateSiteStart();
        </div>
     </div>
 
-<?$HTML->generateSiteEnd();?>
+<?php
+$HTML->generateSiteEnd();
+?>

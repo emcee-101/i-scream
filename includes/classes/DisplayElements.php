@@ -62,11 +62,11 @@
                 }
             }
             // submit action to watchlist.php per php "get" when clicked
-            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."&loc=".$this->location."&objlist=".$tstr."';>";
+            $str = "<a href='watchlist.php?action=status&ent_id=".$this->ent_ID."&loc=".$this->location."&objlist=".$tstr."style='text-decoration:none';>";
 
             // if already watchlisted: ask to remove
             if ($this->isInWatchlist == 1){
-                    $str .= "<h4 class='addwatchlist'>- Remove from Watchlist</h4>";
+                    $str .= "<h4  class='addwatchlist'>- Remove from Watchlist</h4>";
             }
             else{
                     $str .= "<h4 class='addwatchlist'>+ Add to Watchlist</h4>";
@@ -223,22 +223,47 @@
 
 
   public function printTicket(){
-  $str = "<div class='ticketBox'><form method ='POST'>
-            <h4 id='whitefont'>".$this->ticketTopic."</h4><br>
-            <p>Ticket ID: ".$this->ticketID."<br>
-            ".$this->username." (User ID: ".$this->userID.")<br><br>
-            ".$this->ticketDescription."<br>
-            <textarea class='answerBox' input type='text' name='series_description'></textarea><br><br>
-            </p>
-
-            <input type='submit' class='button button1' style ='width:100%;'value='Reply'><br><br>
-            </form></div>";
+  $str = "<div class='ticketBox'>
+            <form method ='get'>
+                <h4 id='whitefont' name='topic'>".$this->ticketTopic."</h4><br>
+                <p>Ticket ID: ".$this->ticketID."<br>
+                ".$this->username." (User ID: ".$this->userID.")<br><br>
+                <div id='ticketText'>
+                    <p>".$this->ticketDescription."</p>
+                </div>
+                </p>
+                <div id ='ticketButton'>
+                <a href='reply-user.php?id=".$this->ticketID."' class='button button1' style='text-decoration: none'>Reply</a><br><br>
+                </div>
+            </form>
+         </div>";
    echo $str;
   }
-  public function setUsername($con, $userID)
+
+    public function printTicketForm(){
+    $str = "<div class='ticketBox'>
+              <form method ='POST'>
+                  <h4 id='whitefont' name='topic'>".$this->ticketTopic."</h4><br>
+                  <p>Ticket ID: ".$this->ticketID."<br>
+                  ".$this->username." (User ID: ".$this->userID.")<br><br>
+                  <div id='ticketText'>
+                      <p>".$this->ticketDescription."</p>
+                  </div>
+                  <textarea class='answerBox' input type='text' name='ticket_reply' minlength='20' maxlength='200'></textarea><br><br>
+                  </p>
+                  <div id ='ticketButton'>
+                  <input type='submit' class='button button1' value='Reply'><br><br>
+                  </div>
+              </form>
+           </div>";
+     echo $str;
+    }
+
+
+  public function setUsername($userID)
   {
     $query = "select username from user where user_id = '$this->userID'";
-    $sql = mysqli_query($con, $query);
+    $sql = mysqli_query($this->con, $query);
     $rs = mysqli_fetch_assoc($sql);
     $this->username = $rs['username'];
   }

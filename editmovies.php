@@ -14,7 +14,6 @@ session_start();
 
 ?>
 
-
 <div class="box">
 
         <h2 id="redfont">Edit a Movie</h2>
@@ -40,4 +39,6 @@ session_start();
         </form>
     </div>
 
-<?  $HTML->generateSiteEnd();?>
+<?php
+$HTML->generateSiteEnd();
+?>

@@ -45,7 +45,7 @@ $HTML->generateSiteStart();
          </p>
         <h1 id= "redfont">Let's get started!</h1>
     
-        <div class ="box" id="cent">
+        <div class ="box">
             <h2 style="text-align:center" id="redfont">Register</h2><br>
     
             <form method="POST">
@@ -61,4 +61,5 @@ $HTML->generateSiteStart();
         </div>
     </div>
 
-<?$HTML->generateSiteEnd();?>
+<?php
+$HTML->generateSiteEnd();?>

@@ -1,8 +1,6 @@
 <?php
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
-require_once("includes/header.php");
-require_once("includes/footer.php");
 include_once("includes/connection.php");
 
 session_start();
@@ -11,12 +9,11 @@ session_start();
     $isAdmin = check_admin();
 
 $con = establish_connection_db();
-$HTML = new SiteGenerator("Tickets Page","background5");
+$HTML = new SiteGenerator("Tickets Page","background4");
 $HTML->generateSiteStart();
-?><div class ="ticketParent">
-<?
+echo "<div class ='ticketParent'>";
 $ticketTable = "ticket";
-$result = mysqli_query($con,"SELECT id, user_id ,topic ,description from ticket");
+$result = mysqli_query($con,"SELECT id, user_id ,topic ,description from ticket where reply IS NULL");
 
 while ($row = mysqli_fetch_array($result))
 {
@@ -30,7 +27,15 @@ while ($row = mysqli_fetch_array($result))
     $ticketDisplayer->printTicket();
 }
 
-?></div><?
-$HTML->generateSiteEnd();
+if(isset($_GET["ticketID"]))
+{
+    $ticketID = $_GET["ticketID"];
+    $message = "You successfully replied to ticket with the ID:".$ticketID."";
+    echo "<div class='fade-in'><p class='button'>".$message."</p></div>";
+}
 
+echo "</div>";
+require_once("includes/header.php");
+require_once("includes/footer.php");
+$HTML->generateSiteEnd();
 ?>

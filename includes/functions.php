@@ -415,6 +415,20 @@ function edit_entity_description($con, $entityTitle, $editValue, $entityDescript
     $result = mysqli_query($con,$query);
 }
 
+function replyTicket($ticketID, $POSTDATA)
+{
+    $con = establish_connection_db();
+
+    if(isset($POSTDATA['ticket_reply']))
+    {
+        $reply = $POSTDATA['ticket_reply'];
+        $query = "update ticket set reply = '$reply' where id ='$ticketID'";
+        $result = mysqli_query($con,$query);
+        header("Location: tickets.php?ticketID=".$ticketID."");
+    }
+
+}
+
 
 function check_login()
 {

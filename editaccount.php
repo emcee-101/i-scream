@@ -34,5 +34,5 @@ $HTML->generateSiteStart();
         </div>
 
         </form>
-<?
+<?php
 $HTML->generateSiteEnd();?>

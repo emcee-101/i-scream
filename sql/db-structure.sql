@@ -222,6 +222,7 @@ CREATE TABLE `entity` (
         `user_id` int(10) NOT NULL,
         `topic` varchar(200) NOT NULL,
         `description` text NOT NULL,
+        `reply` varchar (200),
 
         PRIMARY KEY(`id`),
         KEY `ticket_usr` (`user_id`)

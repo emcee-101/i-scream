@@ -18,12 +18,10 @@
                                                 }
 
                                                 html,body{
-                                                    margin-top:40px;
-                                                    margin-bottom:40px;
+                                                    margin-top: 40px;
+                                                    scroll-margin-bottom: 40px;
                                                     height:100%;
                                                     position: relative;
-
-
                                                 }
 
                                                 .background1 {
@@ -32,7 +30,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: scroll;
+                                                    overflow:auto;
                                                 }
                                                 
                                                 .background2 {
@@ -41,7 +39,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: hidden;
+                                                    overflow:auto;
                                                 }
                                                 
                                                 .background3 {
@@ -50,7 +48,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: scroll;
+                                                    overflow:auto;
                                                 }
                                                 
                                                 .background4 {
@@ -59,7 +57,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: scroll;
+                                                    overflow:auto;
                                                 }
                                                 
                                                 .background5 {
@@ -70,10 +68,12 @@
                                                     background-size: cover;
                                                     overflow: auto;
                                                 }
+
                                                 
                                                 * {
                                                     font-family: 'outfit-black', sans-serif;
                                                 }
+
                                                 
                                                 .complete {
                                                     display: block;
@@ -92,6 +92,15 @@
                                                     resize: none;
                                                 }
 
+                                                .YTVideoBox
+                                                {
+                                                    position:relative;
+                                                    display:flex;
+                                                    flex-direction: row;
+                                                    justify-content:center;
+                                                    margin:30vh auto;
+                                                    max-width:60vw;
+                                                }
 
                                                 h1,
                                                 h2,
@@ -121,26 +130,43 @@
                                                     display: flex;
                                                     justify-content: center;
                                                     flex-direction: column;
-                                                    padding: 2em;
-                                                    max-width:300px;
+                                                    max-width:250px;
                                                     max-height: 800px;
-                                                    margin: 0 auto;
-                                                    align-items: center;
+                                                    padding: 2em;
+                                                    position: relative;
+                                                    margin: 50px auto;
+                                                    margin-top: 100px;
                                                 }
 
                                                 .ticketParent{
                                                     display:flex;
                                                     flex-wrap: wrap;
+                                                    position:relative;
                                                 }
+
                                                 .ticketBox{
-                                                    flex:1 0 20%;
-                                                    margin: auto;
+                                                    position: relative;
+                                                    flex:1 0 40%;
                                                     background-color:black;
                                                     border: 5px solid rgb(107, 9, 9);
                                                     border-radius: 10px;
-                                                    max-width:300px;
-                                                    max-height:400px;
-                                                    paddin: 1em;
+                                                    padding: 1em;
+                                                    justify-items: center;
+                                                    min-width: 200px;
+                                                    max-width: 400px;
+                                                    max-height:800px;
+                                                    margin: 40px auto;
+                                                }
+                                                #ticketButton{
+                                                position:relative;
+                                                    padding:5px;
+                                                    align-items: center;
+                                                    margin: 0 auto;
+                                                }
+
+                                                #ticketText{
+                                                    height:100px;
+                                                    position: relative;
                                                 }
 
                                                 .inputbox {
@@ -167,7 +193,6 @@
                                                     border: 2px solid rgb(107, 9, 9);
                                                     width: 100%;
                                                     margin:2px;
-                                                    max-width:300px;
                                                     text-decoration: none;
                                                 }
                                                 
@@ -214,60 +239,64 @@
 
                                                 .slideshow {
                                                     position: relative;
-                                                    max-width: 1000px;
-                                                    height:auto;
-                                                    width:auto;
-                                                    margin:auto;
-                                                    margin-top:100px;
-                                                    align-self: center;
+                                                    margin: 0 auto;
                                                 }
                                                 
                                                 .slide {
-                                                    align: center;
-                                                    display: none;
                                                     border: 5px solid rgb(107, 9, 9);
                                                     border-radius: 20px;
+                                                    justify-items: center;
+                                                    margin: 0 auto;
+
                                                 }
                                                 
                                                 .crop {
-                                                    width: 1000px;
                                                     height: 400px;
+                                                    width: 711px;
                                                     overflow: hidden;
+
                                                 }
                                                 
                                                 .crop img {
-                                                    width: 1000px;
-                                                    object-fit: cover;
+                                                    max-height: 100%;
+                                                    max-width: 100%;
+
                                                 }
-                                                
+
+                                                .arrows{
+                                                    display: flex;
+                                                    position: relative;
+                                                    flex-wrap: nowrap;
+                                                    flex-direction: row;
+                                                    justify-items: center;
+                                                    gap: 10vw;
+                                                }
+
                                                 #left,
-                                                #right {
+                                                #right
+                                                 {
                                                     cursor: pointer;
-                                                    position: absolute;
-                                                    top: 200px;
-                                                    left: 5px;
-                                                    width: auto;
-                                                    margin-top: -22px;
-                                                    padding: 16px;
-                                                    color: white;
+                                                    position: relative;
+                                                    color: rgb(107, 9, 9);
                                                     font-weight: bold;
-                                                    font-size: 18px;
+                                                    font-size: 40px;
                                                     user-select: none;
+                                                    margin:0 auto;
+                                                    margin-top:-150px;
                                                 }
                                                 
                                                 #right {
-                                                    left: 950px;
                                                 }
                                                 
                                                 .movierec {
+                                                    position: relative;
                                                     display: flex;
                                                     flex-direction: row;
                                                     flex-wrap: wrap;
                                                     justify-content: center;
-                                                    position: absolute;
                                                     align-items: baseline;
                                                     align-content: space-between;
-                                                    left: 10%;
+                                                    margin: 0 auto;
                                                 }
                                                 
                                                 .thumbnail {
@@ -276,6 +305,8 @@
                                                     object-fit: cover;
                                                     margin: 10px;
                                                     text-align: center;
+                                                    border-radius: 5px;
+                                                    border: 5px solid  rgb(107, 9, 9) ;
                                                 }
                                                 
                                                 figure {
@@ -384,28 +415,33 @@
                                                     display: flex;
                                                     flex-direction: column;
                                                     align-items:center;
-                                                    width:100%;
                                                 }
                                                 
                                                 .videowrapper {
                                                     position:relative;
                                                     display: grid;
-                                                    grid-template-columns: repeat(5, 1fr);
-                                                    grid-gap: 1em;
-                                                    margin-left: 10px;
-                                                    margin-right: 10px;
+                                                    grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+                                                    justify-content: center;
+                                                    grid-gap: 2em;
+                                                    margin-left: 20px;
+                                                    margin-right: 20px;
                                                     padding-bottom:5em;
-
                                                 }
                                                 
-                                                .videobox {
+                                                .videobox{
                                                     position:relative;
+                                                    height:200px;
                                                     width: 1fr;
-                                                    height: 200px;
+                                                    max-width: 365px;
                                                     align-self: center;
                                                     object-fit: contain;
-                                                    border-radius: 10px;
+                                                    border-radius: 15px;
                                                     border: 5px solid rgb(107, 9, 9);
+                                                    overflow: hidden;
+
+                                                }
+                                                .videobox>img{
+                                                    height:100%;
                                                 }
                                                 
                                                 .videobox:hover {
@@ -455,7 +491,7 @@
                                                     -moz-background-size: cover;
                                                     -o-background-size: cover;
                                                     background-size: cover;
-                                                    overflow: hidden;
+                                                    overflow:auto;
                                                 }
                                                 
                                                 .fade-in {
@@ -510,3 +546,47 @@
                                                         opacity: 1;
                                                     }
                                                 }
+
+
+                                                @media only screen and (max-width: 768px) {
+
+                                                    .crop {
+                                                        max-width: 440px;
+                                                        height:auto;
+                                                        overflow: hidden;
+                                                    }
+                                                    .crop img {
+                                                        max-height: 100%;
+                                                        max-width: 100%;
+                                                    }
+
+                                                    h1,h2,h3,h4{
+                                                        font-size:12px;
+                                                    }
+
+                                                    button>*{
+                                                        font-size: 10px;
+                                                    }
+                                                }
+
+                                                @media only screen and (max-width: 450px) {
+
+                                                    .crop {
+                                                        max-width: 300px;
+                                                        height:auto;
+                                                        overflow: hidden;
+                                                    }
+                                                    .crop img {
+                                                        max-height: 100%;
+                                                        max-width: 100%;
+                                                    }
+
+                                                    h1,h2,h3,h4{
+                                                        font-size:12px;
+                                                    }
+
+                                                    button>*{
+                                                        font-size: 10px;
+                                                    }
+                                                }
+
