@@ -1,7 +1,6 @@
 <?php
 include_once("includes/connection.php");
-require_once("includes/header.php");
-require_once("includes/footer.php");
+
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 
@@ -24,7 +23,7 @@ else{
     list($is_movie, $entity_data, $specific_data) = $Data;
 
 
-            echo "<div style='position: relative;max-width: 1000px;height: auto;width: auto;margin: auto;margin-top: 200px;align-self: center;left: 10%;'>";
+            echo "<div style='position: relative;max-width: 1000px;height: auto;width: auto;margin: auto;margin-top: 200px;align-self: center;left: 10%;margin-bottom: 40px'>";
 
     if($is_movie == 1){
 
@@ -60,5 +59,6 @@ else{
     echo "<h3 id='whitefont'>".$description."</h3>";
     echo "</div>";
 }
-
+require_once("includes/header.php");
+require_once("includes/footer.php");
 $HTML->generateSiteEnd();?>
