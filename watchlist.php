@@ -38,6 +38,9 @@ else {
         case 3:
             header('Location: watchlist.php');
             break;
+        case 4:
+            header('Location: movies.php');
+            break;
     }
 
 }

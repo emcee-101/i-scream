@@ -37,6 +37,7 @@ $HTML->generateSiteStart();
 
     if(($_GET["action"] == "sub")AND(isset($_GET["mov"]))AND(isset($_GET["type"]))){
 
+        $location = 4;
         // if a subcategory from the header got clicked do this!!!
         $showMovies = $_GET["mov"];
 

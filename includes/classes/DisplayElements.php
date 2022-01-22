@@ -54,7 +54,7 @@
             // Workaround: transmits current GroupIDs, so tehy can be redisplayed, after something is added or eremoved from the watchlist (not inside of the watchlist (location 3) tough)
             $tstr = "";
 
-            if($this->location != 3){
+            if(($this->location != 3) AND ($this->location != 4)){
                 foreach($this->arrayOfGroupID as $key => $value){
 
                     $tstr .=  $value[0].":";
