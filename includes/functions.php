@@ -509,14 +509,13 @@ function getBanner($numOfBanners){
 
 
         //get 3 banner with id
-        $query = "SELECT `id`, `image_path` FROM `banner_images` LIMIT ".$numOfBanners.";";
+        $query = "SELECT `entity_id`, `image_path` FROM `banner_images` LIMIT ".$numOfBanners.";";
 
         $parsed_query = mysqli_query($con, $query);
 
         $results = array();
 
         $results = mysqli_fetch_all($parsed_query, MYSQLI_ASSOC);
-
 
 
                 /* associative array - how the data can be read:*/
