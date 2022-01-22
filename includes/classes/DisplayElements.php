@@ -109,19 +109,19 @@
 
     class SliderElement {
         private $img ="";
-        private $ID;
+        private $ent_ID;
 
         public function getWatchLink() {
 
             $WatchLink = "";
-            $WatchLink .= "watch.php?id=".$this->ID;
+            $WatchLink .= "watch.php?id=".$this->ent_ID;
 
             return $WatchLink;
         }
 
         public function getString() {
             $str = "<div class='slide crop'>";
-            $str .= "<p hidden>".$this->ID."</p>";
+            $str .= "<p hidden>".$this->ent_ID."</p>";
             $str .= "<a href='".$this->getWatchLink()."'>";
             $str .= "<img src='".$this->img."'><img>";
             $str .= "</a>";
@@ -130,7 +130,7 @@
         }
         public function __construct($imgurl, $IDNum){
             $this->img = $imgurl;
-            $this->ID = $IDNum;
+            $this->ent_ID = $IDNum;
         }
 
     }

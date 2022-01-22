@@ -22,7 +22,7 @@ session_start();
 
     foreach($banners as $key){
 
-        array_push($slider, new SliderElement($key["image_path"],$key["id"]));
+        array_push($slider, new SliderElement($key["image_path"],$key["entity_id"]));
 
     }
 
