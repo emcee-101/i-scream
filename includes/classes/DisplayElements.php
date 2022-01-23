@@ -276,7 +276,6 @@
   $this->ticketTopic = $ticketTopic;
   $this->ticketDescription = $ticketDescription;
   }
-
   }
 
 ?>

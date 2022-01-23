@@ -1,9 +1,8 @@
 <?php
 session_start();
 include_once("includes/connection.php");
-require_once("includes/header.php");
-require_once("includes/footer.php");
 include("includes/classes/DisplayElements.php");
+include("includes/functions.php");
 
 
 $con = establish_connection_db();
@@ -26,8 +25,8 @@ $membership= mysqli_query($con, "select isSubscribed from user where user_id='$u
 $membership=mysqli_fetch_assoc($membership);
 $membership=$membership["isSubscribed"];
 
-$membership == 1? $membership = "Full Membership": $membership = "No Membership";
-
+$membership === 1? $membershipText = "Full Membership": $membershipText = "No Membership";
+print_edit_message();
 $HTML = new SiteGenerator("Account","background2");
 $HTML->generateSiteStart();
 ?>
@@ -37,15 +36,19 @@ $HTML->generateSiteStart();
 
         <p>Email:<br>  <p type="text" name="email"> <?php echo $email; ?>  </p>  <br></p>
         <p>Age: <br> <p type="date" name="Age"> <?php echo $age;?> </p> <br> </p>
-        <p>Membership: <p type="text" name="membership"> <?php echo $membership; ?>  </p> <br><br></p>
+        <p>Membership: <p type="text" name="membership"> <?php echo $membershipText; ?>  </p> <br><br></p>
 
             
-        <p><a href="editaccount.php" input class="button button1" style="padding:10px 0px">Edit Profile</a><br>
+        <p><a href="editaccount.php" input class="button button1">Edit Profile</a><br><br>
+        <p><a href="editpassword.php" input class="button button1">Change Password</a></p><br>
 
         </form>
         </div>
 
 <?php
+
 $HTML->generateSiteEnd();
+require_once("includes/header.php");
+require_once("includes/footer.php");
 ?>
 

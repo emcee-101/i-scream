@@ -363,6 +363,101 @@ if($message)
     abolish_connection_db($con);
 }
 
+function edit_account($userID, $POSTDATA)
+{
+    $con = establish_connection_db();
+    if(isset($POSTDATA['newMail']))
+        {
+            $newMail = $POSTDATA['newMail'];
+            $query = "update user set mail_address = '$newMail' where user_id ='$userID'";
+            $result = mysqli_query($con,$query);
+            header("Location: account-management.php?Mail=1");
+        }
+
+    if(isset($POSTDATA['newAge']))
+            {
+                $newAge = $POSTDATA['newAge'];
+                $query = "update user set age = '$newAge' where user_id ='$userID'";
+                $result = mysqli_query($con,$query);
+                header("Location: account-management.php?Age=1");
+            }
+
+    if(isset($POSTDATA['newMembershipStatus']))
+            {
+                echo $POSTDATA['newMembershipStatus'];
+                $newMembership = $POSTDATA['newMembershipStatus'];
+                var_dump($newMembership);
+                $newMembership == "Full Membership"? $newMembership = 1: $newMembership = 0;
+                $query = "update user set isSubscribed = '$newMembership' where user_id ='$userID'";
+                $result = mysqli_query($con,$query);
+                var_dump($result);
+                header("Location: account-management.php?Membership=1");
+            }
+
+   abolish_connection_db($con);
+}
+
+function edit_password($userID, $POSTDATA)
+{
+    $con = establish_connection_db();
+
+    if(isset($POSTDATA['password1']) && isset($POSTDATA['password2']))
+        {
+            $password1 = $POSTDATA['password1'];
+            $password2 = $POSTDATA['password2'];
+
+            if($password1 != $password2)
+            {
+                $message = "Passwords must match!";
+                echo "<div class='fade-in'><p class='button'>".$message."</p></div>";
+            }
+
+            else
+            {
+                $hashed_password = password_hash($password1,  PASSWORD_DEFAULT);
+                $query = "update user set password = '$hashed_password' where user_id ='$userID'";
+                $result = mysqli_query($con,$query);
+                header("Location: account-management.php?Password=1");
+            }
+        }
+
+   abolish_connection_db($con);
+
+}
+
+
+function print_edit_message()
+{
+    $con = establish_connection_db();
+    $message = 0;
+
+    if(isset($_GET["Membership"]))
+    {
+        $message = "You successfully changed your Membership!";
+    }
+
+    else if(isset($_GET["Mail"]))
+    {
+        $message = "You successfully changed your Email!";
+
+    }
+    else if(isset($_GET["Age"]))
+    {
+        $message = "You successfully changed your Age!";
+    }
+    else if(isset($_GET["Password"]))
+    {
+        $message = "You successfully changed your Password!";
+    }
+
+    if($message != 0)
+    {
+    echo "<div class='fade-in'><p class='button'>".$message."</p></div>";
+    }
+
+}
+
+
 // $editValue must be 1 for movies, 0 for series
 function delete_entity($con, $entityTitle, $editValue)
 {
@@ -428,7 +523,6 @@ function replyTicket($ticketID, $POSTDATA)
     }
 
 }
-
 
 function check_login()
 {
