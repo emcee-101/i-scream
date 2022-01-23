@@ -1,6 +1,5 @@
 <?php
-require_once("includes/header.php");
-require_once("includes/footer.php");
+
 include_once("includes/connection.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
@@ -40,5 +39,7 @@ $HTML->generateSiteStart();
     </div>
 
 <?php
+require_once("includes/header.php");
+require_once("includes/footer.php");
 $HTML->generateSiteEnd();
 ?>

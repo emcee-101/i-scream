@@ -384,10 +384,9 @@ function edit_account($userID, $POSTDATA)
 
     if(isset($POSTDATA['newMembershipStatus']))
             {
-                echo $POSTDATA['newMembershipStatus'];
                 $newMembership = $POSTDATA['newMembershipStatus'];
                 var_dump($newMembership);
-                $newMembership == "Full Membership"? $newMembership = 1: $newMembership = 0;
+                $newMembership === "Full Membership"? $newMembership = 1: $newMembership = 0;
                 $query = "update user set isSubscribed = '$newMembership' where user_id ='$userID'";
                 $result = mysqli_query($con,$query);
                 var_dump($result);

@@ -1,8 +1,6 @@
 <?php
 session_start();
 include_once("includes/connection.php");
-require_once("includes/header.php");
-require_once("includes/footer.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 
@@ -16,15 +14,14 @@ $email=$array["mail_address"];
 $age = $array["age"];
 $membership = $array["isSubscribed"];
 
-if($membership == 1)
+if($membership === 1)
 {
     echo "Full Membership";
     $membershipText = "Full Membership";
     $membershipAlternative = "No Membership";
 }
-if($membership == 0)
+else
 {
-    echo "NO Membership";
     $membershipText = "No Membership";
     $membershipAlternative = "Full Membership";
 }
@@ -66,4 +63,6 @@ $AccountEdit = edit_account($user_id, $_POST);
         </form>
         </div>
 <?php
+require_once("includes/header.php");
+require_once("includes/footer.php");
 $HTML->generateSiteEnd();?>

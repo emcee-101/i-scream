@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-require_once("includes/header.php");
-require_once("includes/footer.php");
+
 include("includes/classes/DisplayElements.php");
 
 $HTML = new SiteGenerator("Impressum Page","background2");
@@ -42,6 +41,8 @@ Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten d
  </div>
 
 <?php
+require_once("includes/header.php");
+require_once("includes/footer.php");
     $HTML->generateSiteEnd();
 ?>
 
