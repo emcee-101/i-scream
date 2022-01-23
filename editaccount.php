@@ -4,7 +4,7 @@ include_once("includes/connection.php");
 require_once("includes/header.php");
 require_once("includes/footer.php");
 include("includes/classes/DisplayElements.php");
-//h
+
 $con = establish_connection_db();
 $user_id = $_SESSION['usr_id'];
 
