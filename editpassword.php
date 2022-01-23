@@ -1,8 +1,6 @@
 <?php
 session_start();
 include_once("includes/connection.php");
-require_once("includes/header.php");
-require_once("includes/footer.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 $HTML = new SiteGenerator("Account","background2");
@@ -29,4 +27,6 @@ $PasswordEdit = edit_password($user_id, $_POST);
 
 
 <?php
+require_once("includes/header.php");
+require_once("includes/footer.php");
 $HTML->generateSiteEnd() ?>

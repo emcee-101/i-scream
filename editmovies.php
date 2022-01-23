@@ -1,8 +1,7 @@
 <?php
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
-require_once("includes/header.php");
-require_once("includes/footer.php");
+
 
 session_start();
 
@@ -14,7 +13,7 @@ session_start();
 
 ?>
 
-<div class="box">
+<div class="box" >
 
         <h2 id="redfont">Edit a Movie</h2>
         <form method="POST">
@@ -40,5 +39,7 @@ session_start();
     </div>
 
 <?php
+require_once("includes/header.php");
+require_once("includes/footer.php");
 $HTML->generateSiteEnd();
 ?>

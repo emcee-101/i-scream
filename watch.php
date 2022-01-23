@@ -24,7 +24,7 @@ else{
     list($is_movie, $entity_data, $specific_data) = $Data;
 
 
-            echo "<div class= 'YTVideoBox'>";
+            echo "<div class= 'YTVideoBoxWrap'>";
 
     if($is_movie == 1){
 

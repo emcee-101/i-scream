@@ -590,7 +590,7 @@ function check_admin()
 }
 function show_admin_button($buttonName, $buttonLink)
 {
-    echo "<a href='".$buttonLink."' class='button button1' style='width:100px; margin:10px;'>".$buttonName."</a>";
+    echo "<a href='".$buttonLink."' class='button button1' style='width:70px; margin:5px;'>".$buttonName."</a>";
 }
 
 //function view tickets
