@@ -12,6 +12,11 @@ $HTML->generateSiteStart();
 <DOCTYPE! html>
 <html>
 <body style ="background-color:black;">
+
+
+<h2><a href="DOC/documentation.html">PROJEKTDOKUMENTATION</a></h2>
+
+
 <div class ="impressum">
     <h1 id="whitefont">Impressum</h1>
     <p id="whitefont">Angaben gemäß § 5 TMG<br>
