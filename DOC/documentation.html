@@ -257,6 +257,7 @@ Allerdings kann das auch damit zusammenhängen, dass Ich in weiten Teilen das Ha
     <li>watch.php bechränkt sich auf das Anzeigen eines Youtube-Embeds, welches den/die Trailer des Objekts anzeigt </li>
     <li>es wird auf keine Daten aus externen Services zugegriffen </li>
     <li>die Funktionalität für Admins auf Tickets zu antworten, wurde bloß insofern umgesetzt, dass die Antworten in die Datenbank eingetragen werden, aber nicht wie vorgesehen per Main an den Kunden weitergeleitet werden, sondern lediglich vermerkt wird, dass das Ticket nicht mehr aktiv ist </li>
+    <li>/includes/classes/FormSanitizer.php ist vorhanden um Formulardaten zu prüfen und nach problematischen Eingaben zu filtern (wie HTML Tags, Buchstaben in einem Zahlenfeld, etc) bevor sie bearbeitet werden um das Projekt sicherer zu machne, wurde aber letzendlich nie eingebunden oder eingesetzt </li>
 </ul>
 
 <h2>Ausblick</h2>
