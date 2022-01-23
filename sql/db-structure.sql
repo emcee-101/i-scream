@@ -12,7 +12,7 @@ CREATE TABLE `user` (
   `username` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
   `mail_address` varchar(50) NOT NULL,
-  `age` int NOT NULL,
+  `age` int(10) NOT NULL,
   `signUpDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `isSubscribed` tinyint(1) NOT NULL DEFAULT 0,
   `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
@@ -222,7 +222,7 @@ CREATE TABLE `entity` (
         `user_id` int(10) NOT NULL,
         `topic` varchar(200) NOT NULL,
         `description` text NOT NULL,
-        `reply` varchar (200),
+        `reply` varchar (200) NULL,
 
         PRIMARY KEY(`id`),
         KEY `ticket_usr` (`user_id`)
