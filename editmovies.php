@@ -1,15 +1,13 @@
 <?php
+session_start();
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 
-
-session_start();
-
-    $user_data = check_login();
-    $isAdmin = check_admin();
-    $MoviesEdit = edit_movies($_POST);
-    $HTML = new SiteGenerator("Edit Movies Page","background5");
-    $HTML->generateSiteStart();
+$user_data = check_login();
+$isAdmin = check_admin();
+$MoviesEdit = edit_movies($_POST);
+$HTML = new SiteGenerator("Edit Movies Page","background5");
+$HTML->generateSiteStart();
 
 ?>
 

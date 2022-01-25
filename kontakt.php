@@ -1,12 +1,10 @@
 <?php
-
+session_start();
 include_once("includes/connection.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 
-session_start();
-
-    $user_data = check_login();
+$user_data = check_login();
 
     // if posted run newTicket()
 if (isset($_POST['topic']) && isset($_POST["Explanation"])){

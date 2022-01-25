@@ -5,8 +5,8 @@ include_once("includes/connection.php");
 
 session_start();
 
-    $user_data = check_login();
-    $isAdmin = check_admin();
+$user_data = check_login();
+$isAdmin = check_admin();
 
 $con = establish_connection_db();
 $HTML = new SiteGenerator("Tickets Page","background4");

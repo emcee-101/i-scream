@@ -374,7 +374,7 @@ function edit_account($userID, $POSTDATA)
             header("Location: account-management.php?Mail=1");
         }
 
-    if(isset($POSTDATA['newAge']))
+    else if(isset($POSTDATA['newAge']))
             {
                 $newAge = $POSTDATA['newAge'];
                 $query = "update user set age = '$newAge' where user_id ='$userID'";
@@ -382,14 +382,15 @@ function edit_account($userID, $POSTDATA)
                 header("Location: account-management.php?Age=1");
             }
 
-    if(isset($POSTDATA['newMembershipStatus']))
+    else if(isset($POSTDATA['newMembershipStatus']))
             {
-                $newMembership = $POSTDATA['newMembershipStatus'];
-                var_dump($newMembership);
-                $newMembership === "Full Membership"? $newMembership = 1: $newMembership = 0;
-                $query = "update user set isSubscribed = '$newMembership' where user_id ='$userID'";
+                $query = "select isSubscribed from user where user_id = '$userID'";
                 $result = mysqli_query($con,$query);
-                var_dump($result);
+                $membershipArray = mysqli_fetch_array($result);
+                $membershipStatus = $membershipArray["isSubscribed"];
+                $membershipStatus? $newMembershipStatus = 0: $newMembershipStatus = 1;
+                $query = "update user set isSubscribed = '$newMembershipStatus' where user_id ='$userID'";
+                $result = mysqli_query($con,$query);
                 header("Location: account-management.php?Membership=1");
             }
 

@@ -1,8 +1,8 @@
 <?php
+session_start();
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 
-session_start();
 $user_data = check_login();
 
 $HTML = new SiteGenerator("Movies Page","background3");

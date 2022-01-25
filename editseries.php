@@ -1,16 +1,14 @@
 <?php
+session_start();
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 
+$user_data = check_login();
+$isAdmin = check_admin();
+$SeriesEdit = edit_series($_POST);
+$HTML = new SiteGenerator("Edit Movies Page","background5");
+$HTML->generateSiteStart("Add Series","background5");
 
-session_start();
-
-    $user_data = check_login();
-    $isAdmin = check_admin();
-    $SeriesEdit = edit_series($_POST);
-
-    $HTML = new SiteGenerator("Edit Movies Page","background5");
-    $HTML->generateSiteStart("Add Series","background5");
 ?>
   <div class="box">
 

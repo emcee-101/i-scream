@@ -1,8 +1,8 @@
 <?php
+session_start();
 include_once("includes/connection.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
-session_start();
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -50,15 +50,15 @@ $HTML->generateSiteStart();
         <img src="https://image.spreadshirtmedia.net/image-server/v1/mp/designs/170504311,width=178,height=178/totenkopf-eis-in-der-waffel.png" style="height:100px; width:100px;"></img></a>
     </p>
 
-    <h1 class="alignment" id= "redfont">Welcome to I-Scream</h1>
+    <h1 class="alignment" id="redfont">Welcome to I-Scream</h1>
 
 
     <div class = "box">
         <h2 style="text-align:center" id="redfont">Login</h2><br>
         <form method="POST">
 
-            <p>Username</p><input type="text" name="username"><br><br>
-            <p>Password</p><input type="password" name="password"><br><br>
+            <p>Username</p><input class="boxInput" type="text"  name="username" ><br><br>
+            <p>Password</p><input class="boxInput" type="password" name="password" class="boxWidth"><br><br>
 
 
             <input type="submit" class="button button1" value="Login"><br><br>
@@ -66,5 +66,7 @@ $HTML->generateSiteStart();
         </form>
     </div>
 </div>
-<?$HTML->generateSiteEnd();?>
+<?php
+$HTML->generateSiteEnd();
+?>
 

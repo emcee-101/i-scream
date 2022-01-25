@@ -4,19 +4,20 @@ include_once("includes/connection.php");
 include("includes/functions.php");
 include("includes/classes/DisplayElements.php");
 
+$user_data = check_login();
+
 $con = establish_connection_db();
 $user_id = $_SESSION['usr_id'];
 
 $query = mysqli_query($con, "select * from user where user_id='$user_id'");
-$array=mysqli_fetch_assoc($query);
+$array = mysqli_fetch_assoc($query);
 
 $email=$array["mail_address"];
 $age = $array["age"];
 $membership = $array["isSubscribed"];
 
-if($membership === 1)
+if($membership === "1")
 {
-    echo "Full Membership";
     $membershipText = "Full Membership";
     $membershipAlternative = "No Membership";
 }
@@ -36,7 +37,7 @@ $AccountEdit = edit_account($user_id, $_POST);
         <form method="POST">
         <p>Your current Email: <type="text"> <?php echo $email; ?><br><br>
         New Email:
-        <input name="newMail" type="email" required><br><br>
+        <input class="boxInputWide" name="newMail" type="email" required><br><br>
         <input type = submit class ="button button1" name="mailEdit" value = "Edit Email">
         </p>
         </form>
@@ -46,7 +47,7 @@ $AccountEdit = edit_account($user_id, $_POST);
         <p>Your current Age: <type="text"> <?php echo $age;?><br><br>
         Change Age:
         <br>
-        <input name = "newAge" type = "number" min ="18" max="120" required></input><br><br>
+        <input class="boxInputWide" name = "newAge" type = "number" min ="18" max="120" required></input><br><br>
         <input type = submit class ="button button1" name="ageEdit" value = "Edit Age">
         </p>
         </form>
